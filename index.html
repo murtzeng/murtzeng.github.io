@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>murtzeng | EEM Portfolyo</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; padding: 2rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; padding: 2.5rem 1rem; background: var(--card-bg); border-radius: 12px; margin-bottom: 2rem; border: 1px solid #334155; }
+        header h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 0.3rem; }
+        header p { color: var(--text-primary); font-weight: 500; }
+        section { background: var(--card-bg); padding: 1.8rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #334155; }
+        h2 { color: var(--accent); font-size: 1.3rem; margin-bottom: 1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag { background: #334155; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.9rem; }
+        .project-card { background: #0f172a; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--accent); }
+        .links { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
+        .btn { background: var(--accent); color: #0f172a; padding: 0.5rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        .btn:hover { background: var(--accent-hover); color: #fff; }
+        footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>murtzeng</h1>
+            <p>Elektrik-Elektronik Mühendisliği Öğrencisi</p>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.4rem;">Gömülü Sistemler, Devre Tasarımı & Savunma Sanayii Odaklı</p>
+            
+            <div class="links">
+                <a href="https://github.com/murtzeng" target="_blank" class="btn">GitHub Profilim</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Hakkımda</h2>
+            <p>Elektrik-Elektronik Mühendisliği öğrencisiyim. Elektronik devre tasarımları, mikrodenetleyiciler ve gömülü sistem yazılımları üzerine kendimi geliştiriyorum.</p>
+        </section>
+
+        <section>
+            <h2>Teknik Beceri & Odak Alanları</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">C / C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">Arduino / STM32</span>
+                <span class="skill-tag">LTSpice</span>
+                <span class="skill-tag">Altium / KiCad</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projelerim</h2>
+            <div class="project-card">
+                <h3>Otonom Sistem & Devre Çalışmaları</h3>
+                <p>Elektrik-elektronik ve gömülü sistemler üzerine gerçekleştireceğim laboratuvar ve kişisel projelerim çok yakında burada yer alacak.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>© murtzeng - GitHub Pages ile oluşturuldu.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
