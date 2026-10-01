@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>murtzeng | Aviyonik & Gömülü Sistemler Mühendisi Adayı</title>
+    
+    <!-- GOOGLE SEO ARAMA MOTORU ETİKETLERİ -->
+    <title>murtzeng | Aviyonik & Gömülü Sistemler Portal</title>
+    <meta name="description" content="murtzeng - Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi. Aviyonik sistemler, gömülü sistemler, C++ ve savunma sanayii araştırmacısı kişisel web sitesi.">
+    <meta name="keywords" content="murtzeng, aviyonik, gömülü sistemler, gaziantep üniversitesi, elektrik elektronik mühendisliği, savunma sanayii, c++, stm32">
+    <meta name="author" content="murtzeng">
+    <meta name="robots" content="index, follow">
+
     <!-- FontAwesome İkon Seti -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Stil Dosyası -->
@@ -11,7 +18,7 @@
 </head>
 <body>
 
-    <!-- ÜST MENÜ VE LOGO -->
+    <!-- ÜST MENÜ & AKILLI MOBİL MENÜ -->
     <header class="navbar">
         <div class="logo-container">
             <div class="animated-logo">
@@ -27,19 +34,21 @@
             </div>
             <div class="brand-text">
                 <span class="brand-name">murtzeng</span>
-                <span class="brand-sub">EE & Aviyonik</span>
+                <span class="brand-sub">GAÜN EE & Aviyonik</span>
             </div>
         </div>
 
-        <button class="mobile-toggle" id="menu-btn"><i class="fas fa-bars"></i></button>
+        <button class="mobile-toggle" id="menu-btn" aria-label="Menü"><i class="fas fa-bars"></i></button>
 
         <nav class="nav-links" id="nav-menu">
-            <a href="#hero">Anasayfa</a>
-            <a href="#telemetry">Telemetri</a>
-            <a href="#about">Hakkımda</a>
-            <a href="#skills">Yetkinlikler</a>
-            <a href="#projects">Projeler</a>
-            <a href="#faq">SSS</a>
+            <a href="#hero" class="nav-item">Anasayfa</a>
+            <a href="#news" class="nav-item">Haberler</a>
+            <a href="#gallery" class="nav-item">Galeri</a>
+            <a href="#telemetry" class="nav-item">Telemetri</a>
+            <a href="#about" class="nav-item">Hakkımda</a>
+            <a href="#skills" class="nav-item">Yetkinlikler</a>
+            <a href="#projects" class="nav-item">Projeler</a>
+            <a href="#faq" class="nav-item">SSS</a>
         </nav>
     </header>
 
@@ -53,10 +62,65 @@
 
         <div class="hero-content">
             <h1>Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri</h1>
-            <p>Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
+            <p class="hero-desc">Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
             <div class="hero-buttons">
-                <a href="#telemetry" class="btn btn-primary"><i class="fas fa-satellite"></i> Telemetri Paneli</a>
-                <a href="#projects" class="btn btn-secondary"><i class="fas fa-microchip"></i> Projelerim</a>
+                <a href="#news" class="btn btn-primary"><i class="fas fa-newspaper"></i> Teknoloji Akışı</a>
+                <a href="#telemetry" class="btn btn-secondary"><i class="fas fa-satellite"></i> Canlı Telemetri</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEKNOLOJİ HABERLERİ & DUYURULAR (GAÜN KONSEPT) -->
+    <section id="news" class="news-section">
+        <h2 class="section-title"><i class="fas fa-bullhorn"></i> Teknoloji & Savunma Sanayii Haberleri</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-badge">Haber</div>
+                <h3>Yerli Aviyonik Sistemlerde C++ ve STM32 Mimarisi</h3>
+                <p>İnsansız hava araçlarında yüksek güvenilirlikli sensör füzyonu ve gerçek zamanlı işletim sistemlerinin (RTOS) önemi artıyor.</p>
+                <span class="news-date"><i class="far fa-calendar-alt"></i> Ekim 2026 | GAÜN EE Bülten</span>
+            </article>
+
+            <article class="news-card">
+                <div class="news-badge">Duyuru</div>
+                <h3>Otonom İHA Yer İstasyonu Çalışmaları Başladı</h3>
+                <p>Gömülü sistemlerden gelen telemetri verilerinin Python arayüzleri ile anlık haritalanması projesinde test aşamasına geçildi.</p>
+                <span class="news-date"><i class="far fa-calendar-alt"></i> Eylül 2026 | Ar-Ge Notları</span>
+            </article>
+
+            <article class="news-card">
+                <div class="news-badge">Gelişme</div>
+                <h3>Milli Teknoloji Hamlesi ve Aviyonik Vizyon</h3>
+                <p>Türkiye'nin tam bağımsız savunma sanayii hedeflerinde genç mühendis adaylarının rolü ve üniversite-sanayi iş birliği.</p>
+                <span class="news-date"><i class="far fa-calendar-alt"></i> Eylül 2026 | Makale</span>
+            </article>
+        </div>
+    </section>
+
+    <!-- FOTOĞRAF & AR-GE GALERİSİ -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title"><i class="fas fa-images"></i> Çalışma & Laboratuvar Galerisi</h2>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="img-placeholder"><i class="fas fa-microchip"></i></div>
+                <div class="gallery-info">
+                    <h4>Devre Tasarımı & Altium</h4>
+                    <p>PCB Kart Baskı & Donanım Testleri</p>
+                </div>
+            </div>
+            <div class="gallery-card">
+                <div class="img-placeholder"><i class="fas fa-laptop-code"></i></div>
+                <div class="gallery-info">
+                    <h4>Gömülü Yazılım (C++)</h4>
+                    <p>STM32 Sensör Kalibrasyonu</p>
+                </div>
+            </div>
+            <div class="gallery-card">
+                <div class="img-placeholder"><i class="fas fa-university"></i></div>
+                <div class="gallery-info">
+                    <h4>GAÜN Laboratuvarı</h4>
+                    <p>Elektrik-Elektronik Mühendisliği</p>
+                </div>
             </div>
         </div>
     </section>
@@ -83,7 +147,7 @@
             <div class="radar-box">
                 <div class="radar-sweep"></div>
                 <div class="radar-center"></div>
-                <span class="radar-label">RADAR TARA: AKTİF</span>
+                <span class="radar-label">RADAR: AKTİF</span>
             </div>
             <div class="telemetry-data">
                 <div class="data-card">
@@ -106,47 +170,35 @@
         </div>
     </section>
 
-    <!-- HAKKIMDA BÖLÜMÜ -->
+    <!-- HAKKIMDA -->
     <section id="about" class="about-section">
         <div class="about-card">
             <h2><i class="fas fa-user-astronaut"></i> Akademik & Profesyonel Vizyon</h2>
-            <p>
-                Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim. 
-                Temel çalışma alanlarım <strong>Gömülü Sistem Tasarımı</strong>, <strong>Aviyonik Sistem Yazılımları (C/C++)</strong> ve 
-                <strong>İnsansız Hava Araçları (İHA) Telemetri Sistemleri</strong> üzerine yoğunlaşmaktadır.
-            </p>
-            <p>
-                Milli Teknoloji Hamlesi doğrultusunda, Türkiye'nin savunma sanayii ve aviyonik alanındaki bağımsızlık vizyonuna katkı sağlayacak projeler üzerinde kendimi sürekli geliştirmekteyim.
-            </p>
+            <p>Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim. Temel çalışma alanlarım <strong>Gömülü Sistem Tasarımı</strong>, <strong>Aviyonik Sistem Yazılımları (C/C++)</strong> ve <strong>İnsansız Hava Araçları (İHA) Telemetri Sistemleri</strong> üzerine yoğunlaşmaktadır.</p>
+            <p>Milli Teknoloji Hamlesi doğrultusunda, Türkiye'nin savunma sanayii ve aviyonik alanındaki bağımsızlık vizyonuna katkı sağlayacak projeler üzerinde kendimi sürekli geliştirmekteyim.</p>
         </div>
     </section>
 
-    <!-- YETKİNLİKLER (TECH STACK) -->
+    <!-- YETKİNLİKLER -->
     <section id="skills" class="skills-section">
         <h2 class="section-title"><i class="fas fa-layer-group"></i> Yetkinlikler & Teknolojiler</h2>
         <div class="skills-grid">
             <div class="skill-category">
                 <h3><i class="fas fa-code"></i> Yazılım & Diller</h3>
-                <div class="tags">
-                    <span>C++</span><span>C</span><span>Python</span><span>MATLAB</span><span>HTML/CSS/JS</span>
-                </div>
+                <div class="tags"><span>C++</span><span>C</span><span>Python</span><span>MATLAB</span><span>HTML/CSS/JS</span></div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-microchip"></i> Donanım & Gömülü</h3>
-                <div class="tags">
-                    <span>STM32</span><span>Arduino</span><span>ESP32</span><span>Altium Designer</span><span>Devre Tasarımı</span>
-                </div>
+                <div class="tags"><span>STM32</span><span>Arduino</span><span>ESP32</span><span>Altium Designer</span><span>Devre Tasarımı</span></div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-tools"></i> Araçlar & Sistemler</h3>
-                <div class="tags">
-                    <span>Linux / Ubuntu</span><span>Git / GitHub</span><span>VS Code</span><span>Keil uVision</span>
-                </div>
+                <div class="tags"><span>Linux / Ubuntu</span><span>Git / GitHub</span><span>VS Code</span><span>Keil uVision</span></div>
             </div>
         </div>
     </section>
 
-    <!-- PROJELER BÖLÜMÜ -->
+    <!-- PROJELER -->
     <section id="projects" class="projects-section">
         <h2 class="section-title"><i class="fas fa-folder-open"></i> Ar-Ge & Proje Çalışmaları</h2>
         <div class="projects-grid">
@@ -192,7 +244,7 @@
         </div>
     </section>
 
-    <!-- SSS (SIKÇA SORULAN SORULAR) -->
+    <!-- SSS -->
     <section id="faq" class="faq-section">
         <h2 class="section-title"><i class="fas fa-question-circle"></i> Sıkça Sorulan Sorular</h2>
         <div class="faq-item">
@@ -209,8 +261,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER VE SOSYAL MEDYA AKIŞI -->
     <footer class="site-footer">
+        <div class="social-feed">
+            <span class="feed-title"><i class="fas fa-share-alt"></i> Sosyal Ağlar & İletişim</span>
+        </div>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/murtzeng" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/murtzeng" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
