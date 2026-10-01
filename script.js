@@ -1,13 +1,3 @@
-// PRELOADER KAPANMA EMNİYET KODU
-function hidePreloader() {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-        preloader.style.opacity = "0";
-        setTimeout(() => { preloader.style.display = "none"; }, 400);
-    }
-}
-setTimeout(hidePreloader, 1000);
-
 document.addEventListener("DOMContentLoaded", () => {
     // DAKTİLO (TYPEWRITER) BAŞLIK ANİMASYONU
     const titleText = "Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri";
@@ -22,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(typeWriter, 50);
             }
         }
-        setTimeout(typeWriter, 500);
+        typeWriter();
     }
 
     // DİNÂMİK YIL
