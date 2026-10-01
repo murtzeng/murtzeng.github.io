@@ -2,56 +2,50 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Masaüstü düzeninin telefonda bozulmaması için viewport ayarı -->
+    <meta name="viewport" content="width=1200, initial-scale=0.3">
     
-    <!-- SEO & PWA MANIFEST -->
     <title>murtzeng | Aero-Electronics & Avionics Portal</title>
-    <meta name="description" content="murtzeng - Elektrik-Elektronik Mühendisliği öğrencisi. Aviyonik sistemler, gömülü sistemler, C++ ve savunma sanayii araştırmacısı.">
-    <meta name="keywords" content="murtzeng, aviyonik, gömülü sistemler, elektrik elektronik mühendisliği, savunma sanayii, c++, stm32">
-    <meta name="theme-color" content="#070e17">
-    <link rel="manifest" href="manifest.json">
-
-    <!-- FontAwesome İkon Seti -->
+    <meta name="description" content="murtzeng - Elektrik-Elektronik Mühendisliği öğrencisi. Aviyonik sistemler ve savunma sanayii araştırmacısı.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Stil Dosyası -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
 
-    <!-- ÜST MENÜ & YENİ AMBLEM -->
+    <!-- ARKA PLAN RADAR IZGARA EFEKTİ -->
+    <div class="bg-grid-overlay"></div>
+
+    <!-- ÜST MENÜ (MASAÜSTÜ PORTAL DÜZENİ) -->
     <header class="navbar">
-        <div class="logo-container">
+        <div class="logo-container" id="logo-trigger" title="Terminal Modunu Aç!">
             <div class="animated-logo">
                 <svg viewBox="0 0 100 100" class="logo-svg">
-                    <!-- Dış Geometrik Çerçeve / Elmas -->
-                    <path d="M 50 90 L 15 50 L 35 25 L 65 25 L 85 50 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M 50 82 L 23 50 L 38 30 L 62 30 L 77 50 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-                    <!-- İç Hilal Motifi -->
-                    <path d="M 33 55 A 18 18 0 1 0 67 55 A 14 14 0 1 1 33 55 Z" fill="currentColor"/>
-                    <!-- Ok / Jet Motifi -->
-                    <path d="M 50 10 L 41 45 L 48 40 L 48 60 L 52 60 L 52 40 L 59 45 Z" fill="currentColor"/>
+                    <polygon points="50,5 64,21 85,21 81,42 95,57 81,72 85,93 64,93 50,110 36,93 15,93 19,72 5,57 19,42 15,21 36,21" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                    <polygon points="50,20 68,32 75,52 68,72 50,84 32,72 25,52 32,32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M 43 40 A 12 12 0 1 0 57 60 A 9 9 0 1 1 43 40 Z" fill="currentColor"/>
+                    <path d="M 50 25 L 50 75" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                 </svg>
             </div>
             <div class="brand-text">
                 <span class="brand-name">murtzeng</span>
-                <span class="brand-sub">AERO-ELECTRONICS & AVIONICS</span>
+                <span class="brand-sub">AERO-ELECTRONICS & AVIONICS PORTAL</span>
             </div>
         </div>
 
         <div class="header-right">
-            <button id="cmd-btn" class="icon-btn" title="Komut Paleti (Ctrl+K)"><i class="fas fa-search"></i> <span class="cmd-badge">Ctrl+K</span></button>
+            <button id="terminal-toggle-btn" class="icon-btn" title="Linux Terminal"><i class="fas fa-terminal"></i> Terminal</button>
+            <button id="cmd-btn" class="icon-btn" title="Hızlı Komut Paleti (Ctrl+K)"><i class="fas fa-search"></i> Ara <span class="cmd-badge">Ctrl+K</span></button>
             <button id="theme-toggle" class="icon-btn" title="Tema Değiştir"><i class="fas fa-moon"></i></button>
-            <button class="mobile-toggle" id="menu-btn" aria-label="Menü"><i class="fas fa-bars"></i></button>
         </div>
 
-        <nav class="nav-links" id="nav-menu">
+        <nav class="nav-links">
             <a href="#hero" class="nav-item">Anasayfa</a>
             <a href="#spiritual" class="nav-item">Âyet & Hadîs</a>
             <a href="#news" class="nav-item">Haberler</a>
+            <a href="#microblog" class="nav-item">Ar-Ge Günlüğü</a>
             <a href="#telemetry" class="nav-item">Telemetri</a>
             <a href="#calculator" class="nav-item">Araçlar</a>
-            <a href="#timeline" class="nav-item">Önemli Olaylar</a>
-            <a href="#projects" class="nav-item">Ar-Ge Odakları</a>
+            <a href="#projects" class="nav-item">Projeler</a>
             <a href="#contact" class="nav-item">İletişim</a>
         </nav>
     </header>
@@ -66,14 +60,31 @@
         <div class="hero-content">
             <h1 id="typewriter-title"></h1>
             <p class="hero-desc">Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
-            <div class="hero-buttons">
+            
+            <!-- İSTATİSTİK SAYACI -->
+            <div class="live-counters">
+                <div class="counter-box">
+                    <span class="c-num" data-target="1450">0</span>
+                    <span class="c-label">Kod Satırı (Git)</span>
+                </div>
+                <div class="counter-box">
+                    <span class="c-num" data-target="34">0</span>
+                    <span class="c-label">Teknik Makale</span>
+                </div>
+                <div class="counter-box">
+                    <span class="c-num" data-target="3">0</span>
+                    <span class="c-label">Aktif Ar-Ge Projesi</span>
+                </div>
+            </div>
+
+            <div class="hero-buttons" style="margin-top: 25px;">
                 <a href="#news" class="btn btn-primary"><i class="fas fa-newspaper"></i> Canlı Teknoloji Akışı</a>
-                <a href="#telemetry" class="btn btn-secondary"><i class="fas fa-satellite"></i> Telemetri Paneli</a>
+                <a href="https://github.com/murtzeng" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub Profilim</a>
             </div>
         </div>
     </section>
 
-    <!-- MANEVİ KÖŞE (GÜNÜN ÂYETİ VE HADÎSİ) -->
+    <!-- MANEVİ KÖŞE -->
     <section id="spiritual" class="spiritual-section">
         <div class="glass-card">
             <div class="card-header"><i class="fas fa-quran"></i> Günün Âyeti</div>
@@ -95,20 +106,37 @@
             <article class="news-card">
                 <div class="news-badge">Yükleniyor</div>
                 <h3>Canlı Haberler Çekiliyor...</h3>
-                <p>TRT Haber ve Teknoloji canlı akışına bağlanılıyor...</p>
-                <span class="news-date"><i class="far fa-calendar-alt"></i> Güncelleniyor...</span>
+                <p>TRT Haber canlı akışına bağlanılıyor...</p>
             </article>
         </div>
     </section>
 
-    <!-- CANLI RADAR & TELEMETRİ PANELİ -->
+    <!-- AR-GE GÜNLÜĞÜ -->
+    <section id="microblog" class="microblog-section">
+        <h2 class="section-title"><i class="fas fa-stream"></i> Ar-Ge Günlüğü (Canlı Akış)</h2>
+        <div class="microblog-container">
+            <div class="post-box">
+                <textarea id="post-input" placeholder="Bugün ne üzerinde çalıştın gardaşım? (Ar-Ge Notu Bırak)..." rows="2"></textarea>
+                <button id="post-btn" class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i> Notu Yayınla</button>
+            </div>
+            <div class="posts-feed" id="posts-feed">
+                <div class="post-item">
+                    <div class="p-header"><strong>murtzeng</strong> <span class="p-time">Bugün, 09:15</span></div>
+                    <p>STM32 mikrodenetleyici UART haberleşme protokolleri ve kesme (interrupt) yapıları inceleniyor. 🚀</p>
+                    <div class="p-actions"><button class="like-btn"><i class="far fa-heart"></i> <span class="like-count">14</span> Beğeni</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CANLI RADAR & TELEMETRİ -->
     <section id="telemetry" class="telemetry-section">
         <h2 class="section-title"><i class="fas fa-crosshairs"></i> Canlı Aviyonik Telemetri Simülasyonu</h2>
         <div class="telemetry-grid">
-            <div class="radar-box">
+            <div class="radar-box" id="radar-interactive" title="Tıklayarak Radar Modunu Değiştir">
                 <div class="radar-sweep"></div>
                 <div class="radar-center"></div>
-                <span class="radar-label">RADAR: AKTİF</span>
+                <span class="radar-label" id="radar-status">RADAR: AKTİF</span>
             </div>
             <div class="telemetry-data">
                 <div class="data-card">
@@ -131,7 +159,7 @@
         </div>
     </section>
 
-    <!-- MÜHENDİSLİK ARAÇLARI & HESAPLAYICILAR -->
+    <!-- MÜHENDİSLİK ARAÇLARI -->
     <section id="calculator" class="calc-section">
         <h2 class="section-title"><i class="fas fa-tools"></i> Aviyonik & Mühendislik Araçları</h2>
         <div class="calc-grid">
@@ -165,63 +193,26 @@
         </div>
     </section>
 
-    <!-- ÖNEMLİ OLAYLAR & AKADEMİK TAKVİM -->
-    <section id="timeline" class="timeline-section">
-        <h2 class="section-title"><i class="fas fa-calendar-check"></i> Önemli Olaylar & Mühendislik Takvimi</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="t-date">2026 - Halen</span>
-                    <h3>Elektrik-Elektronik Mühendisliği Lisansı</h3>
-                    <p>Mühendislik eğitimi, akademik ders oryantasyonları ve temel mühendislik fizik/matematik altyapısı.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="t-date">Güz Dönemi Hedefi</span>
-                    <h3>C++ & STM32 Gömülü Sistem Çalışmaları</h3>
-                    <p>Mikrodenetleyici programlama temelleri, C++ nesne tabanlı mimari ve sensör okuma simülasyonları.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="t-date">2027 Sezonu</span>
-                    <h3>TEKNOFEST & İHA Takımı Hazırlıkları</h3>
-                    <p>Otonom İHA ve aviyonik alt sistem yarışmaları için ön tasarım ve Ar-Ge araştırmaları.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AR-GE ODAK NOKTALARI -->
+    <!-- PROJELER -->
     <section id="projects" class="projects-section">
-        <h2 class="section-title"><i class="fas fa-microchip"></i> Ar-Ge Odak Noktaları & Çalışma Alanlarım</h2>
+        <h2 class="section-title"><i class="fas fa-microchip"></i> Ar-Ge Odak Noktaları</h2>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card" onclick="alert('C++ Gömülü Sistemler: STM32 ve mikrodenetleyici mimarileri.')" style="cursor:pointer;" title="Detay İçin Tıkla">
                 <div class="p-icon"><i class="fas fa-code"></i></div>
-                <h3>C++ ile Gömülü Sistem Programlama</h3>
-                <p>Elektrik-Elektronik Mühendisliği lisans sürecim kapsamında mikrodenetleyici mimarileri ve C++ dili üzerine temel Ar-Ge çalışmaları yürütmekteyim.</p>
-                <div class="p-tags"><span>C++</span><span>Gömülü Sistemler</span><span>Öğrenim</span></div>
+                <h3>C++ Gömülü Sistemler</h3>
+                <p>Mikrodenetleyici programlama ve nesne yönelimli gömülü mimariler.</p>
+                <div class="p-tags"><span>C++</span><span>STM32</span></div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="alert('Aviyonik: İHA uçuş kontrol kartları ve telemetri.')" style="cursor:pointer;" title="Detay İçin Tıkla">
                 <div class="p-icon"><i class="fas fa-plane"></i></div>
-                <h3>Aviyonik & Telemetri Araştırmaları</h3>
-                <p>İnsansız hava araçlarının (İHA) uçuş kontrol kartları, sensör füzyonu ve haberleşme protokolleri teorik altyapısını incelemekteyim.</p>
-                <div class="p-tags"><span>Aviyonik</span><span>İHA</span><span>Savunma Sanayii</span></div>
-            </div>
-            <div class="project-card">
-                <div class="p-icon"><i class="fas fa-tools"></i></div>
-                <h3>Mühendislik Araçları & PCB Tasarımı</h3>
-                <p>Dersler ve laboratuvar çalışmaları paralelinde Altium Designer ile devre çizimi ve MATLAB ile sinyal analiz simülasyonlarını hedeflemekteyim.</p>
-                <div class="p-tags"><span>Altium</span><span>MATLAB</span><span>Devre Tasarımı</span></div>
+                <h3>Aviyonik & Telemetri</h3>
+                <p>İnsansız hava aracı alt sistemleri ve yer istasyonu algoritmaları.</p>
+                <div class="p-tags"><span>Aviyonik</span><span>İHA</span></div>
             </div>
         </div>
     </section>
 
-    <!-- GİTHUB İSTATİSTİK MODÜLÜ -->
+    <!-- GİTHUB İSTATİSTİKLERİ -->
     <section class="github-section">
         <h2 class="section-title"><i class="fab fa-github"></i> Live GitHub Aktivitesi</h2>
         <div class="github-card">
@@ -229,10 +220,10 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM FORMU -->
+    <!-- İLETİŞİM -->
     <section id="contact" class="contact-section">
         <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> Doğrudan Mesaj Gönder</h2>
-        <form class="contact-form" id="contact-form">
+        <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız başarıyla iletildi gardaşım!');">
             <input type="text" placeholder="Adınız Soyadınız" required>
             <input type="email" placeholder="E-Posta Adresiniz" required>
             <textarea placeholder="Mesajınız..." rows="4" required></textarea>
@@ -240,7 +231,24 @@
         </form>
     </section>
 
-    <!-- GEMİNİ AI SOHBET MODÜLÜ -->
+    <!-- TERMİNAL MODALI -->
+    <div class="terminal-modal" id="terminal-modal">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span><i class="fas fa-terminal"></i> murtzeng@avionics-core:~</span>
+                <button id="terminal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="terminal-body" id="terminal-output">
+                <p>Mühendislik Terminaline Hoş Geldiniz! Komut için <strong style="color:var(--cyan-accent);">help</strong> yazın.</p>
+            </div>
+            <div class="terminal-input-row">
+                <span>$</span>
+                <input type="text" id="terminal-input" autofocus placeholder="Komut yazın (help, about, clear, exit)...">
+            </div>
+        </div>
+    </div>
+
+    <!-- GEMİNİ WIDGET -->
     <div class="ai-widget-container">
         <button id="ai-toggle-btn" class="ai-fab">
             <svg class="gemini-star-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,48 +267,27 @@
                 <button id="ai-close-btn"><i class="fas fa-times"></i></button>
             </div>
             <div class="ai-messages" id="ai-messages">
-                <div class="ai-msg bot">Selam gardaşım! Ben murtzeng'in Gemini AI asistanıyım. murtzeng'in aviyonik hedefleri, eğitimi veya yetkinlikleri hakkında ne öğrenmek istersin?</div>
+                <div class="ai-msg bot">Selam gardaşım! murtzeng'in aviyonik üssündeyiz.</div>
             </div>
             <div class="ai-input-area">
-                <input type="text" id="ai-input" placeholder="Gemini'ye bir soru sor...">
+                <input type="text" id="ai-input" placeholder="Bir şeyler yaz...">
                 <button id="ai-send-btn"><i class="fas fa-paper-plane"></i></button>
             </div>
-        </div>
-    </div>
-
-    <!-- KOMUT PALETİ MODALI (CTRL+K) -->
-    <div class="cmd-modal" id="cmd-modal">
-        <div class="cmd-box">
-            <div class="cmd-input-wrap">
-                <i class="fas fa-search"></i>
-                <input type="text" id="cmd-search" placeholder="Hızlı gitmek istediğiniz yeri yazın...">
-            </div>
-            <ul class="cmd-list">
-                <li><a href="#hero"><i class="fas fa-home"></i> Anasayfa</a></li>
-                <li><a href="#spiritual"><i class="fas fa-quran"></i> Âyet & Hadîs</a></li>
-                <li><a href="#news"><i class="fas fa-rss"></i> Canlı Haberler</a></li>
-                <li><a href="#telemetry"><i class="fas fa-crosshairs"></i> Telemetri</a></li>
-                <li><a href="#calculator"><i class="fas fa-tools"></i> Mühendislik Araçları</a></li>
-                <li><a href="#timeline"><i class="fas fa-calendar"></i> Önemli Olaylar</a></li>
-                <li><a href="#projects"><i class="fas fa-folder"></i> Ar-Ge Odakları</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> İletişim</a></li>
-            </ul>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/murtzeng" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/murtzeng" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
-            <a href="mailto:iletisim@murtzeng.com" title="E-Posta"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/murtzeng" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/murtzeng" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:iletisim@murtzeng.com"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-copy">
             <p>&copy; <span id="year"></span> <strong>murtzeng</strong>. Tüm hakları saklıdır. | Milli Teknoloji Hamlesi</p>
         </div>
     </footer>
 
-    <!-- JS Bağlantısı -->
     <script src="script.js"></script>
 </body>
 </html>
