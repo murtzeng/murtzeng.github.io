@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>murtzeng | Aviyonik & Gömülü Sistemler</title>
-    <!-- FontAwesome (Resmi Marka İkonları İçin) -->
+    <title>murtzeng | Aviyonik & Gömülü Sistemler Mühendisi Adayı</title>
+    <!-- FontAwesome İkon Seti -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Stil Dosyamız -->
+    <!-- Stil Dosyası -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ÜST MENÜ & DÜZELTİLMİŞ HİLAL İÇİNDE ROKET LOGOSU -->
+    <!-- ÜST MENÜ VE LOGO -->
     <header class="navbar">
         <div class="logo-container">
             <div class="animated-logo">
                 <svg viewBox="0 0 100 100" class="logo-svg">
-                    <!-- Dış Hilal Motif (Bordo) -->
                     <path d="M 50,5 A 45,45 0 1,0 95,50 A 35,35 0 1,1 50,5 Z" fill="#c82333"/>
-                    <!-- Hilalin İçine Yerleştirilmiş Roket Motifi (Beyaz) -->
                     <g transform="translate(32, 22) scale(0.7)">
                         <path d="M25 5 C 15 25, 15 45, 10 55 L 18 55 L 25 15 L 32 55 L 40 55 C 35 45, 35 25, 25 5 Z" fill="#ffffff"/>
                         <polygon points="12,50 5,65 18,58" fill="#ffffff"/>
@@ -32,14 +30,20 @@
                 <span class="brand-sub">EE & Aviyonik</span>
             </div>
         </div>
-        <nav class="nav-links">
+
+        <button class="mobile-toggle" id="menu-btn"><i class="fas fa-bars"></i></button>
+
+        <nav class="nav-links" id="nav-menu">
             <a href="#hero">Anasayfa</a>
-            <a href="#spiritual">Âyet & Hadîs</a>
-            <a href="#terminal">Sistem</a>
+            <a href="#telemetry">Telemetri</a>
+            <a href="#about">Hakkımda</a>
+            <a href="#skills">Yetkinlikler</a>
+            <a href="#projects">Projeler</a>
+            <a href="#faq">SSS</a>
         </nav>
     </header>
 
-    <!-- GİRİŞ (HERO) KISMI -->
+    <!-- GİRİŞ (HERO) -->
     <section id="hero" class="hero-section">
         <div class="bismillah-box">
             <span class="crescent-icon">🌙</span>
@@ -51,12 +55,13 @@
             <h1>Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri</h1>
             <p>Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
             <div class="hero-buttons">
-                <a href="#terminal" class="btn btn-primary"><i class="fas fa-rocket"></i> Projeler & Terminal</a>
+                <a href="#telemetry" class="btn btn-primary"><i class="fas fa-satellite"></i> Telemetri Paneli</a>
+                <a href="#projects" class="btn btn-secondary"><i class="fas fa-microchip"></i> Projelerim</a>
             </div>
         </div>
     </section>
 
-    <!-- GÜNÜN ÂYETİ VE HADÎSİ -->
+    <!-- MANEVİ KÖŞE (ÂYET & HADÎS) -->
     <section id="spiritual" class="spiritual-section">
         <div class="glass-card">
             <div class="card-header"><i class="fas fa-quran"></i> Günün Âyeti</div>
@@ -71,8 +76,104 @@
         </div>
     </section>
 
-    <!-- CANLI TERMINAL & TELEMETRİ PANENELİ -->
+    <!-- CANLI RADAR & TELEMETRİ PANELİ -->
+    <section id="telemetry" class="telemetry-section">
+        <h2 class="section-title"><i class="fas fa-crosshairs"></i> Canlı Aviyonik Telemetri Simülasyonu</h2>
+        <div class="telemetry-grid">
+            <div class="radar-box">
+                <div class="radar-sweep"></div>
+                <div class="radar-center"></div>
+                <span class="radar-label">RADAR TARA: AKTİF</span>
+            </div>
+            <div class="telemetry-data">
+                <div class="data-card">
+                    <span class="data-title"><i class="fas fa-plane-flight"></i> İHA İrtifa</span>
+                    <span class="data-value" id="alt-val">1450 m</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title"><i class="fas fa-tachometer-alt"></i> Hava Hızı</span>
+                    <span class="data-value" id="spd-val">220 km/h</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title"><i class="fas fa-battery-three-quarters"></i> Batarya Durumu</span>
+                    <span class="data-value">%92 (22.4V)</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title"><i class="fas fa-satellite-dish"></i> GPS Veri Bağı</span>
+                    <span class="data-value success"><i class="fas fa-check-circle"></i> KİLİTLENDİ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HAKKIMDA BÖLÜMÜ -->
+    <section id="about" class="about-section">
+        <div class="about-card">
+            <h2><i class="fas fa-user-astronaut"></i> Akademik & Profesyonel Vizyon</h2>
+            <p>
+                Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim. 
+                Temel çalışma alanlarım <strong>Gömülü Sistem Tasarımı</strong>, <strong>Aviyonik Sistem Yazılımları (C/C++)</strong> ve 
+                <strong>İnsansız Hava Araçları (İHA) Telemetri Sistemleri</strong> üzerine yoğunlaşmaktadır.
+            </p>
+            <p>
+                Milli Teknoloji Hamlesi doğrultusunda, Türkiye'nin savunma sanayii ve aviyonik alanındaki bağımsızlık vizyonuna katkı sağlayacak projeler üzerinde kendimi sürekli geliştirmekteyim.
+            </p>
+        </div>
+    </section>
+
+    <!-- YETKİNLİKLER (TECH STACK) -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title"><i class="fas fa-layer-group"></i> Yetkinlikler & Teknolojiler</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Yazılım & Diller</h3>
+                <div class="tags">
+                    <span>C++</span><span>C</span><span>Python</span><span>MATLAB</span><span>HTML/CSS/JS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-microchip"></i> Donanım & Gömülü</h3>
+                <div class="tags">
+                    <span>STM32</span><span>Arduino</span><span>ESP32</span><span>Altium Designer</span><span>Devre Tasarımı</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Araçlar & Sistemler</h3>
+                <div class="tags">
+                    <span>Linux / Ubuntu</span><span>Git / GitHub</span><span>VS Code</span><span>Keil uVision</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELER BÖLÜMÜ -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title"><i class="fas fa-folder-open"></i> Ar-Ge & Proje Çalışmaları</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="p-icon"><i class="fas fa-plane"></i></div>
+                <h3>Otonom İHA Uçuş Kontrolcü Kodu</h3>
+                <p>STM32 mikrodenetleyicisi üzerinde çalışan C++ tabanlı gyro/akselerometre sensör füzyonu ve PID stabilizasyon algoritması.</p>
+                <div class="p-tags"><span>C++</span><span>STM32</span><span>Gömülü Sistem</span></div>
+            </div>
+            <div class="project-card">
+                <div class="p-icon"><i class="fas fa-desktop"></i></div>
+                <h3>Yer İstasyonu Telemetri Arayüzü</h3>
+                <p>Hava aracından gelen seri verileri gerçek zamanlı grafiklere ve harita koordinatlarına dönüştüren izleme sistemi.</p>
+                <div class="p-tags"><span>Python</span><span>GUI</span><span>Seri Haberleşme</span></div>
+            </div>
+            <div class="project-card">
+                <div class="p-icon"><i class="fas fa-wave-square"></i></div>
+                <h3>Sinyal İşleme & Filtreleme</h3>
+                <p>MATLAB ortamında sensör gürültülerini temizlemek üzere geliştirilmiş Kalman Filtresi uygulaması.</p>
+                <div class="p-tags"><span>MATLAB</span><span>Kalman</span><span>Sinyal İşleme</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF TERMINAL -->
     <section id="terminal" class="terminal-section">
+        <h2 class="section-title"><i class="fas fa-terminal"></i> İnteraktif Sistem Terminali</h2>
         <div class="terminal-window">
             <div class="terminal-header">
                 <span class="dot red"></span>
@@ -85,13 +186,30 @@
                 <p class="system-msg">[INFO]: Komut listesi için <span class="highlight">'help'</span> yazınız.</p>
                 <div class="input-line">
                     <span class="prompt">murtzeng></span>
-                    <input type="text" id="terminal-input" autofocus autocomplete="off">
+                    <input type="text" id="terminal-input" autocomplete="off">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- İLETİŞİM VE DÜZELTİLMİŞ LINKEDIN LINKLI FOOTER -->
+    <!-- SSS (SIKÇA SORULAN SORULAR) -->
+    <section id="faq" class="faq-section">
+        <h2 class="section-title"><i class="fas fa-question-circle"></i> Sıkça Sorulan Sorular</h2>
+        <div class="faq-item">
+            <div class="faq-question">Hangi üniversitede öğrenim görüyorsunuz? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bölümünde lisans eğitimime devam etmekteyim.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Uzmanlaşmak istediğiniz alan nedir? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Savunma sanayii, insansız hava araçları (İHA), aviyonik sistemler ve C++ gömülü sistem yazılımlarıdır.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Projelere nasıl katkı sağlayabilirim veya ulaşabilirim? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Aşağıdaki GitHub veya LinkedIn bağlantılarım üzerinden benimle iletişime geçebilirsiniz.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/murtzeng" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
