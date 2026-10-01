@@ -11,24 +11,31 @@
 </head>
 <body>
 
-    <!-- ÜST MENÜ & HAREKETLİ LOGO -->
+    <!-- ÜST MENÜ & DÜZELTİLMİŞ HİLAL İÇİNDE ROKET LOGOSU -->
     <header class="navbar">
         <div class="logo-container">
-            <!-- Vektörel Hareketli Hilal & Roket Logosu -->
             <div class="animated-logo">
                 <svg viewBox="0 0 100 100" class="logo-svg">
-                    <path d="M 50,10 A 40,40 0 1,0 90,50 A 30,30 0 1,1 50,10 Z" fill="#c82333" class="crescent"/>
-                    <path d="M50 20 L58 40 L52 40 L52 65 L48 65 L48 40 L42 40 Z" fill="#ffffff" class="rocket-core"/>
-                    <polygon points="50,12 55,22 45,22" fill="#ffffff"/>
+                    <!-- Dış Hilal Motif (Bordo) -->
+                    <path d="M 50,5 A 45,45 0 1,0 95,50 A 35,35 0 1,1 50,5 Z" fill="#c82333"/>
+                    <!-- Hilalin İçine Yerleştirilmiş Roket Motifi (Beyaz) -->
+                    <g transform="translate(32, 22) scale(0.7)">
+                        <path d="M25 5 C 15 25, 15 45, 10 55 L 18 55 L 25 15 L 32 55 L 40 55 C 35 45, 35 25, 25 5 Z" fill="#ffffff"/>
+                        <polygon points="12,50 5,65 18,58" fill="#ffffff"/>
+                        <polygon points="38,50 45,65 32,58" fill="#ffffff"/>
+                        <circle cx="25" cy="30" r="4" fill="#0f172a"/>
+                    </g>
                 </svg>
             </div>
-            <span class="brand-name">murtzeng <small>| EE & Aviyonik</small></span>
+            <div class="brand-text">
+                <span class="brand-name">murtzeng</span>
+                <span class="brand-sub">EE & Aviyonik</span>
+            </div>
         </div>
         <nav class="nav-links">
             <a href="#hero">Anasayfa</a>
             <a href="#spiritual">Âyet & Hadîs</a>
-            <a href="#terminal">Sistem / Terminal</a>
-            <a href="#projects">Projeler</a>
+            <a href="#terminal">Sistem</a>
         </nav>
     </header>
 
@@ -44,8 +51,7 @@
             <h1>Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri</h1>
             <p>Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Projelerimi İncele</a>
-                <a href="#terminal" class="btn btn-secondary"><i class="fas fa-terminal"></i> Terminali Başlat</a>
+                <a href="#terminal" class="btn btn-primary"><i class="fas fa-rocket"></i> Projeler & Terminal</a>
             </div>
         </div>
     </section>
@@ -85,11 +91,11 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM VE RESMİ İKONLAR (FOOTER) -->
+    <!-- İLETİŞİM VE DÜZELTİLMİŞ LINKEDIN LINKLI FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
-            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/murtzeng" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/murtzeng" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/murtzeng" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
             <a href="mailto:iletisim@murtzeng.com" title="E-Posta"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-copy">
