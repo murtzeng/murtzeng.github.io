@@ -3,12 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const yearSpan = document.getElementById("year");
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // Mobil Menü Toggle
+    // MOBİL MENÜ TOGGLE KESİN ÇÖZÜM
     const menuBtn = document.getElementById("menu-btn");
     const navMenu = document.getElementById("nav-menu");
+    const navItems = document.querySelectorAll(".nav-item");
+
     if (menuBtn && navMenu) {
-        menuBtn.addEventListener("click", () => {
-            navMenu.classList.toggle("active");
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("show");
+        });
+
+        // Menü dışına tıklayınca veya linke basınca kapansın
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove("show");
+            }
         });
     }
 
@@ -25,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const verses = [
         { arabic: "وَقُل رَّبِّ زِدْنِي عِلْمًا", meal: "De ki: 'Rabbim, benim ilmimi artır.'", source: "Tâ-Hâ Sûresi, 114. Âyet" },
         { arabic: "إِنَّ مَعَ الْعُسْرِ يُسْرًا", meal: "Şüphesiz her güçlükle birlikte bir kolaylık vardır.", source: "İnşirâh Sûresi, 6. Âyet" },
-        { arabic: "وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سَعَى", meal: "İnsan için ancak çalıştığının karşılığı vardır.", source: "Necm Sûresi, 39. Âyet" }
+        { arabic: "وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سعى", meal: "İnsan için ancak çalıştığının karşılığı vardır.", source: "Necm Sûresi, 39. Âyet" }
     ];
 
     const hadiths = [
@@ -40,12 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentVerse = verses[dayOfYear % verses.length];
     const currentHadith = hadiths[dayOfYear % hadiths.length];
 
-    document.getElementById("verse-text").textContent = currentVerse.arabic;
-    document.getElementById("verse-translation").textContent = `"${currentVerse.meal}"`;
-    document.getElementById("verse-source").textContent = currentVerse.source;
-
-    document.getElementById("hadith-text").textContent = `"${currentHadith.text}"`;
-    document.getElementById("hadith-source").textContent = currentHadith.source;
+    if (document.getElementById("verse-text")) {
+        document.getElementById("verse-text").textContent = currentVerse.arabic;
+        document.getElementById("verse-translation").textContent = `"${currentVerse.meal}"`;
+        document.getElementById("verse-source").textContent = currentVerse.source;
+        document.getElementById("hadith-text").textContent = `"${currentHadith.text}"`;
+        document.getElementById("hadith-source").textContent = currentHadith.source;
+    }
 
     // Canlı Telemetri Değer Değişim Simülasyonu
     setInterval(() => {
@@ -60,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
 });
 
-// Canlı Terminal Komutları
+// Terminal Komutları
 const terminalInput = document.getElementById("terminal-input");
 const terminalBody = document.getElementById("terminal-body");
 
