@@ -1,5 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Dinamik Yıl
+    // PRELOADER AÇILIŞ SİSTEM TARAMASI
+    const preloader = document.getElementById("preloader");
+    const loaderStatus = document.getElementById("loader-status");
+
+    if (preloader) {
+        setTimeout(() => { if (loaderStatus) loaderStatus.textContent = "[GPS]: Uydulara kilitlendi (%100)"; }, 600);
+        setTimeout(() => { if (loaderStatus) loaderStatus.textContent = "[STATUS]: Aviyonik portal hazır!"; }, 1200);
+        setTimeout(() => {
+            preloader.style.opacity = "0";
+            setTimeout(() => preloader.style.display = "none", 500);
+        }, 1800);
+    }
+
+    // DAKTİLO (TYPEWRITER) BAŞLIK ANİMASYONU
+    const titleText = "Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri";
+    const titleElement = document.getElementById("typewriter-title");
+
+    if (titleElement) {
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < titleText.length) {
+                titleElement.textContent += titleText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 60);
+            }
+        }
+        setTimeout(typeWriter, 1000);
+    }
+
+    // DİNÂMİK YIL
     const yearSpan = document.getElementById("year");
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
@@ -23,6 +52,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 icon.className = "fas fa-moon";
             }
         });
+    }
+
+    // GÜNÜN ÂYETİ VE HADÎSİ OTOMASYONU
+    const verses = [
+        { arabic: "وَقُل رَّبِّ زِدْنِي عِلْمًا", meal: "De ki: 'Rabbim, benim ilmimi artır.'", source: "Tâ-Hâ Sûresi, 114. Âyet" },
+        { arabic: "إِنَّ مَعَ الْعُسْرِ يُسْرًا", meal: "Şüphesiz her güçlükle birlikte bir kolaylık vardır.", source: "İnşirâh Sûresi, 6. Âyet" },
+        { arabic: "وَأَن لَّيْسَ لِلإِنسَانِ إِلاَّ مَا سَعَى", meal: "İnsan için ancak çalıştığının karşılığı vardır.", source: "Necm Sûresi, 39. Âyet" }
+    ];
+
+    const hadiths = [
+        { text: "İki nimet vardır ki insanların çoğu onların kıymetini bilmekte aldanmıştır: Sağlık ve boş vakit.", source: "Buhârî, Rikâk 1" },
+        { text: "Faydasız ilimden Allah'a sığınırım.", source: "Müslim, Zikir 73" },
+        { text: "İnsanların en hayırlısı, insanlara faydalı olanıdır.", source: "Taberânî, el-Mu'cemü'l-Evsat" }
+    ];
+
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+    
+    const currentVerse = verses[dayOfYear % verses.length];
+    const currentHadith = hadiths[dayOfYear % hadiths.length];
+
+    if (document.getElementById("verse-text")) {
+        document.getElementById("verse-text").textContent = currentVerse.arabic;
+        document.getElementById("verse-translation").textContent = `"${currentVerse.meal}"`;
+        document.getElementById("verse-source").textContent = currentVerse.source;
+        document.getElementById("hadith-text").textContent = `"${currentHadith.text}"`;
+        document.getElementById("hadith-source").textContent = currentHadith.source;
     }
 
     // KOMUT PALETİ (CTRL + K)
@@ -69,13 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 botMsg.className = "ai-msg bot";
 
                 if (query.includes("kimdir") || query.includes("hakkında") || query.includes("okul")) {
-                    botMsg.textContent = "murtzeng, Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisidir. Savunma sanayii ve aviyonik alanlarında araştırmalar yapmaktadır.";
+                    botMsg.textContent = "murtzeng, Elektrik-Elektronik Mühendisliği öğrencisidir. Savunma sanayii, aviyonik ve gömülü sistemler alanlarında araştırmalar yapmaktadır.";
                 } else if (query.includes("proje") || query.includes("iha") || query.includes("stm32")) {
-                    botMsg.textContent = "murtzeng, STM32 tabanlı otonom İHA uçuş kontrolcüleri, yer istasyonu arayüzleri ve C++ gömülü yazılımları geliştirmektedir.";
+                    botMsg.textContent = "murtzeng, C++ ile gömülü sistemler, STM32 mikrodenetleyicileri ve aviyonik telemetri sistemleri üzerine Ar-Ge odaklı çalışmaktadır.";
                 } else if (query.includes("iletişim") || query.includes("mail") || query.includes("linkedin")) {
-                    botMsg.textContent = "murtzeng ile LinkedIn profil adresi (www.linkedin.com/in/murtzeng) veya sitedeki iletişim formu üzerinden bağlantı kurabilirsiniz.";
+                    botMsg.textContent = "murtzeng ile LinkedIn profil adresi (www.linkedin.com/in/murtzeng) veya sitedeki iletişim formu üzerinden doğrudan bağlantı kurabilirsiniz.";
                 } else {
-                    botMsg.textContent = "murtzeng'in aviyonik sistemler, gömülü C++ yazılımları veya akademik çalışmaları hakkında bana soru sorabilirsiniz!";
+                    botMsg.textContent = "murtzeng'in aviyonik hedefleri, C++ gömülü yazılımları veya akademik çalışmaları hakkında bana dilediğiniz gibi soru sorabilirsiniz!";
                 }
 
                 aiMessages.appendChild(botMsg);
@@ -109,6 +165,16 @@ function convertAlt(m) {
 function convertSpeed(kt) {
     const res = document.getElementById("kmh-result");
     if (res) res.textContent = kt ? `${(kt * 1.852).toFixed(1)} km/h` : '0 km/h';
+}
+function calcOhm() {
+    const v = parseFloat(document.getElementById("ohm-v").value);
+    const r = parseFloat(document.getElementById("ohm-r").value);
+    const res = document.getElementById("ohm-result");
+    if (v && r && r !== 0) {
+        res.textContent = `${(v / r).toFixed(2)} A`;
+    } else {
+        res.textContent = "Geçersiz değer";
+    }
 }
 
 // CANLI TEKNOLOJİ & SAVUNMA HABERİ OTOMASYONU (TRT & AA)
