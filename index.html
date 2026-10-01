@@ -6,8 +6,8 @@
     
     <!-- SEO & PWA MANIFEST -->
     <title>murtzeng | Aero-Electronics & Avionics Portal</title>
-    <meta name="description" content="murtzeng - Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi. Aviyonik sistemler, gömülü sistemler, C++ ve savunma sanayii araştırmacısı.">
-    <meta name="keywords" content="murtzeng, aviyonik, gömülü sistemler, gaziantep üniversitesi, savunma sanayii, c++, stm32">
+    <meta name="description" content="murtzeng - Elektrik-Elektronik Mühendisliği öğrencisi. Aviyonik sistemler, gömülü sistemler, C++ ve savunma sanayii araştırmacısı.">
+    <meta name="keywords" content="murtzeng, aviyonik, gömülü sistemler, elektrik elektronik mühendisliği, savunma sanayii, c++, stm32">
     <meta name="theme-color" content="#0f172a">
     <link rel="manifest" href="manifest.json">
 
@@ -18,13 +18,30 @@
 </head>
 <body class="dark-theme">
 
-    <!-- ÜST MENÜ & ROKETLİ AMBLEM & TEMA SEÇİCİ -->
+    <!-- AÇILIŞ SİSTEM TARAMASI (RADAR PRELOADER) -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-radar">
+                <div class="radar-sweep"></div>
+                <div class="radar-crosshair"></div>
+            </div>
+            <h3 class="loader-title">AVIONIC CORE v1.0</h3>
+            <p id="loader-status" class="loader-status">[SYSTEM]: Aviyonik modüller yükleniyor...</p>
+        </div>
+    </div>
+
+    <!-- ÜST MENÜ & YENİ AMBLEM -->
     <header class="navbar">
         <div class="logo-container">
             <div class="animated-logo">
                 <svg viewBox="0 0 100 100" class="logo-svg">
-                    <path d="M 20 80 A 40 40 0 0 1 70 20 A 30 30 0 1 0 20 80 Z" fill="currentColor"/>
-                    <path d="M 35 60 L 45 40 L 52 50 L 75 25 L 60 65 L 50 52 L 42 62 Z" fill="currentColor"/>
+                    <!-- Dış Geometrik Çerçeve / Elmas -->
+                    <path d="M 50 90 L 15 50 L 35 25 L 65 25 L 85 50 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M 50 82 L 23 50 L 38 30 L 62 30 L 77 50 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                    <!-- İç Hilal Motifi -->
+                    <path d="M 33 55 A 18 18 0 1 0 67 55 A 14 14 0 1 1 33 55 Z" fill="currentColor"/>
+                    <!-- Ok / Jet Motifi -->
+                    <path d="M 50 10 L 41 45 L 48 40 L 48 60 L 52 60 L 52 40 L 59 45 Z" fill="currentColor"/>
                 </svg>
             </div>
             <div class="brand-text">
@@ -41,11 +58,12 @@
 
         <nav class="nav-links" id="nav-menu">
             <a href="#hero" class="nav-item">Anasayfa</a>
+            <a href="#spiritual" class="nav-item">Âyet & Hadîs</a>
             <a href="#news" class="nav-item">Haberler</a>
             <a href="#telemetry" class="nav-item">Telemetri</a>
-            <a href="#calculator" class="nav-item">Hesaplayıcı</a>
-            <a href="#timeline" class="nav-item">Zaman Çizelgesi</a>
-            <a href="#projects" class="nav-item">Projeler</a>
+            <a href="#calculator" class="nav-item">Araçlar</a>
+            <a href="#timeline" class="nav-item">Önemli Olaylar</a>
+            <a href="#projects" class="nav-item">Ar-Ge Odakları</a>
             <a href="#contact" class="nav-item">İletişim</a>
         </nav>
     </header>
@@ -53,18 +71,32 @@
     <!-- GİRİŞ (HERO) -->
     <section id="hero" class="hero-section">
         <div class="bismillah-box">
-            <span class="crescent-icon">🌙</span>
             <h2 class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
             <p class="bismillah-sub">"Rahmân ve Rahîm olan Allah'ın adıyla"</p>
         </div>
 
         <div class="hero-content">
-            <h1>Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri</h1>
-            <p class="hero-desc">Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
+            <h1 id="typewriter-title"></h1>
+            <p class="hero-desc">Elektrik-Elektronik Mühendisliği öğrencisi ve savunma sanayii araştırmacısı.</p>
             <div class="hero-buttons">
                 <a href="#news" class="btn btn-primary"><i class="fas fa-newspaper"></i> Canlı Teknoloji Akışı</a>
                 <a href="#telemetry" class="btn btn-secondary"><i class="fas fa-satellite"></i> Telemetri Paneli</a>
             </div>
+        </div>
+    </section>
+
+    <!-- MANEVİ KÖŞE (GÜNÜN ÂYETİ VE HADÎSİ) -->
+    <section id="spiritual" class="spiritual-section">
+        <div class="glass-card">
+            <div class="card-header"><i class="fas fa-quran"></i> Günün Âyeti</div>
+            <p id="verse-text" class="arabic-text">Loading...</p>
+            <p id="verse-translation" class="meal-text">Yükleniyor...</p>
+            <span id="verse-source" class="source-tag"></span>
+        </div>
+        <div class="glass-card">
+            <div class="card-header"><i class="fas fa-kaaba"></i> Günün Hadîsi</div>
+            <p id="hadith-text" class="hadith-content">Yükleniyor...</p>
+            <span id="hadith-source" class="source-tag"></span>
         </div>
     </section>
 
@@ -111,9 +143,9 @@
         </div>
     </section>
 
-    <!-- MÜHENDİSLİK HESAPLAYICILARI -->
+    <!-- MÜHENDİSLİK ARAÇLARI & HESAPLAYICILAR -->
     <section id="calculator" class="calc-section">
-        <h2 class="section-title"><i class="fas fa-calculator"></i> Aviyonik & Mühendislik Araçları</h2>
+        <h2 class="section-title"><i class="fas fa-tools"></i> Aviyonik & Mühendislik Araçları</h2>
         <div class="calc-grid">
             <div class="calc-card">
                 <h3><i class="fas fa-exchange-alt"></i> İrtifa & Hız Birim Dönüştürücü</h3>
@@ -128,55 +160,75 @@
                     <p class="calc-result">Sonuç: <strong id="kmh-result">0 km/h</strong></p>
                 </div>
             </div>
+
+            <div class="calc-card">
+                <h3><i class="fas fa-bolt"></i> Ohm Kanunu Hesaplayıcı</h3>
+                <div class="calc-group">
+                    <label>Gerilim (V - Volt):</label>
+                    <input type="number" id="ohm-v" placeholder="Volt giriniz...">
+                </div>
+                <div class="calc-group">
+                    <label>Direnç (R - Ohm):</label>
+                    <input type="number" id="ohm-r" placeholder="Ohm giriniz...">
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="calcOhm()" style="margin-top:10px; width:100%;">Hesapla (I = V/R)</button>
+                <p class="calc-result">Akım (I): <strong id="ohm-result">0 A</strong></p>
+            </div>
         </div>
     </section>
 
-    <!-- İNTERAKTİF KRONOLOJİK ZAMAN ÇİZELGESİ -->
+    <!-- ÖNEMLİ OLAYLAR & AKADEMİK TAKVİM -->
     <section id="timeline" class="timeline-section">
-        <h2 class="section-title"><i class="fas fa-stream"></i> Akademik & Ar-Ge Yol Haritası</h2>
+        <h2 class="section-title"><i class="fas fa-calendar-check"></i> Önemli Olaylar & Mühendislik Takvimi</h2>
         <div class="timeline-container">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="t-date">2026 - Halen</span>
-                    <h3>Gaziantep Üniversitesi EE Lisans</h3>
-                    <p>Elektrik-Elektronik Mühendisliği 1. Sınıf lisans eğitimi, C++ gömülü yazılım ve aviyonik sistem araştırmaları.</p>
+                    <h3>Elektrik-Elektronik Mühendisliği Lisansı</h3>
+                    <p>Mühendislik eğitimi, akademik ders oryantasyonları ve temel mühendislik fizik/matematik altyapısı.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="t-date">2025 - 2026</span>
-                    <h3>B1+ İngilizce Hazırlık Derecesi</h3>
-                    <p>Mühendislik literatürü ve aviyonik standartlara hakimiyet için İngilizce hazırlık programının tamamlanması.</p>
+                    <span class="t-date">Güz Dönemi Hedefi</span>
+                    <h3>C++ & STM32 Gömülü Sistem Çalışmaları</h3>
+                    <p>Mikrodenetleyici programlama temelleri, C++ nesne tabanlı mimari ve sensör okuma simülasyonları.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="t-date">Gelecek Hedefi</span>
-                    <h3>Milli Savunma Sanayii & TEKNOFEST</h3>
-                    <p>Otonom İHA uçuş kontrol kartları, STM32 tabanlı aviyonik sistemler ve yer istasyonu yazılımları geliştirme.</p>
+                    <span class="t-date">2027 Sezonu</span>
+                    <h3>TEKNOFEST & İHA Takımı Hazırlıkları</h3>
+                    <p>Otonom İHA ve aviyonik alt sistem yarışmaları için ön tasarım ve Ar-Ge araştırmaları.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJELER -->
+    <!-- AR-GE ODAK NOKTALARI -->
     <section id="projects" class="projects-section">
-        <h2 class="section-title"><i class="fas fa-folder-open"></i> Ar-Ge & Proje Çalışmaları</h2>
+        <h2 class="section-title"><i class="fas fa-microchip"></i> Ar-Ge Odak Noktaları & Çalışma Alanlarım</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="p-icon"><i class="fas fa-plane"></i></div>
-                <h3>Otonom İHA Uçuş Kontrolcü Kodu</h3>
-                <p>STM32 mikrodenetleyicisi üzerinde çalışan C++ tabanlı gyro/akselerometre sensör füzyonu ve PID algoritması.</p>
-                <div class="p-tags"><span>C++</span><span>STM32</span><span>Gömülü</span></div>
+                <div class="p-icon"><i class="fas fa-code"></i></div>
+                <h3>C++ ile Gömülü Sistem Programlama</h3>
+                <p>Elektrik-Elektronik Mühendisliği lisans sürecim kapsamında mikrodenetleyici mimarileri ve C++ dili üzerine temel Ar-Ge çalışmaları yürütmekteyim.</p>
+                <div class="p-tags"><span>C++</span><span>Gömülü Sistemler</span><span>Öğrenim</span></div>
             </div>
             <div class="project-card">
-                <div class="p-icon"><i class="fas fa-desktop"></i></div>
-                <h3>Yer İstasyonu Telemetri Arayüzü</h3>
-                <p>Hava aracından gelen seri verileri gerçek zamanlı grafiklere dönüştüren izleme sistemi.</p>
-                <div class="p-tags"><span>Python</span><span>GUI</span><span>Seri Bağlantı</span></div>
+                <div class="p-icon"><i class="fas fa-plane"></i></div>
+                <h3>Aviyonik & Telemetri Araştırmaları</h3>
+                <p>İnsansız hava araçlarının (İHA) uçuş kontrol kartları, sensör füzyonu ve haberleşme protokolleri teorik altyapısını incelemekteyim.</p>
+                <div class="p-tags"><span>Aviyonik</span><span>İHA</span><span>Savunma Sanayii</span></div>
+            </div>
+            <div class="project-card">
+                <div class="p-icon"><i class="fas fa-tools"></i></div>
+                <h3>Mühendislik Araçları & PCB Tasarımı</h3>
+                <p>Dersler ve laboratuvar çalışmaları paralelinde Altium Designer ile devre çizimi ve MATLAB ile sinyal analiz simülasyonlarını hedeflemekteyim.</p>
+                <div class="p-tags"><span>Altium</span><span>MATLAB</span><span>Devre Tasarımı</span></div>
             </div>
         </div>
     </section>
@@ -200,7 +252,7 @@
         </form>
     </section>
 
-    <!-- GEMİNİ AI SOHBET MODÜLÜ (GEMİNİ LOGOLU) -->
+    <!-- GEMİNİ AI SOHBET MODÜLÜ -->
     <div class="ai-widget-container">
         <button id="ai-toggle-btn" class="ai-fab">
             <svg class="gemini-star-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -219,7 +271,7 @@
                 <button id="ai-close-btn"><i class="fas fa-times"></i></button>
             </div>
             <div class="ai-messages" id="ai-messages">
-                <div class="ai-msg bot">Selam gardaşım! Ben murtzeng'in Gemini AI asistanıyım. murtzeng'in aviyonik projeleri, eğitimi veya yetkinlikleri hakkında ne öğrenmek istersin?</div>
+                <div class="ai-msg bot">Selam gardaşım! Ben murtzeng'in Gemini AI asistanıyım. murtzeng'in aviyonik hedefleri, eğitimi veya yetkinlikleri hakkında ne öğrenmek istersin?</div>
             </div>
             <div class="ai-input-area">
                 <input type="text" id="ai-input" placeholder="Gemini'ye bir soru sor...">
@@ -237,16 +289,18 @@
             </div>
             <ul class="cmd-list">
                 <li><a href="#hero"><i class="fas fa-home"></i> Anasayfa</a></li>
+                <li><a href="#spiritual"><i class="fas fa-quran"></i> Âyet & Hadîs</a></li>
                 <li><a href="#news"><i class="fas fa-rss"></i> Canlı Haberler</a></li>
                 <li><a href="#telemetry"><i class="fas fa-crosshairs"></i> Telemetri</a></li>
-                <li><a href="#calculator"><i class="fas fa-calculator"></i> Hesaplayıcı</a></li>
-                <li><a href="#projects"><i class="fas fa-folder"></i> Projeler</a></li>
+                <li><a href="#calculator"><i class="fas fa-tools"></i> Mühendislik Araçları</a></li>
+                <li><a href="#timeline"><i class="fas fa-calendar"></i> Önemli Olaylar</a></li>
+                <li><a href="#projects"><i class="fas fa-folder"></i> Ar-Ge Odakları</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> İletişim</a></li>
             </ul>
         </div>
     </div>
 
-    <!-- FOOTER VE LINKEDIN YÖNLENDİRMESİ -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/murtzeng" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
@@ -254,7 +308,7 @@
             <a href="mailto:iletisim@murtzeng.com" title="E-Posta"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-copy">
-            <p>&copy; <span id="year"></span> <strong>murtzeng</strong>. Tüm hakları saklıdır. | Gaziantep Üniversitesi</p>
+            <p>&copy; <span id="year"></span> <strong>murtzeng</strong>. Tüm hakları saklıdır. | Milli Teknoloji Hamlesi</p>
         </div>
     </footer>
 
