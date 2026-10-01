@@ -1,17 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // PRELOADER AÇILIŞ SİSTEM TARAMASI
+// PRELOADER KAPANMA EMNİYET KODU
+function hidePreloader() {
     const preloader = document.getElementById("preloader");
-    const loaderStatus = document.getElementById("loader-status");
-
     if (preloader) {
-        setTimeout(() => { if (loaderStatus) loaderStatus.textContent = "[GPS]: Uydulara kilitlendi (%100)"; }, 600);
-        setTimeout(() => { if (loaderStatus) loaderStatus.textContent = "[STATUS]: Aviyonik portal hazır!"; }, 1200);
-        setTimeout(() => {
-            preloader.style.opacity = "0";
-            setTimeout(() => preloader.style.display = "none", 500);
-        }, 1800);
+        preloader.style.opacity = "0";
+        setTimeout(() => { preloader.style.display = "none"; }, 400);
     }
+}
+setTimeout(hidePreloader, 1000);
 
+document.addEventListener("DOMContentLoaded", () => {
     // DAKTİLO (TYPEWRITER) BAŞLIK ANİMASYONU
     const titleText = "Geleceğin Aviyonik ve Gömülü Sistem Teknolojileri";
     const titleElement = document.getElementById("typewriter-title");
@@ -22,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (charIndex < titleText.length) {
                 titleElement.textContent += titleText.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeWriter, 60);
+                setTimeout(typeWriter, 50);
             }
         }
-        setTimeout(typeWriter, 1000);
+        setTimeout(typeWriter, 500);
     }
 
     // DİNÂMİK YIL
@@ -98,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // GEMINI AI SOHBET WIDGETI ("GEMINI'YE SOR")
+    // GEMINI AI SOHBET WIDGETI
     const aiToggleBtn = document.getElementById("ai-toggle-btn");
     const aiCloseBtn = document.getElementById("ai-close-btn");
     const aiWindow = document.getElementById("ai-window");
@@ -177,7 +174,7 @@ function calcOhm() {
     }
 }
 
-// CANLI TEKNOLOJİ & SAVUNMA HABERİ OTOMASYONU (TRT & AA)
+// CANLI TEKNOLOJİ & SAVUNMA HABERİ OTOMASYONU
 async function fetchLiveDefenseNews() {
     const newsGrid = document.querySelector(".news-grid");
     if (!newsGrid) return;
