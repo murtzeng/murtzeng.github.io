@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Murtzeng | Gömülü Sistemler & Savunma Sanayii Ar-Ge Portalı</title>
+    <title>Murtzeng | Gömülü Sistemler Portalı</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- PapaParse for CSV reading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -16,34 +16,25 @@
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .font-arabic { font-family: 'Amiri', serif; }
         
-        /* Logo Şişip İnme (Pulse/Breath) Efekti */
         @keyframes breath {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.8)); }
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.4)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(34, 211, 238, 0.8)); }
         }
-        .animate-breath {
-            animation: breath 3s ease-in-out infinite;
-        }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0b0f19; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        .animate-breath { animation: breath 3s ease-in-out infinite; }
     </style>
 </head>
-<body class="min-h-screen selection:bg-red-600 selection:text-white flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
 
     <div>
         <!-- Üst Arapça Besmele Bandı -->
-        <div class="bg-red-950/40 border-b border-red-900/30 py-2.5 text-center text-base font-arabic text-red-200 tracking-wider">
+        <div class="bg-slate-900 border-b border-slate-800 py-2 text-center text-sm font-arabic text-cyan-400 tracking-wider">
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
         </div>
 
-        <!-- Top Navigation / Header -->
-        <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Header -->
+        <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <!-- Şişip İnen Animasyonlu Özel Logo[span_0](start_span)[span_0](end_span) -->
                     <div class="h-10 w-10 rounded-xl bg-slate-900 flex items-center justify-center border border-cyan-500/40 animate-breath overflow-hidden p-1">
                         <svg viewBox="0 0 500 500" class="w-full h-full object-contain" xmlns="http://www.w3.org/2000/svg">
                             <path d="M250 30 L400 350 L250 280 L100 350 Z" fill="none" stroke="#22d3ee" stroke-width="25" stroke-linejoin="round"/>
@@ -52,225 +43,203 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-red-500 via-white to-blue-400 bg-clip-text text-transparent">Murtzeng</span>
+                        <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Murtzeng</span>
                         <span class="block text-xs text-slate-400 font-mono">Gömülü Sistemler Ar-Ge</span>
                     </div>
                 </div>
                 <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-                    <a href="#prolab" class="hover:text-red-500 transition-colors">Projeler</a>
-                    <a href="#notlar" class="hover:text-red-500 transition-colors">Ders Notları</a>
-                    <a href="#sertifikalar" class="hover:text-red-500 transition-colors">Sertifikalar</a>
-                    <a href="#staj" class="hover:text-red-500 transition-colors">Deneyimler</a>
-                    <a href="#iletisim" class="hover:text-red-500 transition-colors">İletişim</a>
+                    <a href="#prolab" class="hover:text-cyan-400 transition-colors">Projeler</a>
+                    <a href="#notlar" class="hover:text-cyan-400 transition-colors">Ders Notları</a>
+                    <a href="#sertifikalar" class="hover:text-cyan-400 transition-colors">Sertifikalar</a>
+                    <a href="#staj" class="hover:text-cyan-400 transition-colors">Deneyimler</a>
+                    <a href="#iletisim" class="hover:text-cyan-400 transition-colors">İletişim</a>
                 </nav>
-                <div class="flex items-center space-x-4">
-                    <a href="https://github.com" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="text-slate-400 hover:text-red-500 transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
-                    <a href="https://twitter.com" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="X (Twitter)"><i class="fa-brands fa-x-twitter text-lg"></i></a>
-                </div>
             </div>
         </header>
 
-        <!-- Main Container -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Sol & Orta Kolon -->
             <div class="lg:col-span-2 space-y-8">
-                
-                <!-- Hero / Vizyon Banner -->
-                <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-950 border border-slate-800 p-8 shadow-2xl">
-                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="relative z-10">
-                        <span class="px-3 py-1 text-xs font-mono font-semibold bg-red-500/10 text-red-400 rounded-full border border-red-500/20 inline-block mb-4">Savunma Sanayii Hedefli Ar-Ge</span>
-                        <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Gömülü Sistemler & Aviyonik Yazılım Geliştirme</h1>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6" id="vizyon-container">
-                            Gaziantep Üniversitesi öğrencisi, B1+ İngilizce altyapısı ve STM32/FreeRTOS odaklı projeleriyle savunma sanayiine katkı sunmayı hedefleyen mühendis adayı portfolyosu.
-                        </p>
-                        <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-300">
-                            <span class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-graduation-cap text-red-500 mr-2"></i>GAÜN Mühendislik</span>
-                            <span class="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-location-dot text-blue-400 mr-2"></i>Göksun / Gaziantep</span>
-                        </div>
-                    </div>
+                <!-- Vizyon / Hero -->
+                <section class="rounded-3xl bg-slate-900 border border-slate-800 p-8 shadow-xl">
+                    <span class="px-3 py-1 text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-400 rounded-full border border-cyan-500/20 inline-block mb-4">Savunma Sanayii Hedefli Ar-Ge</span>
+                    <h1 class="text-3xl font-extrabold text-white tracking-tight mb-4">Gömülü Sistemler & Aviyonik Yazılım Geliştirme</h1>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6" id="vizyon-container">
+                        Gaziantep Üniversitesi öğrencisi, B1+ İngilizce altyapısı ve STM32/FreeRTOS odaklı projeleriyle savunma sanayiine katkı sunmayı hedefleyen mühendis adayı portfolyosu.
+                    </p>
                 </section>
 
-                <!-- Günlük Ayet ve Hadis Paneli -->
-                <section class="rounded-3xl bg-slate-900/80 border border-slate-800 p-6 backdrop-blur-sm shadow-xl">
+                <!-- Ayet / Hadis Paneli -->
+                <section class="rounded-3xl bg-slate-900/50 border border-slate-800 p-6">
                     <h2 class="text-lg font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-book-quran text-red-500 mr-2"></i> Günün Ayet & Hadis Paneli
+                        <i class="fa-solid fa-book-quran text-cyan-400 mr-2"></i> Günün Ayet & Hadis Paneli
                     </h2>
-                    <div id="ayet-hadis-list" class="space-y-4">
-                        <p class="text-xs text-slate-500 animate-pulse">Yükleniyor...</p>
+                    <div id="ayet-hadis-list" class="space-y-4 text-xs font-mono text-slate-300">
+                        <p class="text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Projeler & Gönderiler Paneli -->
+                <!-- Projeler -->
                 <section id="prolab" class="space-y-6">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-bold text-white flex items-center">
-                            <i class="fa-solid fa-code-branch text-red-500 mr-2"></i> Projeler & Ar-Ge Akışı
-                        </h2>
-                        <span class="text-xs font-mono text-slate-500">Google Form Senkronize</span>
-                    </div>
+                    <h2 class="text-xl font-bold text-white flex items-center">
+                        <i class="fa-solid fa-code-branch text-cyan-400 mr-2"></i> Projeler & Ar-Ge Akışı
+                    </h2>
                     <div id="gonderiler-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <p class="text-xs text-slate-500">Gönderiler yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Staj & Deneyimler Paneli -->
+                <!-- Staj & Deneyimler -->
                 <section id="staj" class="space-y-6">
                     <h2 class="text-xl font-bold text-white flex items-center">
-                        <i class="fa-solid fa-briefcase text-red-500 mr-2"></i> Staj & Deneyimler
+                        <i class="fa-solid fa-briefcase text-cyan-400 mr-2"></i> Staj & Deneyimler
                     </h2>
                     <div id="staj-list" class="space-y-4">
-                        <p class="text-xs text-slate-500">Deneyimler yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Yarışmalar & Hackathonlar Paneli -->
+                <!-- Yarışmalar -->
                 <section class="space-y-6">
                     <h2 class="text-xl font-bold text-white flex items-center">
-                        <i class="fa-solid fa-trophy text-red-500 mr-2"></i> Yarışmalar & Başarılar
+                        <i class="fa-solid fa-trophy text-cyan-400 mr-2"></i> Yarışmalar & Başarılar
                     </h2>
                     <div id="yarismalar-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <p class="text-xs text-slate-500">Yarışmalar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- İletişim Formu Paneli -->
+                <!-- İletişim Kutusu -->
                 <section id="iletisim" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h2 class="text-xl font-bold text-white mb-2 flex items-center">
-                        <i class="fa-solid fa-paper-plane text-red-500 mr-2"></i> İletişim Kutusu
+                        <i class="fa-solid fa-paper-plane text-cyan-400 mr-2"></i> İletişim Kutusu
                     </h2>
-                    <p class="text-xs text-slate-400 mb-6">Aşağıdaki paneli kullanarak bana doğrudan mesaj gönderebilirsin.</p>
-                    <div id="iletisim-list" class="space-y-3">
-                        <p class="text-xs text-slate-500">Mesaj kutusu aktif.</p>
+                    <div id="iletisim-list" class="space-y-3 mt-4">
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
-
             </div>
 
             <!-- Sağ Kolon -->
             <div class="space-y-6">
-                
-                <!-- Anlık Ar-Ge Günlüğü Kutusu -->
-                <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6 shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 px-3 py-1 bg-red-600/10 text-red-500 text-[10px] font-mono rounded-bl-xl border-l border-b border-red-500/20">CANLI LOG</div>
+                <!-- Ar-Ge Günlüğü -->
+                <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-3 flex items-center">
-                        <i class="fa-solid fa-terminal text-red-500 mr-2"></i> Laboratuvar Günlüğü
+                        <i class="fa-solid fa-terminal text-cyan-400 mr-2"></i> Laboratuvar Günlüğü
                     </h3>
                     <div id="gunluk-list" class="space-y-3">
-                        <p class="text-xs text-slate-500">Günlük notlar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Akademik Ders Notları Paneli -->
+                <!-- Ders Notları -->
                 <section id="notlar" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-file-pdf text-red-500 mr-2"></i> Akademik Ders Notları
+                        <i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> Akademik Ders Notları
                     </h3>
                     <div id="notlar-list" class="space-y-3">
-                        <p class="text-xs text-slate-500">Notlar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Sertifikalar Paneli -->
+                <!-- Sertifikalar -->
                 <section id="sertifikalar" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-certificate text-amber-500 mr-2"></i> Sertifikalar & Belgeler
+                        <i class="fa-solid fa-certificate text-amber-400 mr-2"></i> Sertifikalar & Belgeler
                     </h3>
                     <div id="sertifikalar-list" class="space-y-3">
-                        <p class="text-xs text-slate-500">Sertifikalar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Teknik Yetkinlikler Paneli -->
+                <!-- Teknik Yetkinlikler -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-microchip text-red-500 mr-2"></i> Teknik Yetkinlikler
+                        <i class="fa-solid fa-microchip text-cyan-400 mr-2"></i> Teknik Yetkinlikler
                     </h3>
                     <div id="yetkinlikler-list" class="flex flex-wrap gap-2">
-                        <p class="text-xs text-slate-500">Yetenekler yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Donanım & Setup Paneli -->
+                <!-- Donanım -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-laptop-code text-blue-400 mr-2"></i> Donanım & Setup
+                        <i class="fa-solid fa-laptop-code text-cyan-400 mr-2"></i> Donanım & Setup
                     </h3>
                     <div id="donanim-list" class="space-y-2">
-                        <p class="text-xs text-slate-500">Donanımlar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Yabancı Dil Paneli -->
+                <!-- Yabancı Dil -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-language text-red-500 mr-2"></i> Yabancı Dil & Eğitim
+                        <i class="fa-solid fa-language text-cyan-400 mr-2"></i> Yabancı Dil & Eğitim
                     </h3>
                     <div id="dil-list" class="space-y-2">
-                        <p class="text-xs text-slate-500">Dil bilgileri yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Kulüpler Paneli -->
+                <!-- Kulüpler -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-users text-blue-400 mr-2"></i> Kulüpler & Faaliyetler
+                        <i class="fa-solid fa-users text-cyan-400 mr-2"></i> Kulüpler & Faaliyetler
                     </h3>
                     <div id="kulup-list" class="space-y-2">
-                        <p class="text-xs text-slate-500">Kulüpler yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Kitaplar & Makaleler Paneli -->
+                <!-- Kitaplar -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-book text-red-500 mr-2"></i> Kitaplar & Kaynaklar
+                        <i class="fa-solid fa-book text-cyan-400 mr-2"></i> Kitaplar & Kaynaklar
                     </h3>
                     <div id="kitap-list" class="space-y-2">
-                        <p class="text-xs text-slate-500">Kaynaklar yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- Hobiler Paneli -->
+                <!-- Hobiler -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-heart text-red-500 mr-2"></i> Hobiler & İlgi Alanları
+                        <i class="fa-solid fa-heart text-cyan-400 mr-2"></i> Hobiler & İlgi Alanları
                     </h3>
                     <div id="hobi-list" class="flex flex-wrap gap-2">
-                        <p class="text-xs text-slate-500">Hobiler yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
 
-                <!-- FAQ Paneli -->
+                <!-- FAQ -->
                 <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center">
-                        <i class="fa-solid fa-circle-question text-blue-400 mr-2"></i> Sık Sorulan Sorular
+                        <i class="fa-solid fa-circle-question text-cyan-400 mr-2"></i> Sık Sorulan Sorular
                     </h3>
                     <div id="faq-list" class="space-y-3">
-                        <p class="text-xs text-slate-500">FAQ yükleniyor...</p>
+                        <p class="text-xs text-slate-500">Yükleniyor...</p>
                     </div>
                 </section>
-
             </div>
 
         </main>
     </div>
 
-    <!-- Footer / Alt Kısım (İstediğin İletişim ve Sosyal Logolar Altta) -->
+    <!-- Alt Kısım / İstediğin İletişim Logoları Altta -->
     <footer class="border-t border-slate-800 mt-16 py-8 bg-slate-950 text-center text-xs text-slate-500 font-mono">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>&copy; 2026 Murtzeng. Tüm hakları saklıdır. Savunma Sanayii Ar-Ge Portalı.</p>
-            <div class="flex items-center space-x-6 text-slate-400">
-                <a href="https://github.com" target="_blank" class="hover:text-red-500 transition-colors flex items-center gap-2"><i class="fa-brands fa-github text-base"></i> GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="hover:text-red-500 transition-colors flex items-center gap-2"><i class="fa-brands fa-linkedin text-base"></i> LinkedIn</a>
-                <a href="https://twitter.com" target="_blank" class="hover:text-red-500 transition-colors flex items-center gap-2"><i class="fa-brands fa-x-twitter text-base"></i> X</a>
+            <div class="flex items-center space-x-6 text-slate-400 text-base">
+                <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-cyan-400 transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-cyan-400 transition-colors" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Engine -->
+    <!-- JavaScript Data Engine -->
     <script>
         const csvUrls = {
             gonderiler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqKhLxPKTJVka9hNWkRWyBM0O8bpZu5TmbCe4zwwp0CyTdXJ0qllwLquf9XWtWs9DthyAUHNtxiCK/pub?output=csv",
@@ -301,93 +270,89 @@
         }
 
         fetchCSV(csvUrls.gonderiler, (data) => {
-            const container = document.getElementById('gonderiler-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Henüz gönderi yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
-                <div class="rounded-2xl bg-slate-900 border border-slate-800 p-5 flex flex-col justify-between hover:border-red-600/50 transition-colors">
-                    <div>
-                        ${item['Fotoğraf Linki'] ? `<img src="${item['Fotoğraf Linki']}" class="rounded-xl h-40 w-full object-cover mb-4" alt="Proje Görseli">` : ''}
-                        <h3 class="font-bold text-white text-base mb-2">${item['Gönderi Başlığı'] || 'Başlıksız Proje'}</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">${item['Açıklama / Detay'] || ''}</p>
-                    </div>
+            const el = document.getElementById('gonderiler-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Gönderi yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
+                <div class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+                    ${i['Fotoğraf Linki'] ? `<img src="${i['Fotoğraf Linki']}" class="rounded-xl h-40 w-full object-cover mb-4">` : ''}
+                    <h3 class="font-bold text-white text-base mb-2">${i['Gönderi Başlığı'] || ''}</h3>
+                    <p class="text-xs text-slate-400">${i['Açıklama / Detay'] || ''}</p>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.notlar, (data) => {
-            const container = document.getElementById('notlar-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Not bulunamadı.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('notlar-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Not yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="flex items-center justify-between p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 text-xs">
-                    <span class="font-medium text-slate-200"><i class="fa-solid fa-file-lines text-red-500 mr-2"></i>${item['Dersin Adı'] || 'Ders Notu'}</span>
-                    <a href="${item['PDF / Dosya Linki'] || '#'}" target="_blank" class="px-2.5 py-1 rounded-lg bg-red-600/10 text-red-400 hover:bg-red-600 hover:text-white font-semibold transition-colors">İncele</a>
+                    <span class="text-slate-200"><i class="fa-solid fa-file-lines text-red-400 mr-2"></i>${i['Dersin Adı'] || ''}</span>
+                    <a href="${i['PDF / Dosya Linki'] || '#'}" target="_blank" class="px-2.5 py-1 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-slate-950 font-semibold">İncele</a>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.sertifikalar, (data) => {
-            const container = document.getElementById('sertifikalar-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Sertifika yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('sertifikalar-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Sertifika yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 text-xs">
-                    <div class="font-bold text-white mb-1">${item['Sertifika veya Başarı Adı'] || ''}</div>
-                    <div class="text-slate-400 mb-2">${item['Kurum / Açıklama'] || ''}</div>
-                    ${item['Belge / PDF Linki'] ? `<a href="${item['Belge / PDF Linki']}" target="_blank" class="text-red-400 hover:underline font-mono">Belgeyi Görüntüle &rarr;</a>` : ''}
+                    <div class="font-bold text-white mb-1">${i['Sertifika veya Başarı Adı'] || ''}</div>
+                    <div class="text-slate-400 mb-2">${i['Kurum / Açıklama'] || ''}</div>
+                    ${i['Belge / PDF Linki'] ? `<a href="${i['Belge / PDF Linki']}" target="_blank" class="text-cyan-400 font-mono">Görüntüle &rarr;</a>` : ''}
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.gunluk, (data) => {
-            const container = document.getElementById('gunluk-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Günlük kayıt yok.</p>'; return; }
-            container.innerHTML = data.slice(-3).reverse().map(item => `
-                <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-xs font-mono text-slate-300">
-                    <span class="text-red-500">&gt;</span> ${item['Bugün Ne Yaptım? / Kısa Durum Notu'] || ''}
+            const el = document.getElementById('gunluk-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Günlük kayıt yok.</p>'; return; }
+            el.innerHTML = data.slice(-3).reverse().map(i => `
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300">
+                    <span class="text-cyan-400">&gt;</span> ${i['Bugün Ne Yaptım? / Kısa Durum Notu'] || ''}
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.yetkinlikler, (data) => {
-            const container = document.getElementById('yetkinlikler-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Yetkinlik yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('yetkinlikler-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Yetkinlik yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <span class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-mono border border-slate-700">
-                    ${item['Yetenek / Araç Adı'] || ''} <span class="text-red-400 text-[10px]">(${item['Seviye / Açıklama'] || ''})</span>
+                    ${i['Yetenek / Araç Adı'] || ''} <span class="text-cyan-400 text-[10px]">(${i['Seviye / Açıklama'] || ''})</span>
                 </span>
             `).join('');
         });
 
         fetchCSV(csvUrls.staj, (data) => {
-            const container = document.getElementById('staj-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Deneyim yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('staj-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Deneyim yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-xs">
                     <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-white text-sm">${item['Kurum / Şirket Adı'] || ''}</span>
-                        <span class="text-red-500 font-mono">${item['Dönem / Tarih'] || ''}</span>
+                        <span class="font-bold text-white text-sm">${i['Kurum / Şirket Adı'] || ''}</span>
+                        <span class="text-cyan-400 font-mono">${i['Dönem / Tarih'] || ''}</span>
                     </div>
-                    <div class="text-slate-400">${item['Pozisyon / Görev'] || ''}</div>
+                    <div class="text-slate-400">${i['Pozisyon / Görev'] || ''}</div>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.kitaplar, (data) => {
-            const container = document.getElementById('kitap-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Kayıt yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('kitap-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Kaynak yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="p-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-xs">
-                    <span class="font-bold text-white">${item['Eser / Makale Adı'] || ''}</span>
-                    <span class="block text-slate-400 text-[11px]">${item['Yazar / Kaynak'] || ''}</span>
+                    <span class="font-bold text-white">${i['Eser / Makale Adı'] || ''}</span>
+                    <span class="block text-slate-400 text-[11px]">${i['Yazar / Kaynak'] || ''}</span>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.hobiler, (data) => {
-            const container = document.getElementById('hobi-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Hobi yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
-                <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">${item['Hobi / İlgi Alanı'] || ''}</span>
-            `).join('');
+            const el = document.getElementById('hobi-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Hobi yok.</p>'; return; }
+            el.innerHTML = data.map(i => `<span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">${i['Hobi / İlgi Alanı'] || ''}</span>`).join('');
         });
 
         fetchCSV(csvUrls.vizyon, (data) => {
@@ -397,80 +362,79 @@
         });
 
         fetchCSV(csvUrls.iletisim, (data) => {
-            const container = document.getElementById('iletisim-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Gelen mesaj yok.</p>'; return; }
-            container.innerHTML = data.slice(-3).map(item => `
+            const el = document.getElementById('iletisim-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Mesaj yok.</p>'; return; }
+            el.innerHTML = data.slice(-3).map(i => `
                 <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                    <span class="font-bold text-white">${item['Ad Soyad / Gönderen'] || 'Misafir'}</span>: 
-                    <span class="text-slate-300">${item['Mesajınız'] || ''}</span>
+                    <span class="font-bold text-white">${i['Ad Soyad / Gönderen'] || 'Misafir'}</span>: 
+                    <span class="text-slate-300">${i['Mesajınız'] || ''}</span>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.yarismalar, (data) => {
-            const container = document.getElementById('yarismalar-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Yarışma yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('yarismalar-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Yarışma yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-                    <div class="font-bold text-white mb-1"><i class="fa-solid fa-medal text-amber-500 mr-2"></i>${item['Yarışma / Hackathon Adı'] || ''}</div>
-                    <div class="text-red-400 font-mono">${item['Derece / Durum'] || ''}</div>
+                    <div class="font-bold text-white mb-1"><i class="fa-solid fa-medal text-amber-400 mr-2"></i>${i['Yarışma / Hackathon Adı'] || ''}</div>
+                    <div class="text-cyan-400 font-mono">${i['Derece / Durum'] || ''}</div>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.donanim, (data) => {
-            const container = document.getElementById('donanim-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Donanım yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('donanim-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Donanım yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
-                    <span class="text-slate-200 font-medium">${item['Donanım / Ekipman Adı'] || ''}</span>
-                    <span class="text-red-400 text-[10px] font-mono">${item['Kategori / Açıklama'] || ''}</span>
+                    <span class="text-slate-200">${i['Donanım / Ekipman Adı'] || ''}</span>
+                    <span class="text-cyan-400 text-[10px] font-mono">${i['Kategori / Açıklama'] || ''}</span>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.dil, (data) => {
-            const container = document.getElementById('dil-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Dil bilgisi yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('dil-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Dil bilgisi yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
-                    <span class="text-slate-200">${item['Dil / Eğitim Adı'] || ''}</span>
-                    <span class="text-red-400 font-mono font-bold">${item['Seviye / Durum'] || ''}</span>
+                    <span class="text-slate-200">${i['Dil / Eğitim Adı'] || ''}</span>
+                    <span class="text-cyan-400 font-mono font-bold">${i['Seviye / Durum'] || ''}</span>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.kulupler, (data) => {
-            const container = document.getElementById('kulup-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Kulüp yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('kulup-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Kulüp yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
-                    <span class="text-slate-200">${item['Kulüp / Faaliyet Adı'] || ''}</span>
-                    <span class="text-slate-400 text-[10px]">${item['Rol / Durum'] || ''}</span>
+                    <span class="text-slate-200">${i['Kulüp / Faaliyet Adı'] || ''}</span>
+                    <span class="text-slate-400 text-[10px]">${i['Rol / Durum'] || ''}</span>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.faq, (data) => {
-            const container = document.getElementById('faq-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Soru yok.</p>'; return; }
-            container.innerHTML = data.map(item => `
+            const el = document.getElementById('faq-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">Soru yok.</p>'; return; }
+            el.innerHTML = data.map(i => `
                 <div class="p-3 rounded-xl bg-slate-800/30 border border-slate-700/30 text-xs">
-                    <div class="font-bold text-white mb-1">S: ${item['Soru'] || ''}</div>
-                    <div class="text-slate-400">C: ${item['Cevap'] || ''}</div>
+                    <div class="font-bold text-white mb-1">S: ${i['Soru'] || ''}</div>
+                    <div class="text-slate-400">C: ${i['Cevap'] || ''}</div>
                 </div>
             `).join('');
         });
 
         fetchCSV(csvUrls.ayetHadis, (data) => {
-            const container = document.getElementById('ayet-hadis-list');
-            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">İçerik yüklenemedi.</p>'; return; }
+            const el = document.getElementById('ayet-hadis-list');
+            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-500">İçerik yüklenemedi.</p>'; return; }
             const lastItem = data[data.length - 1];
-            const textToShow = lastItem['Gönderi Başlığı'] || lastItem['Açıklama / Detay'] || lastItem['Soru'] || 'İlim talep etmek her müslümana farzdır.';
-            container.innerHTML = `
-                <div class="p-4 rounded-2xl bg-red-950/20 border border-red-500/20 text-xs leading-relaxed text-slate-200 font-mono">
-                    <i class="fa-solid fa-quote-left text-red-500 text-sm mr-2"></i>
-                    ${textToShow}
+            const text = lastItem['Gönderi Başlığı'] || lastItem['Açıklama / Detay'] || lastItem['Soru'] || 'İlim talep etmek her müslümana farzdır.';
+            el.innerHTML = `
+                <div class="p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/20 text-xs leading-relaxed text-slate-200 font-mono">
+                    <i class="fa-solid fa-quote-left text-cyan-400 text-sm mr-2"></i> ${text}
                 </div>
             `;
         });
