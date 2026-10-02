@@ -1,10 +1,13 @@
 /* ==========================================================================
-   MURTZENG AVIONICS - Google Forms Live Data Fetcher Engine
+   MURTZENG AVIONICS - Dual Google Forms Live Data Fetcher Engine
    Author: Murtaza Can Bilgin
    ========================================================================== */
 
-// GOOGLE E-TABLO CSV CANLI VERİ BAĞLANTIN
-const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvmjfxgBFbh5aqJdACDmb52I07UcOzLX8ArqdigfrYRtlpFXNWtWXYy4lityCwjOQ0hKI0CHffxpgO/pub?output=csv";
+// 1. LİNK: Projeler ve Gönderiler için CSV Linki
+const POSTS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvmjfxgBFbh5aqJdACDmb52I07UcOzLX8ArqdigfrYRtlpFXNWtWXYy4lityCwjOQ0hKI0CHffxpgO/pub?output=csv";
+
+// 2. LİNK: Akademik Ders Notları için CSV Linki
+const NOTES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbhOhO9PO9KgBxBEqhzQqyksFfdu8-grLSfgAZoxiUxDDZIKjawBI19hjqib2-70eD-04Axow1vRki/pub?output=csv";
 
 window.addEventListener('load', () => {
     // Preloader (Yükleme Ekranı) Kontrolü
@@ -33,7 +36,8 @@ window.addEventListener('load', () => {
     }, 1000);
 
     // Google Form verilerini çek
-    fetchGoogleFormPosts();
+    fetchPostsData();
+    fetchNotesData();
 });
 
 // CSV Formatını Parçalama Algoritması
@@ -45,8 +49,9 @@ function parseCSV(text) {
     });
 }
 
-function fetchGoogleFormPosts() {
-    fetch(GOOGLE_SHEET_CSV_URL)
+// 1. Projeler / Gönderiler Verisini Çekme
+function fetchPostsData() {
+    fetch(POSTS_CSV_URL)
         .then(response => response.text())
         .then(csvText => {
             const rows = parseCSV(csvText);
@@ -60,10 +65,10 @@ function fetchGoogleFormPosts() {
 
             container.innerHTML = '';
             
-            // Son eklenen paylaşım en üstte görünsün diye ters döngü
+            // Son eklenen gönderi en üstte görünsün diye ters döngü
             rows.reverse().forEach((row, index) => {
                 const date = row[0] ? row[0].split(' ')[0] : "Yeni";
-                const title = row[1] || "Başlıksız Paylaşım";
+                const title = row[1] || "Başlıksız Gönderi";
                 const desc = row[2] || "Açıklama girilmedi.";
                 const imgUrl = row[3] || "https://images.unsplash.com/photo-1518770660439-4636190af475";
 
@@ -89,8 +94,42 @@ function fetchGoogleFormPosts() {
             });
         })
         .catch(err => {
-            console.error("Form verisi çekilirken hata oluştu:", err);
+            console.error("Gönderiler çekilemedi:", err);
             renderFallbackPosts();
+        });
+}
+
+// 2. Akademik Ders Notları Verisini Çekme
+function fetchNotesData() {
+    fetch(NOTES_CSV_URL)
+        .then(response => response.text())
+        .then(csvText => {
+            const rows = parseCSV(csvText);
+            const notesContainer = document.getElementById('dynamicNotesList');
+            if (!notesContainer) return;
+
+            if (rows.length === 0) {
+                notesContainer.innerHTML = '<li style="color: var(--text-gray); font-size: 0.82rem; padding: 5px;">Henüz ders notu eklenmedi.</li>';
+                return;
+            }
+
+            notesContainer.innerHTML = '';
+
+            rows.reverse().forEach(row => {
+                const courseName = row[1] || "Ders Notu";
+                const fileUrl = row[2] || "#";
+
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <a href="${fileUrl}" target="_blank">
+                        <i class="fa-solid fa-file-pdf"></i> ${courseName}
+                    </a>
+                `;
+                notesContainer.appendChild(li);
+            });
+        })
+        .catch(err => {
+            console.error("Ders notları çekilemedi:", err);
         });
 }
 
@@ -112,5 +151,5 @@ function renderFallbackPosts() {
     `;
 
     const statusText = document.getElementById('liveStatusText');
-    if (statusText) statusText.innerText = '"Henüz yeni bir not girilmedi. Google Form üzerinden ilk paylaşımınızı yapabilirsiniz."';
+    if (statusText) statusText.innerText = '"Google Form üzerinden ilk gönderini bekliyor."';
 }
