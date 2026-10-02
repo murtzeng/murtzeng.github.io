@@ -1,133 +1,169 @@
 /* ==========================================================================
-   MURTZENG AVIONICS SYSTEMS - Master Script Engine
+   MURTZENG AVIONICS SYSTEMS - Master Cyber-Dashboard Stylesheet
+   Version: 3.0.0 (Cloud & Avionics Enterprise Edition)
+   Author: murtzeng (Murtzeng Avionics Systems & Research Lab)
    ========================================================================== */
 
-// 1. TUŞ SESİ EFEKTİ (CLICK SOUND)
-function playClickSound() {
-    const sound = document.getElementById('clickSound');
-    if (sound) {
-        sound.currentTime = 0;
-        sound.play().catch(() => {});
-    }
-}
-
-document.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button')) {
-        playClickSound();
-    }
-});
-
-// 2. PRELOADER & YÜKLEME EKRANI KONTROLÜ
-function hidePreloader() {
-    const preloader = document.getElementById('preloader');
-    if (preloader && preloader.style.display !== 'none') {
-        preloader.style.opacity = '0';
-        setTimeout(() => { preloader.style.display = 'none'; }, 500);
-    }
-}
-
-function startPreloader() {
-    const progressBar = document.getElementById('progressBar');
-    let width = 0;
-
-    const interval = setInterval(() => {
-        if (width >= 100) {
-            clearInterval(interval);
-            hidePreloader();
-        } else {
-            width += 10;
-            if (progressBar) progressBar.style.width = width + '%';
-        }
-    }, 30);
-
-    // Güvenlik zamanlayıcısı (Maksimum 1.2 sn)
-    setTimeout(() => {
-        clearInterval(interval);
-        if (progressBar) progressBar.style.width = '100%';
-        hidePreloader();
-    }, 1200);
-}
-
-document.addEventListener('DOMContentLoaded', startPreloader);
-
-// 3. AYDINLIK / KARANLIK MOD (THEME TOGGLE)
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const icon = document.getElementById('themeIcon');
-    if (document.body.classList.contains('light-mode')) {
-        icon.className = 'fa-solid fa-sun';
-    } else {
-        icon.className = 'fa-solid fa-moon';
-    }
-}
-
-// 4. SAĞ ÜST ÜÇ ÇİZGİ MENÜ
-function toggleMenu() {
-    const menu = document.getElementById('overlayMenu');
-    menu.classList.toggle('active');
-}
-
-// 5. LIGHTBOX (RESİM BÜYÜTME)
-function openLightbox(src) {
-    const box = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    img.src = src;
-    box.style.display = 'flex';
-}Gardaşım, hiç merak etme! Sitenin görsel tasarımlarını, dairesel logo animasyonunu, tuş seslerini, aydınlık/karanlık mod geçişini ve **murtzai** asistanını tam olarak çalıştıracak kalan iki ana dosyayı (**`style.css`** ve **`script.js`**) aşağıda eksiksiz şekilde veriyorum.
-
----
-
-### 1. `style.css` (Tüm Renkler, Efektler, Amblem Animasyonu ve Stiller)
-
-```css
-/* ==========================================================================
-   MURTZENG AVIONICS SYSTEMS - Master Theme Style
-   Colors: Lacivert (#031d38), Mavi (#0b4375), Kırmızı (#b31217), 
-           Turkuaz (#00f3ff), Turuncu (#ff6600), Yeşil (#00ff66)
-   ========================================================================== */
-
+/* --------------------------------------------------------------------------
+   1. COLOR PALETTE & GLOBAL VARIABLES (THEMING & GLASSMORPHISM)
+   -------------------------------------------------------------------------- */
 :root {
-    --bg-dark: #030810;
-    --card-dark: rgba(10, 20, 35, 0.85);
-    --text-dark: #e0e8f0;
+    --bg-deep: #030810;
+    --card-bg: rgba(13, 22, 38, 0.85);
+    --card-border: #1a2a40;
+    --text-main: #e1e8f0;
+    --text-muted: #7f93a8;
+    
+    /* Core Accent Colors */
     --lacivert: #031d38;
     --mavi: #0b4375;
     --kirmizi: #b31217;
     --turquois: #00f3ff;
     --orange: #ff6600;
     --green: #00ff66;
+    
+    /* Glow & Shadow Effects */
+    --turquois-glow: 0 0 15px rgba(0, 243, 255, 0.4);
+    --orange-glow: 0 0 15px rgba(255, 102, 0, 0.4);
+    --green-glow: 0 0 15px rgba(0, 255, 102, 0.4);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    
+    /* Fonts */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Consolas', 'Fira Code', 'Courier New', monospace;
 }
 
 body.light-mode {
-    --bg-dark: #f0f4f8;
-    --card-dark: #ffffff;
-    --text-dark: #1a2530;
+    --bg-deep: #f0f4f8;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: #cbd5e1;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+}
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
-    min-width: 1200px; /* Bilgisayar formatı geniş ekran */
-    transition: background 0.3s, color 0.3s;
+html {
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-/* --- PRELOADER (SELAMÜNALEYKÜM YÜKLEME EKRANI) --- */
-#preloader {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: var(--lacivert);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 99999; color: #fff; transition: opacity 0.5s ease;
+body.dark-dashboard {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    min-width: 1200px; /* PC Odaklı Geniş Ekran Formatı */
+    position: relative;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.loader-content { text-align: center; }
-.greeting-text { font-size: 2.5rem; font-weight: bold; color: var(--turquois); margin-bottom: 20px; text-shadow: 0 0 15px var(--turquois); }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
 
-.spinning-ring-logo {
-    animation: rotateLogo 15s linear infinite;
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--turquois);
+    box-shadow: var(--turquois-glow);
+}
+
+/* --------------------------------------------------------------------------
+   3. ARKA PLAN CANLI VİDEO KATMANI (VIDEO BACKGROUND & OVERLAY)
+   -------------------------------------------------------------------------- */
+.video-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    overflow: hidden;
+}
+
+#heroVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) contrast(1.1);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(3, 8, 16, 0.6) 0%, rgba(3, 8, 16, 0.95) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   4. PRELOADER & SELAMÜNALEYKÜM YÜKLEME EKRANI
+   -------------------------------------------------------------------------- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-deep);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-box {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--turquois);
+    box-shadow: var(--turquois-glow), var(--card-shadow);
+}
+
+.bismillah-title {
+    font-family: 'Traditional Arabic', serif;
+    color: var(--turquois);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--turquois);
+}
+
+.greeting-loader {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.spinner-logo {
+    margin: 20px auto;
+}
+
+.spin-ring, .murtzeng-spinning-logo .spin-ring, #circlePathLoader {
+    transform-origin: center;
+    animation: spinRing 12s linear infinite;
 }
 
 .ring-text {
@@ -135,167 +171,1014 @@ body {
     font-weight: bold;
     fill: var(--turquois);
     letter-spacing: 2px;
+    font-family: var(--font-mono);
 }
 
-@keyframes rotateLogo {
+@keyframes spinRing {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-.progress-bar-container {
-    width: 300px; height: 6px; background: rgba(255,255,255,0.1);
-    border-radius: 3px; margin: 20px auto 10px; overflow: hidden;
+.load-bar {
+    width: 260px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px auto 10px;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
-.progress-bar {
-    width: 0%; height: 100%; background: var(--orange);
-    box-shadow: 0 0 10px var(--orange); transition: width 0.1s linear;
+#loadProgress {
+    width: 0%;
+    height: 100%;
+    background: var(--orange);
+    box-shadow: var(--orange-glow);
+    transition: width 0.1s linear;
 }
 
-.loading-sub { font-size: 0.85rem; color: #a0aab5; }
-
-/* --- ARKA PLAN VİDEOSU --- */
-.bg-video-wrapper {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -2; overflow: hidden;
+.loading-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
-#bgVideo {
-    width: 100%; height: 100%; object-fit: cover;
+/* --------------------------------------------------------------------------
+   5. TOP NAVBAR & BRANDING
+   -------------------------------------------------------------------------- */
+.cyber-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: rgba(13, 22, 38, 0.85);
+    border-bottom: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.video-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(3, 8, 16, 0.85);
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* --- NAVBAR & HEADER --- */
-.top-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 40px; background: rgba(3, 29, 56, 0.9);
-    border-bottom: 2px solid var(--turquois); backdrop-filter: blur(8px);
+.murtzeng-spinning-logo {
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px var(--turquois));
+    transition: transform 0.3s;
 }
 
-.nav-left { display: flex; align-items: center; gap: 20px; }
-.welcome-text-box h2 { font-size: 1.4rem; color: #fff; letter-spacing: 1px; }
-.welcome-msg { font-size: 0.85rem; color: var(--turquois); }
-
-.nav-right { display: flex; align-items: center; gap: 15px; }
-.icon-btn, .menu-btn {
-    background: transparent; border: 1px solid var(--turquois); color: var(--turquois);
-    padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; transition: 0.3s;
+.murtzeng-spinning-logo:hover {
+    transform: scale(1.08);
 }
-.icon-btn:hover, .menu-btn:hover { background: var(--turquois); color: #000; }
+
+.brand-titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px var(--orange);
+}
+
+.sub-title {
+    font-size: 0.65rem;
+    color: var(--turquois);
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--turquois);
+    text-shadow: 0 0 6px var(--turquois);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-btn:hover {
+    background: var(--turquois);
+    color: #000;
+    box-shadow: var(--turquois-glow);
+}
 
 .lang-switch button {
-    background: transparent; border: 1px solid var(--orange); color: #fff;
-    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;
+    background: transparent;
+    border: 1px solid var(--orange);
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.2s;
 }
-.lang-switch button.active { background: var(--orange); }
 
-/* --- SAĞ ÜST AÇILIR MENÜ (OVERLAY) --- */
+.lang-switch button.active {
+    background: var(--orange);
+    box-shadow: var(--orange-glow);
+}
+
+.menu-trigger-btn {
+    background: transparent;
+    border: 1px solid var(--turquois);
+    color: var(--turquois);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.menu-trigger-btn:hover {
+    background: var(--turquois);
+    color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   6. OVERLAY MENU (SAĞ ÜST HAMBURGER MENU)
+   -------------------------------------------------------------------------- */
 .overlay-menu {
-    position: fixed; top: 0; right: -350px; width: 350px; height: 100vh;
-    background: var(--lacivert); border-left: 2px solid var(--turquois);
-    z-index: 10000; padding: 40px 25px; transition: right 0.4s ease;
+    position: fixed;
+    top: 0;
+    right: -380px;
+    width: 380px;
+    height: 100vh;
+    background: var(--lacivert);
+    border-left: 2px solid var(--turquois);
+    z-index: 10000;
+    padding: 40px 30px;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
 }
-.overlay-menu.active { right: 0; }
-.close-menu-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
 
-.search-box-menu { display: flex; align-items: center; background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 4px; margin: 30px 0 20px; }
-.search-box-menu input { background: transparent; border: none; color: #fff; outline: none; width: 100%; }
-
-.menu-links { list-style: none; }
-.menu-links li { margin-bottom: 18px; }
-.menu-links a { color: #fff; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: 0.2s; }
-.menu-links a:hover { color: var(--turquois); transform: translateX(5px); }
-
-/* --- WIDGETS & PANEL BOXES --- */
-.widget-section { display: flex; gap: 20px; padding: 25px 40px; }
-.widget-card {
-    flex: 1; background: var(--card-dark); border: 1px solid rgba(0, 243, 255, 0.2);
-    padding: 15px 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px;
+.overlay-menu.active {
+    right: 0;
 }
-.widget-icon { font-size: 2rem; }
-.icon-turquois { color: var(--turquois); } .icon-orange { color: var(--orange); } .icon-green { color: var(--green); }
 
-.slider-container { padding: 10px 40px 25px; }
-.slider-container h3 { margin-bottom: 15px; font-size: 1.2rem; }
-.image-carousel { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
+.close-menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2.2rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-menu-btn:hover {
+    color: var(--orange);
+}
+
+.search-box-menu {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--card-border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 40px 0 25px;
+}
+
+.search-box-menu input {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    width: 100%;
+}
+
+.menu-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.menu-links a:hover {
+    color: var(--turquois);
+    transform: translateX(8px);
+}
+
+/* --------------------------------------------------------------------------
+   7. DASHBOARD MAIN CONTAINER & CARDS
+   -------------------------------------------------------------------------- */
+.dashboard-container {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dash-card, .dash-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+}
+
+.dash-card:hover, .dash-box:hover {
+    border-color: rgba(0, 243, 255, 0.3);
+}
+
+.card-full {
+    width: 100%;
+}
+
+.electric-border {
+    border: 1px solid var(--turquois);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.15), inset 0 0 15px rgba(0, 243, 255, 0.05);
+}
+
+.bismillah-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.bismillah-card h2 {
+    font-family: 'Traditional Arabic', serif;
+    color: var(--turquois);
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px var(--turquois);
+}
+
+.bismillah-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.hero-text-section {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.hero-text-section h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.hero-text-section p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. AVIONICS PROFILE & SKILLS TAGS
+   -------------------------------------------------------------------------- */
+.avionics-profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px;
+}
+
+.profile-info h3 {
+    color: var(--turquois);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.skills-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid var(--turquois);
+    color: var(--turquois);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   9. STATS ROW
+   -------------------------------------------------------------------------- */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange);
+}
+
+.stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: var(--font-mono);
+    text-shadow: 0 0 8px var(--orange);
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. AYET & HADİS ÇİFT KART BÖLÜMÜ
+   -------------------------------------------------------------------------- */
+.double-card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.box-tag {
+    color: var(--turquois);
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arabic-txt {
+    font-size: 1.5rem;
+    text-align: right;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-family: 'Traditional Arabic', serif;
+}
+
+.tr-txt {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.ref-txt {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   11. DEVRE & OSİLOSKOP LABORATUVARI
+   -------------------------------------------------------------------------- */
+.box-header-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+.sim-grid {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+#simCanvas, #scopeCanvas, #pidCanvas {
+    background: #000000;
+    border: 1px solid var(--turquois);
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.sim-controls, .scope-controls, .pid-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sim-controls label, .scope-controls label, .pid-controls label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 0.88rem;
+}
+
+.sim-controls input[type=range], .scope-controls input[type=range], .pid-controls input[type=range] {
+    accent-color: var(--turquois);
+    cursor: pointer;
+}
+
+.sim-readout, .readout-box {
+    background: rgba(0, 255, 102, 0.08);
+    border: 1px solid var(--green);
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    color: var(--green);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.highlight-green {
+    color: var(--green);
+    font-size: 1.2rem;
+    text-shadow: 0 0 8px var(--green);
+}
+
+.scope-grid-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   12. PID İRTİFA KONTROLÖR SİMÜLATÖRÜ
+   -------------------------------------------------------------------------- */
+.pid-workspace {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.cyber-blue-btn {
+    background: var(--mavi);
+    color: #ffffff;
+    border: 1px solid var(--turquois);
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.88rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cyber-blue-btn:hover {
+    background: var(--turquois);
+    color: #000000;
+    box-shadow: var(--turquois-glow);
+}
+
+/* --------------------------------------------------------------------------
+   13. HUD (HEADS-UP DISPLAY) SHOWCASE
+   -------------------------------------------------------------------------- */
+.hud-workspace {
+    background: #000000;
+    border: 2px solid var(--green);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--green-glow);
+}
+
+.hud-screen {
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-weight: bold;
+}
+
+.hud-pitch-ladder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hud-center-cross {
+    font-size: 2rem;
+    text-shadow: 0 0 8px var(--green);
+}
+
+/* --------------------------------------------------------------------------
+   14. CANLI SİHA TELEMETRİ MONİTÖRÜ
+   -------------------------------------------------------------------------- */
+.telemetry-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.telemetry-gauge-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--card-border);
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.gauge-title {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.gauge-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: var(--font-mono);
+}
+
+.gauge-status {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.status-ok {
+    background: rgba(0, 255, 102, 0.15);
+    color: var(--green);
+    border: 1px solid var(--green);
+}
+
+/* --------------------------------------------------------------------------
+   15. BULUT TELEMETRİ LOGLARI PANELİ
+   -------------------------------------------------------------------------- */
+.cloud-terminal-box {
+    background: #000000;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 15px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    height: 120px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cloud-log-line {
+    color: var(--turquois);
+}
+
+/* --------------------------------------------------------------------------
+   16. MÜHENDİSLİK SÖZLÜĞÜ (CAMBRIDGE / OXFORD STİLİ)
+   -------------------------------------------------------------------------- */
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--turquois);
+    color: #ffffff;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.search-input:focus {
+    box-shadow: var(--turquois-glow);
+}
+
+.dict-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.dict-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 102, 0, 0.25);
+    padding: 16px;
+    border-radius: 6px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.dict-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--orange);
+}
+
+.dict-card h4 {
+    color: var(--orange);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.dict-card p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   17. AVİYONİK PROTOKOLLER İZGARA PANELİ
+   -------------------------------------------------------------------------- */
+.protocol-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.protocol-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.protocol-card h3 {
+    color: var(--orange);
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.protocol-card ul {
+    list-style: none;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   18. AKADEMİK DERS NOTLARI AKORDEON PANELİ
+   -------------------------------------------------------------------------- */
+.academic-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.acc-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    padding: 16px;
+    border-radius: 6px;
+}
+
+.acc-item h4 {
+    color: var(--green);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.acc-item p {
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+/* --------------------------------------------------------------------------
+   19. TEKNİK MAKALELER & BLOG
+   -------------------------------------------------------------------------- */
+.blog-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.blog-post-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--turquois);
+}
+
+.post-meta {
+    font-size: 0.72rem;
+    color: var(--turquois);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.blog-post-card h3 {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.blog-post-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   20. CANLI HABER AKIŞI
+   -------------------------------------------------------------------------- */
+.news-loader-status {
+    color: var(--text-main);
+    font-size: 0.88rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sub-status {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+   21. MEDYA GALERİSİ & CAROUSEL
+   -------------------------------------------------------------------------- */
+.image-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
 .img-card {
-    min-width: 320px; height: 180px; position: relative; border-radius: 8px;
-    overflow: hidden; cursor: pointer; border: 1px solid var(--turquois); transition: 0.3s;
+    min-width: 320px;
+    height: 180px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s, border-color 0.3s;
 }
-.img-card:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--turquois); }
-.img-card img { width: 100%; height: 100%; object-fit: cover; }
+
+.img-card:hover {
+    transform: scale(1.02);
+    border-color: var(--turquois);
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .img-caption {
-    position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.75);
-    color: #fff; padding: 8px; font-size: 0.85rem; text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 8px;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
-/* --- LIGHTBOX (RESİM BÜYÜTME PENCERESİ) --- */
+/* --------------------------------------------------------------------------
+   22. AR-GE GÜNLÜĞÜ
+   -------------------------------------------------------------------------- */
+.log-input-area {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.log-input-area input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--card-border);
+    padding: 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    outline: none;
+}
+
+.submit-note-btn {
+    background: var(--mavi);
+    border: 1px solid var(--turquois);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.log-item {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 14px;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+}
+
+.log-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--turquois);
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   23. murtzai AI TERMINAL PANELİ
+   -------------------------------------------------------------------------- */
+.terminal-body {
+    background: #000000;
+    height: 160px;
+    border-radius: 6px 6px 0 0;
+    padding: 12px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    border: 1px solid var(--card-border);
+}
+
+.term-line {
+    margin-bottom: 6px;
+}
+
+.system-text { color: var(--turquois); }
+.user-text { color: var(--orange); }
+.ai-text { color: var(--green); }
+
+.terminal-input-bar {
+    display: flex;
+    align-items: center;
+    background: #080d14;
+    padding: 10px;
+    border: 1px solid var(--card-border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.prompt {
+    color: var(--orange);
+    margin-right: 10px;
+    font-weight: bold;
+    font-family: var(--font-mono);
+}
+
+#termInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    font-family: var(--font-mono);
+}
+
+/* --------------------------------------------------------------------------
+   24. LIGHTBOX & FOOTER
+   -------------------------------------------------------------------------- */
 .lightbox {
-    display: none; position: fixed; z-index: 999999; top: 0; left: 0;
-    width: 100vw; height: 100vh; background: rgba(0,0,0,0.9);
-    justify-content: center; align-items: center;
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
 }
-.lightbox-content { max-width: 80%; max-height: 80%; border: 2px solid var(--turquois); border-radius: 8px; }
-.close-lightbox { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 3rem; cursor: pointer; }
 
-/* --- DEVRE & SÖZLÜK --- */
-.main-workspace { padding: 10px 40px 30px; display: flex; flex-direction: column; gap: 25px; }
-.panel-box { background: var(--card-dark); padding: 20px; border-radius: 8px; border: 1px solid rgba(0, 243, 255, 0.2); }
-.panel-box h2 { font-size: 1.2rem; margin-bottom: 15px; }
-
-.sim-grid { display: flex; gap: 30px; align-items: center; }
-#simCanvas { background: #000; border: 1px solid var(--orange); border-radius: 6px; }
-.sim-controls { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-.sim-controls label { display: flex; justify-content: space-between; font-weight: bold; }
-.highlight-green { color: var(--green); font-size: 1.3rem; }
-
-.search-input { width: 100%; padding: 10px; margin-bottom: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--turquois); color: #fff; border-radius: 4px; }
-.dict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.dict-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,102,0,0.3); padding: 12px; border-radius: 6px; }
-.dict-card h4 { color: var(--orange); margin-bottom: 5px; }
-
-/* --- CANLI TEKNOLOJİ HABERLERİ BANTI --- */
-.news-ticker-section {
-    display: flex; background: var(--lacivert); border-top: 2px solid var(--kirmizi);
-    border-bottom: 2px solid var(--kirmizi); padding: 10px 40px; overflow: hidden;
+.lightbox-content {
+    max-width: 85%;
+    max-height: 85%;
+    border: 2px solid var(--turquois);
+    border-radius: 8px;
 }
-.ticker-title { background: var(--kirmizi); color: #fff; padding: 4px 12px; font-weight: bold; font-size: 0.85rem; white-space: nowrap; margin-right: 20px; }
-.ticker-content { display: flex; gap: 40px; align-items: center; white-space: nowrap; animation: tickerAnim 20s linear infinite; font-size: 0.9rem; color: var(--green); }
-@keyframes tickerAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-/* --- AI ASİSTAN (murtzai) --- */
-.ai-widget { position: fixed; bottom: 25px; right: 25px; z-index: 9999; }
-.ai-trigger {
-    background: var(--orange); color: #fff; border: none; padding: 12px 20px;
-    border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px var(--orange);
-    display: flex; align-items: center; gap: 8px;
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 3rem;
+    cursor: pointer;
 }
-.ai-chat-box {
-    display: none; position: absolute; bottom: 55px; right: 0; width: 340px; height: 420px;
-    background: var(--lacivert); border: 2px solid var(--turquois); border-radius: 10px;
-    flex-direction: column; overflow: hidden; box-shadow: 0 0 20px rgba(0,243,255,0.3);
-}
-.ai-header { background: var(--turquois); color: #000; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; }
-.ai-header button { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
-.ai-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
-.msg { padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; max-width: 80%; }
-.ai-msg { background: rgba(0, 243, 255, 0.15); border: 1px solid var(--turquois); align-self: flex-start; }
-.user-msg { background: rgba(255, 102, 0, 0.2); border: 1px solid var(--orange); align-self: flex-end; }
-.ai-input-area { display: flex; padding: 8px; background: #000; }
-.ai-input-area input { flex: 1; background: transparent; border: none; color: #fff; outline: none; padding: 5px; }
-.ai-input-area button { background: var(--turquois); border: none; padding: 6px 10px; cursor: pointer; border-radius: 4px; }
 
-/* --- FOOTER --- */
-.main-footer { background: var(--lacivert); padding: 25px; text-align: center; border-top: 2px solid var(--turquois); }
-.footer-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 12px; }
-.social-link { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.main-footer {
+    background: var(--lacivert);
+    padding: 30px;
+    text-align: center;
+    border-top: 2px solid var(--turquois);
+    margin-top: 40px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.social-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
 .social-link.linkedin:hover { color: #0077b5; }
 .social-link.github:hover { color: var(--turquois); }
+.social-link.x-twitter:hover { color: #1da1f2; }
 .social-link.mail:hover { color: var(--orange); }
-.copyright { font-size: 0.8rem; color: #8090a0; }
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   25. END OF STYLESHEET - MURTZENG AVIONICS SYSTEMS (860 LINES COMPLETE)
+   ========================================================================== */
