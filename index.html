@@ -22,7 +22,6 @@
         }
         .animate-breath { animation: breath 3s ease-in-out infinite; }
 
-        /* Daktilo İmleç Efekti */
         .typing-cursor::after {
             content: '|';
             animation: blink 1s infinite;
@@ -50,7 +49,7 @@
                     </div>
                     <div>
                         <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-red-500 via-white to-blue-400 bg-clip-text text-transparent uppercase">murtzeng</span>
-                        <span class="block text-xs font-mono text-theme-sub" id="header-subtitle" style="color: #cbd5e1;">Murtaza Can Bilgin • Ar-Ge Portalı</span>
+                        <span class="block text-xs font-mono" id="header-subtitle" style="color: #cbd5e1;">Murtaza Can Bilgin • Ar-Ge Portalı</span>
                     </div>
                 </div>
                 
@@ -62,7 +61,7 @@
                     <a href="#iletisim" class="hover:text-red-500 transition-colors nav-link-theme" style="color: #e2e8f0;" data-tr="İletişim" data-en="Contact">İletişim</a>
                 </nav>
 
-                <!-- Kontrol Butonları (Dil & Tema) -->
+                <!-- Kontrol Butonları -->
                 <div class="flex items-center space-x-3">
                     <button onclick="toggleLanguage()" id="lang-btn" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-mono text-white hover:bg-slate-700 transition-colors">
                         🇬🇧 EN (British)
@@ -277,7 +276,6 @@
         }
         window.onload = typeWriter;
 
-        // Tema Değiştirme Fonksiyonu (Yazı Kaybolma Sorunu Çözüldü)
         let isDarkMode = true;
         function toggleTheme() {
             isDarkMode = !isDarkMode;
@@ -379,7 +377,6 @@
             });
         }
 
-        // Kart içi dinamik metin rengi kontrolü (Açık/Koyu uyumlu)
         function getTextColorStyle() {
             return isDarkMode ? 'color: #ffffff;' : 'color: #0f172a;';
         }
@@ -422,14 +419,18 @@
             `).join('');
         });
 
+        // Ar-Ge Günlüğü Veri Çekme Motoru (Güvenli Kontrol)
         fetchCSV(csvUrls.gunluk, (data) => {
             const el = document.getElementById('gunluk-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Günlük kayıt yok.</p>'; return; }
-            el.innerHTML = data.slice(-3).reverse().map(i => `
-                <div class="p-3 rounded-xl border text-xs font-mono card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'}; ${getTextColorStyle()}">
-                    <span class="text-red-500">&gt;</span> ${i['Bugün Ne Yaptım? / Kısa Durum Notu'] || ''}
-                </div>
-            `).join('');
+            if(!data || !data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Günlük kayıt yok.</p>'; return; }
+            el.innerHTML = data.slice(-3).reverse().map(i => {
+                const notMetni = i['Bugün Ne Yaptım? / Kısa Durumlar'] || Object.values(i)[1] || 'Kayıt eklendi.';
+                return `
+                    <div class="p-3 rounded-xl border text-xs font-mono card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'}; ${getTextColorStyle()}">
+                        <span class="text-red-500">&gt;</span> ${notMetni}
+                    </div>
+                `;
+            }).join('');
         });
 
         fetchCSV(csvUrls.yetkinlikler, (data) => {
