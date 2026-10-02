@@ -32,7 +32,8 @@
             <span class="bismillah-mini">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
             <div class="top-links">
                 <a href="#about"><i class="fa-solid fa-user"></i> Hakkımda</a>
-                <a href="#projects"><i class="fa-solid fa-microchip"></i> Projeler</a>
+                <a href="#skills"><i class="fa-solid fa-microchip"></i> Yetkinlikler</a>
+                <a href="#notes"><i class="fa-solid fa-book"></i> Ders Notları</a>
                 <a href="mailto:iletişim@murtzeng.com"><i class="fa-solid fa-envelope"></i> İletişim</a>
             </div>
         </div>
@@ -43,16 +44,18 @@
             </div>
             <div class="brand-text">
                 <h1 class="glow-text">MURTZENG AVIONICS SYSTEMS</h1>
-                <p class="sub-name">Murtaza Can Bilgin • Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği</p>
+                <p class="sub-name">Murtaza Can Bilgin • Elektrik-Elektronik Mühendisliği & Aviyonik Ar-Ge</p>
             </div>
         </div>
 
         <nav class="gaun-main-nav">
             <ul>
                 <li class="active"><a href="#"><i class="fa-solid fa-house"></i> ANA SAYFA</a></li>
-                <li><a href="#projects">PROJELERİM & YAYINLAR</a></li>
+                <li><a href="#projects">PROJELER & YAYINLAR</a></li>
+                <li><a href="#skills">YETKİNLİKLER</a></li>
+                <li><a href="#notes">AKADEMİK NOTLAR</a></li>
                 <li><a href="#social">AR-GE GÜNLÜĞÜ</a></li>
-                <li><a href="#contact">İLETİŞİM</a></li>
+                <li><a href="https://github.com/murtzeng" target="_blank"><i class="fa-brands fa-github"></i> GİTHUB PROFİLİ</a></li>
             </ul>
         </nav>
     </header>
@@ -60,46 +63,62 @@
     <!-- ANA İÇERİK BÖLÜMÜ -->
     <main class="portal-container">
         
-        <!-- HOŞ GELDİN BANNER'I -->
+        <!-- HOŞ GELDİN BANNER'I & CV İNDİRME BUTONU -->
         <section class="gaun-banner-card" id="about">
             <div class="banner-badge">MİLLİ TEKNOLOJİ HAMLESİ & HAVA ARAÇLARI ELEKTRONİĞİ</div>
             <h2 class="shimmer-text">Murtaza Can Bilgin — Aviyonik & Gömülü Sistem Portalı</h2>
             <p>
-                Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bünyesinde yürütülen gömülü C/C++, STM32, FreeRTOS, 
-                SİHA uçuş kontrol bilgisayarları ve CAN-Bus aviyonik haberleşme çalışmaları.
+                Elektrik-Elektronik Mühendisliği bünyesinde yürütülen gömülü C/C++, STM32, FreeRTOS, 
+                SİHA uçuş kontrol bilgisayarları ve CAN-Bus aviyonik haberleşme araştırma projeleri.
             </p>
             <div class="banner-actions">
-                <a href="#projects" class="btn-gaun-red"><i class="fa-solid fa-rocket"></i> Son Projelerimi İncele</a>
-                <a href="https://linkedin.com/in/murtzeng" target="_blank" class="btn-gaun-blue"><i class="fa-brands fa-linkedin"></i> LinkedIn Profilim</a>
+                <a href="#projects" class="btn-gaun-red"><i class="fa-solid fa-rocket"></i> Son Projelerim</a>
+                <a href="cv.pdf" target="_blank" class="btn-gaun-blue"><i class="fa-solid fa-file-arrow-down"></i> CV İndir (PDF)</a>
+                <a href="https://github.com/murtzeng" target="_blank" class="btn-gaun-dark"><i class="fa-brands fa-github"></i> GitHub Profilim</a>
             </div>
         </section>
 
-        <!-- DİNANMİK PORTAL AKIŞI -->
+        <!-- TEKNİK YETKİNLİKLER / ROZETLER BÖLÜMÜ -->
+        <section class="portal-box" id="skills" style="margin-bottom: 25px;">
+            <div class="box-header header-navy">
+                <h3><i class="fa-solid fa-cogs"></i> TEKNİK YETKİNLİKLER & ARAÇLAR</h3>
+            </div>
+            <div class="skills-badges-grid">
+                <span class="skill-tag"><i class="fa-solid fa-code"></i> Gömülü C / C++</span>
+                <span class="skill-tag"><i class="fa-solid fa-microchip"></i> STM32 & ARM Cortex</span>
+                <span class="skill-tag"><i class="fa-solid fa-layer-group"></i> FreeRTOS (RTOS)</span>
+                <span class="skill-tag"><i class="fa-solid fa-network-wired"></i> CAN-Bus & SPI / I2C</span>
+                <span class="skill-tag"><i class="fa-solid fa-bolt"></i> Altium Designer (PCB)</span>
+                <span class="skill-tag"><i class="fa-solid fa-terminal"></i> Python & MATLAB</span>
+                <span class="skill-tag"><i class="fa-solid fa-plane"></i> SİHA Aviyonikleri</span>
+            </div>
+        </section>
+
+        <!-- DİNAMİK PORTAL AKIŞI -->
         <div class="portal-grid-3">
             
-            <!-- SOL: GOOGLE FORMLARDAN GELEN CANLI PROJE/PAYLAŞIM KARTLARI -->
+            <!-- SOL: GOOGLE FORMDAN GELEN CANLI PROJELER -->
             <section class="portal-box" id="projects">
                 <div class="box-header header-red">
                     <h3><i class="fa-solid fa-bullhorn"></i> CANLI PROJELERİM & PAYLAŞIMLAR</h3>
                 </div>
                 <div class="post-cards-list" id="dynamicPostsList">
-                    <!-- Google Form verileri buraya otomatik yüklenecek -->
                     <p class="loading-posts-text"><i class="fa-solid fa-spinner fa-spin"></i> Paylaşımlar yükleniyor...</p>
                 </div>
             </section>
 
-            <!-- SAĞ: AR-GE DÜŞÜNCE AKIŞI & MANEVİ İÇERİK -->
-            <section class="portal-box" id="social">
+            <!-- SAĞ: AKADEMİK NOTLAR VE AR-GE GÜNLÜĞÜ -->
+            <section class="portal-box" id="notes">
                 <div class="box-header header-navy">
-                    <h3><i class="fa-solid fa-book-quran"></i> GÜNÜN HİKMETİ & AYET</h3>
+                    <h3><i class="fa-solid fa-book-bookmark"></i> AKADEMİK DERS NOTLARI</h3>
                 </div>
-                <div class="verse-widget">
-                    <div class="arabic-quote">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
-                    <p class="tr-quote">"Şüphesiz her güçlükle birlikte bir kolaylık vardır."</p>
-                    <span class="quote-ref">İnşirah Sûresi, 6. Âyet</span>
-                </div>
+                <ul class="notes-list">
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Devre Teorisi Özetleri (PDF)</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Sinyal ve Sistemler Notları</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Mikrodenetleyiciler & Lab Rehberi</a></li>
+                </ul>
 
-                <div class="box-header header-navy" style="margin-top: 20px;">
+                <div class="box-header header-navy" style="margin-top: 25px;" id="social">
                     <h3><i class="fa-solid fa-comment-dots"></i> ANLIK AR-GE NOTU</h3>
                 </div>
                 <div class="quick-status-box">
@@ -112,11 +131,11 @@
 
     </main>
 
-    <!-- FOOTER & SADECE İKONLU SOSYAL MEDYA BUTONLARI -->
+    <!-- FOOTER & İKONLU SOSYAL MEDYA -->
     <footer class="gaun-footer" id="contact">
         <div class="footer-content">
             <div class="footer-logo">MURTZENG AVIONICS SYSTEMS</div>
-            <p>Murtaza Can Bilgin • Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği</p>
+            <p>Murtaza Can Bilgin • Elektrik-Elektronik Mühendisliği Ar-Ge Portalı</p>
             
             <div class="social-icons-only">
                 <a href="https://linkedin.com/in/murtzeng" target="_blank" title="LinkedIn" class="icon-circle linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
