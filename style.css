@@ -1,0 +1,392 @@
+/* ==========================================================================
+   murtzeng - Main Theme & Electric Style
+   Colors: Turquoise (#00f3ff), Orange (#ff6600), Green (#00ff66), Dark (#0a0a0c)
+   ========================================================================== */
+
+:root {
+    --bg-dark: #0a0a0c;
+    --card-bg: rgba(18, 22, 31, 0.85);
+    --turquois: #00f3ff;
+    --orange: #ff6600;
+    --green: #00ff66;
+    --text-color: #e0e6ed;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.electric-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    min-width: 1200px; /* Bilgisayar odakli geniş görünüm */
+}
+
+/* Header & Besmele */
+.main-header {
+    background: linear-gradient(180deg, #020408 0%, var(--bg-dark) 100%);
+    padding: 20px 50px;
+    border-bottom: 2px solid var(--turquois);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+.bismillah {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--turquois);
+    font-family: 'Traditional Arabic', serif;
+    text-shadow: 0 0 10px var(--turquois);
+    margin-bottom: 15px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px var(--orange);
+}
+
+.lang-switch button {
+    background: transparent;
+    border: 1px solid var(--turquois);
+    color: #fff;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.lang-switch button.active-lang, 
+.lang-switch button:hover {
+    background: var(--turquois);
+    color: var(--bg-dark);
+    box-shadow: 0 0 12px var(--turquois);
+}
+
+/* Günlük Kartlar */
+.daily-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.icon-turquois { color: var(--turquois); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--turquois)); }
+.icon-orange { color: var(--orange); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--orange)); }
+.icon-green { color: var(--green); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--green)); }
+
+/* Hero & Video Section */
+.hero-section {
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 10, 12, 0.75);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.electric-text {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--turquois), 0 0 20px var(--green);
+}
+
+/* Kayan Yazı / Ticker */
+.ticker-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--green);
+    z-index: 2;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.ticker {
+    display: flex;
+    gap: 50px;
+    white-space: nowrap;
+    animation: ticker-anim 20s linear infinite;
+}
+
+.ticker-item {
+    font-weight: bold;
+    color: var(--green);
+    text-shadow: 0 0 5px var(--green);
+}
+
+@keyframes ticker-anim {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Main Workspace */
+.main-container {
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.section-box {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.electric-border {
+    border: 1px solid var(--turquois);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
+}
+
+/* Simülasyon */
+.circuit-workspace {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#circuitCanvas {
+    background: #000;
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.controls label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.output-box {
+    background: #000;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--green);
+    text-align: center;
+}
+
+.highlight-txt {
+    color: var(--green);
+    font-size: 1.4rem;
+    text-shadow: 0 0 8px var(--green);
+}
+
+/* Sözlük */
+.styled-input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #000;
+    border: 1px solid var(--turquois);
+    color: #fff;
+    border-radius: 6px;
+    outline: none;
+}
+
+.dictionary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.dict-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.dict-card h3 { color: var(--orange); margin-bottom: 5px; }
+
+/* AI Asistan (murtzai) */
+.ai-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+.ai-trigger {
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--orange);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.ai-chat-box {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background: #080a0f;
+    border: 2px solid var(--turquois);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,243,255,0.4);
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ai-header {
+    background: var(--turquois);
+    color: #000;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ai-header button { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
+
+.ai-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg { padding: 10px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; }
+.ai-msg { background: rgba(0, 243, 255, 0.15); border: 1px solid var(--turquois); align-self: flex-start; }
+.user-msg { background: rgba(255, 102, 0, 0.2); border: 1px solid var(--orange); align-self: flex-end; }
+
+.ai-input-area {
+    display: flex;
+    padding: 10px;
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.ai-input-area input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    padding: 5px;
+}
+
+.ai-input-area button {
+    background: var(--turquois);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Footer */
+.main-footer {
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    background: #020408;
+    margin-top: 40px;
+}
+
+.electric-line {
+    height: 2px;
+    background: linear-gradient(90deg, var(--turquois), var(--orange), var(--green));
+    box-shadow: 0 0 10px var(--green);
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+.linkedin:hover { color: #0077b5; filter: drop-shadow(0 0 8px #0077b5); }
+.github:hover { color: #fff; filter: drop-shadow(0 0 8px #fff); }
+.x-twitter:hover { color: #1da1f2; filter: drop-shadow(0 0 8px #1da1f2); }
+.mail:hover { color: var(--orange); filter: drop-shadow(0 0 8px var(--orange)); }
