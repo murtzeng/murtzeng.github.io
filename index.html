@@ -8,8 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- PapaParse for CSV reading -->
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Amiri:wght@400;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -87,7 +85,7 @@
                     
                     <!-- CV Butonu -->
                     <div class="pt-2">
-                        <a href="BURAYA_GOOGLE_DRIVE_PAYLASIM_LINKINI_YAPISTIR" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition-all shadow-lg shadow-red-600/30">
+                        <a href="#" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition-all shadow-lg shadow-red-600/30">
                             <i class="fa-solid fa-file-pdf"></i> <span data-tr="CV'mi İncele / İndir" data-en="View / Download CV">CV'mi İncele / İndir</span>
                         </a>
                     </div>
@@ -109,7 +107,12 @@
                         <i class="fa-solid fa-code-branch text-red-400 mr-2"></i> <span data-tr="Projeler & Ar-Ge Akışı" data-en="Projects & R&D Flow">Projeler & Ar-Ge Akışı</span>
                     </h2>
                     <div id="gonderiler-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                        <!-- Projelerini buraya doğrudan HTML olarak ekleyeceksin -->
+                        <div class="rounded-2xl border p-5 card-theme" style="background-color: #1e293b; border-color: #334155;">
+                            <img src="images/roket.jpg" alt="Roket Projesi" class="rounded-xl h-40 w-full object-cover mb-4" onerror="this.src='https://via.placeholder.com/400x200?text=Roket+Projesi'">
+                            <h3 class="font-bold text-base mb-2 text-white">STM32F4 & FreeRTOS Tabanlı Uçuş Kontrol Kartı</h3>
+                            <p class="text-xs text-slate-300">Savunma sanayii projeleri için geliştirilen bu sistemde gerçek zamanlı görev yönetim testleri tamamlandı.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -119,27 +122,13 @@
                         <i class="fa-solid fa-briefcase text-red-400 mr-2"></i> <span data-tr="Staj & Deneyimler" data-en="Internships & Experience">Staj & Deneyimler</span>
                     </h2>
                     <div id="staj-list" class="space-y-4">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Yarışmalar -->
-                <section class="space-y-6">
-                    <h2 class="text-xl font-bold flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-trophy text-red-400 mr-2"></i> <span data-tr="Yarışmalar & Başarılar" data-en="Competitions & Achievements">Yarışmalar & Başarılar</span>
-                    </h2>
-                    <div id="yarismalar-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- İletişim Kutusu -->
-                <section id="iletisim" class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h2 class="text-xl font-bold mb-2 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-paper-plane text-red-400 mr-2"></i> <span data-tr="İletişim Kutusu" data-en="Contact Box">İletişim Kutusu</span>
-                    </h2>
-                    <div id="iletisim-list" class="space-y-3 mt-4">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                        <div class="p-4 rounded-2xl border card-theme" style="background-color: #1e293b; border-color: #334155;">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-sm text-white">Savunma Sanayii / Ar-Ge Stajı</span>
+                                <span class="text-red-500 font-mono text-xs">2026</span>
+                            </div>
+                            <div class="text-xs text-slate-300">Gömülü sistemler ve mikrodenetleyici birimleri üzerine çalışmalar.</div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -151,8 +140,10 @@
                     <h3 class="text-base font-bold mb-3 flex items-center title-theme" style="color: #ffffff;">
                         <i class="fa-solid fa-terminal text-red-400 mr-2"></i> <span data-tr="Laboratuvar Günlüğü" data-en="Laboratory Log">Laboratuvar Günlüğü</span>
                     </h3>
-                    <div id="gunluk-list" class="space-y-3">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                    <div id="gunluk-list" class="space-y-3 font-mono text-xs">
+                        <div class="p-3 rounded-xl border border-slate-700 bg-slate-900 text-slate-200">
+                            <span class="text-red-500">&gt;</span> Bugün STM32F4 işlemci üzerinde UART haberleşme protokolü ile kesme (interrupt) tabanlı veri alım testleri başarıyla gerçekleştirildi.
+                        </div>
                     </div>
                 </section>
 
@@ -161,8 +152,11 @@
                     <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
                         <i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> <span data-tr="Akademik Ders Notları" data-en="Academic Lecture Notes">Akademik Ders Notları</span>
                     </h3>
-                    <div id="notlar-list" class="space-y-3">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                    <div id="notlar-list" class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between p-3 rounded-xl border border-slate-700 bg-slate-900/60">
+                            <span class="text-white"><i class="fa-solid fa-file-lines text-red-500 mr-2"></i>Mikroişlemciler ve Gömülü Sistemler</span>
+                            <a href="#" class="px-2.5 py-1 rounded-lg bg-red-600/20 text-red-500 hover:bg-red-600 hover:text-white font-semibold">İncele</a>
+                        </div>
                     </div>
                 </section>
 
@@ -171,8 +165,11 @@
                     <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
                         <i class="fa-solid fa-certificate text-amber-400 mr-2"></i> <span data-tr="Sertifikalar & Belgeler" data-en="Certificates & Documents">Sertifikalar & Belgeler</span>
                     </h3>
-                    <div id="sertifikalar-list" class="space-y-3">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                    <div id="sertifikalar-list" class="space-y-3 text-xs">
+                        <div class="p-3 rounded-xl border border-slate-700 bg-slate-900/60">
+                            <div class="font-bold mb-1 text-white">Gömülü Yazılım Eğitimi Sertifikası</div>
+                            <div class="text-slate-400">STM32 & ARM Cortex-M</div>
+                        </div>
                     </div>
                 </section>
 
@@ -181,68 +178,11 @@
                     <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
                         <i class="fa-solid fa-microchip text-red-400 mr-2"></i> <span data-tr="Teknik Yetkinlikler" data-en="Technical Competencies">Teknik Yetkinlikler</span>
                     </h3>
-                    <div id="yetkinlikler-list" class="flex flex-wrap gap-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Donanım -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-laptop-code text-blue-400 mr-2"></i> <span data-tr="Donanım & Setup" data-en="Hardware & Setup">Donanım & Setup</span>
-                    </h3>
-                    <div id="donanim-list" class="space-y-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Yabancı Dil -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-language text-red-400 mr-2"></i> <span data-tr="Yabancı Dil & Eğitim" data-en="Foreign Languages & Education">Yabancı Dil & Eğitim</span>
-                    </h3>
-                    <div id="dil-list" class="space-y-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Kulüpler -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-users text-blue-400 mr-2"></i> <span data-tr="Kulüpler & Faaliyetler" data-en="Clubs & Activities">Kulüpler & Faaliyetler</span>
-                    </h3>
-                    <div id="kulup-list" class="space-y-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Kitaplar -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-book text-red-400 mr-2"></i> <span data-tr="Kitaplar & Kaynaklar" data-en="Books & Resources">Kitaplar & Kaynaklar</span>
-                    </h3>
-                    <div id="kitap-list" class="space-y-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- Hobiler -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-heart text-red-400 mr-2"></i> <span data-tr="Hobiler & İlgi Alanları" data-en="Hobbies & Interests">Hobiler & İlgi Alanları</span>
-                    </h3>
-                    <div id="hobi-list" class="flex flex-wrap gap-2">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
-                    </div>
-                </section>
-
-                <!-- FAQ -->
-                <section class="rounded-3xl border p-6 card-theme" style="background-color: #1e293b; border-color: #334155;">
-                    <h3 class="text-base font-bold mb-4 flex items-center title-theme" style="color: #ffffff;">
-                        <i class="fa-solid fa-circle-question text-blue-400 mr-2"></i> <span data-tr="Sık Sorulan Sorular" data-en="Frequently Asked Questions">Sık Sorulan Sorular</span>
-                    </h3>
-                    <div id="faq-list" class="space-y-3">
-                        <p class="text-xs text-slate-400">Yükleniyor...</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-900 text-white">C / C++ <span class="text-red-500">(İleri)</span></span>
+                        <span class="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-900 text-white">STM32 HAL <span class="text-red-500">(İleri)</span></span>
+                        <span class="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-900 text-white">FreeRTOS <span class="text-red-500">(Orta)</span></span>
+                        <span class="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-900 text-white">UART / SPI / I2C <span class="text-red-500">(İleri)</span></span>
                     </div>
                 </section>
             </div>
@@ -258,12 +198,12 @@
                 <a href="https://twitter.com/murtzeng" target="_blank" class="hover:text-red-500 transition-colors" title="X (murtzeng)"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://linkedin.com/in/murtzeng" target="_blank" class="hover:text-red-500 transition-colors" title="LinkedIn (murtzeng)"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://github.com/murtzeng" target="_blank" class="hover:text-red-500 transition-colors" title="GitHub (murtzeng)"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:iletişim@murtzeng.com" class="hover:text-red-500 transition-colors" title="E-Posta"><i class="fa-solid fa-envelope"></i></a>
+                <a href="mailto:iletisim@murtzeng.com" class="hover:text-red-500 transition-colors" title="E-Posta"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Engine -->
+    <!-- JavaScript Motoru -->
     <script>
         const textToType = "Murtaza Can Bilgin | Gömülü Sistemler & Aviyonik Yazılım";
         let charIndex = 0;
@@ -285,7 +225,6 @@
             const themeIcon = document.getElementById("theme-icon");
             const cards = document.querySelectorAll(".card-theme");
             const titles = document.querySelectorAll(".title-theme");
-            const descs = document.querySelectorAll(".desc-theme");
             const navLinks = document.querySelectorAll(".nav-link-theme");
             const headerSub = document.getElementById("header-subtitle");
 
@@ -305,7 +244,6 @@
                     card.style.borderColor = "#334155";
                 });
                 titles.forEach(t => t.style.color = "#ffffff");
-                descs.forEach(d => d.style.color = "#cbd5e1");
                 navLinks.forEach(n => n.style.color = "#e2e8f0");
             } else {
                 body.style.backgroundColor = "#f8fafc";
@@ -323,7 +261,6 @@
                     card.style.borderColor = "#cbd5e1";
                 });
                 titles.forEach(t => t.style.color = "#0f172a");
-                descs.forEach(d => d.style.color = "#475569");
                 navLinks.forEach(n => n.style.color = "#334155");
             }
         }
@@ -342,209 +279,11 @@
             "\"Hiç bilenlerle bilmeyenler bir olur mu?\" (Zümer Suresi, 9)",
             "\"Ameller niyetlere göredir.\" (Hadis-i Şerif)",
             "\"İnsana çalışmasından başka bir şey yoktur.\" (NecM Suresi, 39)",
-            "\"Hikmet müminin kaybolduğu malıdır, nerede bulursa onu alır.\" (Hadis-i Şerif)",
-            "\"İki günü bir olan ziyandadır.\" (Hadis-i Şerif)",
-            "\"Kardeşine tebessüm etmen bir sadakadır.\" (Hadis-i Şerif)"
+            "\"Hikmet müminin kaybolduğu malıdır, nerede bulursa onu alır.\" (Hadis-i Şerif)"
         ];
         document.getElementById('ayet-hadis-content').innerHTML = `
             <i class="fa-solid fa-quote-left text-red-500 text-sm mr-2"></i> ${ayetHadisHavuzu[new Date().getDate() % ayetHadisHavuzu.length]}
         `;
-
-        const csvUrls = {
-            gonderiler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqKhLxPKTJVka9hNWkRWyBM0O8bpZu5TmbCe4zwwp0CyTdXJ0qllwLquf9XWtWs9DthyAUHNtxiCK/pub?output=csv",
-            notlar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSymmcvUIJYEPpQ9Oawtar1Yq0iNAMjpIhnAM3XX2khAkVycc0OHT-Eioa8eFNVgzgTkFhPFzPbHP4G/pub?output=csv",
-            sertifikalar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTEQYVDGUqTRd-c43G1-bkwRBOhdND0bjwYXHciqVPZpQ0mBuXogWEsUX1iS9JrPSQQcXbWGQV_Ok53/pub?output=csv",
-            gunluk: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOvW0Z_UX5xOUvzAWCrZ5VSkyVcRcO_s4_N5OCYDLnTjlCaNrh9lIzI2uw7F8_ekp-pPRqzcFPWFLH/pub?output=csv",
-            yetkinlikler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0RBF92jgah8OdrMXaL0T8PEdUe6PFYf5Liuq_o2SKz5iumlgRGVn_ty4_1FpYO-1_g78ScmkeKDJF/pub?output=csv",
-            staj: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxspwklttsG2cieUhRNSjDljf5_ErGZgcSjuHNKNPdjhHHqQystqZfQJZSuINaTP56qCXp5UNPg2hr/pub?output=csv",
-            kitaplar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR_WwTtzH07QytMtR8AtnIP4_lVOMDxfvcAaDV3njvFOi1j4y4FXxDUOmK2UiZ7uV8MHQG_Be-F8vns/pub?output=csv",
-            hobiler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTferOB3e45aN0o22ZTg-65FrZ6r3Z0vkf9FXDm_tPR2eD1QkUd7SVNkcTJphYj4wBtaCP6sIqydU4u/pub?output=csv",
-            vizyon: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgxyZG6EXxItpfErqSReJptvp_oaQPANsG9iYP9ARdWzG1vXTJV3mN53mtWNOPFRGtg2UdjRQZ6Esu/pub?output=csv",
-            iletisim: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTSlZHyaANQrZwu7Vv3JDoYjVm-amj-HZr-4zDOk5OTcMRe8L1braKEJdrDdvWh1EkQwv_enTBb6oaW/pub?output=csv",
-            yarismalar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbtC4upt5A-g4fEAljOZa1v7JwZcPxyLEQo7l2WWFmBnX4cB-SUF6R_37msWpgtcJbiKsTcmj4nrI5/pub?output=csv",
-            donanim: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMAEu9537k0APq541Ta8nidpAdX-K3W-6hq7YMgWB68LwsAD-NuvIlxn7WGaWd3EiyVETf89gS0PeI/pub?output=csv",
-            dil: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdTK_viLk0eWD0sfcPv3X6Alb8FRIpNnagh2JTDvs9rB7wV6IBC5SCQh9I8VSpWsmP8lvD0ibdQp_d/pub?output=csv",
-            kulupler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ2vZpsaZaJK-Dc8LMx2ntohNwptZ3V23TV2mLSpkxJ2BFcPuXVHmcp3MS68KgvQH4gZ_i4Y33ZL49/pub?output=csv",
-            faq: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgRJg94a3dWM5KpvRpxSDcJlc8ZSH2SZdcPjwOEYCPMPRyPtfp3u0OAO9WlhIruo02K0FkM7IYeRCs/pub?output=csv"
-        };
-
-        function fetchCSV(url, callback) {
-            Papa.parse(url, {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                complete: function(results) { callback(results.data); }
-            });
-        }
-
-        function getTextColorStyle() {
-            return isDarkMode ? 'color: #ffffff;' : 'color: #0f172a;';
-        }
-        function getDescColorStyle() {
-            return isDarkMode ? 'color: #cbd5e1;' : 'color: #475569;';
-        }
-
-        fetchCSV(csvUrls.gonderiler, (data) => {
-            const el = document.getElementById('gonderiler-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Gönderi yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="rounded-2xl border p-5 card-theme" style="background-color: ${isDarkMode ? '#1e293b' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    ${i['Fotoğraf Linki'] ? `<img src="${i['Fotoğraf Linki']}" class="rounded-xl h-40 w-full object-cover mb-4">` : ''}
-                    <h3 class="font-bold text-base mb-2" style="${getTextColorStyle()}">${i['Gönderi Başlığı'] || ''}</h3>
-                    <p class="text-xs" style="${getDescColorStyle()}">${i['Açıklama / Detay'] || ''}</p>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.notlar, (data) => {
-            const el = document.getElementById('notlar-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Not yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="flex items-center justify-between p-3 rounded-xl border text-xs card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span style="${getTextColorStyle()}"><i class="fa-solid fa-file-lines text-red-500 mr-2"></i>${i['Dersin Adı'] || ''}</span>
-                    <a href="${i['PDF / Dosya Linki'] || '#'}" target="_blank" class="px-2.5 py-1 rounded-lg bg-red-600/20 text-red-500 hover:bg-red-600 hover:text-white font-semibold">İncele</a>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.sertifikalar, (data) => {
-            const el = document.getElementById('sertifikalar-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Sertifika yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="p-3 rounded-xl border text-xs card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <div class="font-bold mb-1" style="${getTextColorStyle()}">${i['Sertifika veya Başarı Adı'] || ''}</div>
-                    <div class="mb-2" style="${getDescColorStyle()}">${i['Kurum / Açıklama'] || ''}</div>
-                    ${i['Belge / PDF Linki'] ? `<a href="${i['Belge / PDF Linki']}" target="_blank" class="text-red-500 font-mono">Görüntüle &rarr;</a>` : ''}
-                </div>
-            `).join('');
-        });
-
-        // Ar-Ge Günlüğü Veri Çekme Motoru (Güvenli Kontrol)
-        fetchCSV(csvUrls.gunluk, (data) => {
-            const el = document.getElementById('gunluk-list');
-            if(!data || !data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Günlük kayıt yok.</p>'; return; }
-            el.innerHTML = data.slice(-3).reverse().map(i => {
-                const notMetni = i['Bugün Ne Yaptım? / Kısa Durumlar'] || Object.values(i)[1] || 'Kayıt eklendi.';
-                return `
-                    <div class="p-3 rounded-xl border text-xs font-mono card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'}; ${getTextColorStyle()}">
-                        <span class="text-red-500">&gt;</span> ${notMetni}
-                    </div>
-                `;
-            }).join('');
-        });
-
-        fetchCSV(csvUrls.yetkinlikler, (data) => {
-            const el = document.getElementById('yetkinlikler-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Yetkinlik yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <span class="px-3 py-1.5 rounded-xl text-xs font-mono border card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'}; ${getTextColorStyle()}">
-                    ${i['Yetenek / Araç Adı'] || ''} <span class="text-red-500 text-[10px]">(${i['Seviye / Açıklama'] || ''})</span>
-                </span>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.staj, (data) => {
-            const el = document.getElementById('staj-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Deneyim yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="p-4 rounded-2xl border text-xs card-theme" style="background-color: ${isDarkMode ? '#1e293b' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-sm" style="${getTextColorStyle()}">${i['Kurum / Şirket Adı'] || ''}</span>
-                        <span class="text-red-500 font-mono">${i['Dönem / Tarih'] || ''}</span>
-                    </div>
-                    <div style="${getDescColorStyle()}">${i['Pozisyon / Görev'] || ''}</div>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.kitaplar, (data) => {
-            const el = document.getElementById('kitap-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Kaynak yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="p-2.5 rounded-xl border text-xs card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span class="font-bold" style="${getTextColorStyle()}">${i['Eser / Makale Adı'] || ''}</span>
-                    <span class="block text-[11px]" style="${getDescColorStyle()}">${i['Yazar / Kaynak'] || ''}</span>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.hobiler, (data) => {
-            const el = document.getElementById('hobi-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Hobi yok.</p>'; return; }
-            el.innerHTML = data.map(i => `<span class="px-2.5 py-1 rounded-lg text-xs border card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'}; ${getTextColorStyle()}">${i['Hobi / İlgi Alanı'] || ''}</span>`).join('');
-        });
-
-        fetchCSV(csvUrls.vizyon, (data) => {
-            if(data.length && data[0]['Hedef / Vizyon Başlığı']) {
-                document.getElementById('vizyon-container').innerText = data[0]['Hedef / Vizyon Başlığı'];
-            }
-        });
-
-        fetchCSV(csvUrls.iletisim, (data) => {
-            const el = document.getElementById('iletisim-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Mesaj yok.</p>'; return; }
-            el.innerHTML = data.slice(-3).map(i => `
-                <div class="p-3 rounded-xl border text-xs card-theme" style="background-color: ${isDarkMode ? '#0f172a' : '#f1f5f9'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span class="font-bold" style="${getTextColorStyle()}">${i['Ad Soyad / Gönderen'] || 'Misafir'}</span>: 
-                    <span style="${getDescColorStyle()}">${i['Mesajınız'] || ''}</span>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.yarismalar, (data) => {
-            const el = document.getElementById('yarismalar-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Yarışma yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="p-4 rounded-2xl border text-xs card-theme" style="background-color: ${isDarkMode ? '#1e293b' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <div class="font-bold mb-1" style="${getTextColorStyle()}"><i class="fa-solid fa-medal text-amber-500 mr-2"></i>${i['Yarışma / Hackathon Adı'] || ''}</div>
-                    <div class="text-red-500 font-mono">${i['Derece / Durum'] || ''}</div>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.donanim, (data) => {
-            const el = document.getElementById('donanim-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Donanım yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="flex justify-between items-center p-2 rounded-lg text-xs border card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span style="${getTextColorStyle()}">${i['Donanım / Ekipman Adı'] || ''}</span>
-                    <span class="text-red-500 text-[10px] font-mono">${i['Kategori / Açıklama'] || ''}</span>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.dil, (data) => {
-            const el = document.getElementById('dil-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Dil bilgisi yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="flex justify-between items-center p-2 rounded-lg text-xs border card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span style="${getTextColorStyle()}">${i['Dil / Eğitim Adı'] || ''}</span>
-                    <span class="text-red-500 font-mono font-bold">${i['Seviye / Durum'] || ''}</span>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.kulupler, (data) => {
-            const el = document.getElementById('kulup-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Kulüp yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="flex justify-between items-center p-2 rounded-lg text-xs border card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <span style="${getTextColorStyle()}">${i['Kulüp / Faaliyet Adı'] || ''}</span>
-                    <span style="${getDescColorStyle()} text-[10px]">${i['Rol / Durum'] || ''}</span>
-                </div>
-            `).join('');
-        });
-
-        fetchCSV(csvUrls.faq, (data) => {
-            const el = document.getElementById('faq-list');
-            if(!data.length) { el.innerHTML = '<p class="text-xs text-slate-400">Soru yok.</p>'; return; }
-            el.innerHTML = data.map(i => `
-                <div class="p-3 rounded-xl border text-xs card-theme" style="background-color: ${isDarkMode ? 'rgba(15, 23, 42, 0.6)' : '#ffffff'}; border-color: ${isDarkMode ? '#334155' : '#cbd5e1'};">
-                    <div class="font-bold mb-1" style="${getTextColorStyle()}">S: ${i['Soru'] || ''}</div>
-                    <div style="${getDescColorStyle()}">C: ${i['Cevap'] || ''}</div>
-                </div>
-            `).join('');
-        });
     </script>
 </body>
 </html>
