@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MURTZENG AVIONICS - GAÜN Bordo & Lacivert Tema (Mobil Uyumlu)
+   MURTZENG AVIONICS - Bordo & Lacivert Kurumsal Tema (Mobil Uyumlu)
    ========================================================================== */
 
 :root {
@@ -60,14 +60,8 @@ body.gaun-theme {
 }
 
 @keyframes pulseGlow {
-    0% {
-        transform: scale(0.92);
-        box-shadow: 0 0 10px rgba(179, 18, 23, 0.6);
-    }
-    100% {
-        transform: scale(1.05);
-        box-shadow: 0 0 22px rgba(0, 255, 102, 0.8);
-    }
+    0% { transform: scale(0.92); box-shadow: 0 0 10px rgba(179, 18, 23, 0.6); }
+    100% { transform: scale(1.05); box-shadow: 0 0 22px rgba(0, 255, 102, 0.8); }
 }
 
 .load-progress-bar {
@@ -120,18 +114,24 @@ body.gaun-theme {
 .gaun-banner-card p { color: var(--text-gray); font-size: 0.88rem; line-height: 1.5; margin-bottom: 15px; }
 
 .banner-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn-gaun-red, .btn-gaun-blue {
-    padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; color: #fff;
+.btn-gaun-red, .btn-gaun-blue, .btn-gaun-dark {
+    padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; color: #fff; display: inline-flex; align-items: center; gap: 6px;
 }
 .btn-gaun-red { background: var(--gaun-bordo); }
 .btn-gaun-blue { background: var(--gaun-blue); }
+.btn-gaun-dark { background: #24292e; border: 1px solid #444; }
 
-/* PORTAL GRID (MOBİL UYUMLU) */
-.portal-grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
-
-@media (min-width: 850px) {
-    .portal-grid-3 { grid-template-columns: 2fr 1fr; }
+/* TEKNİK YETKİNLİKLER ROZETLERİ */
+.skills-badges-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tag {
+    background: rgba(11, 67, 117, 0.3); border: 1px solid var(--gaun-blue);
+    color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+    display: inline-flex; align-items: center; gap: 6px;
 }
+
+/* PORTAL GRID */
+.portal-grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 850px) { .portal-grid-3 { grid-template-columns: 2fr 1fr; } }
 
 .portal-box { background: var(--card-dark); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; }
 
@@ -142,27 +142,23 @@ body.gaun-theme {
 .loading-posts-text { color: var(--green-accent); font-size: 0.88rem; padding: 10px; }
 
 .post-card { display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); }
-
-@media (min-width: 500px) {
-    .post-card { flex-direction: row; }
-}
+@media (min-width: 500px) { .post-card { flex-direction: row; } }
 
 .post-img-frame { width: 100%; height: 140px; overflow: hidden; border-radius: 4px; flex-shrink: 0; }
-
-@media (min-width: 500px) {
-    .post-img-frame { width: 130px; height: 90px; }
-}
-
+@media (min-width: 500px) { .post-img-frame { width: 130px; height: 90px; } }
 .post-img-frame img { width: 100%; height: 100%; object-fit: cover; }
 .post-content h4 { color: #fff; font-size: 0.9rem; margin: 4px 0; }
 .post-content p { color: var(--text-gray); font-size: 0.8rem; line-height: 1.4; }
 .post-date { font-size: 0.7rem; color: var(--gaun-bordo); font-weight: bold; }
-.read-link { color: var(--green-accent); text-decoration: none; font-size: 0.78rem; font-weight: bold; display: inline-block; margin-top: 6px; }
 
-.verse-widget { text-align: center; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 6px; }
-.arabic-quote { font-family: 'Traditional Arabic', serif; font-size: 1.4rem; color: var(--green-accent); }
-.tr-quote { font-size: 0.82rem; margin: 6px 0; color: #fff; }
-.quote-ref { font-size: 0.72rem; color: var(--text-gray); font-style: italic; }
+/* AKADEMİK NOTLAR LİSTESİ */
+.notes-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.notes-list li a {
+    color: var(--text-white); background: rgba(0,0,0,0.3); padding: 10px 12px; border-radius: 4px;
+    text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
+}
+.notes-list li a:hover { background: rgba(179, 18, 23, 0.2); border-color: var(--gaun-bordo); color: var(--green-accent); }
 
 .quick-status-box { background: rgba(11, 67, 117, 0.3); border-left: 3px solid var(--gaun-blue); padding: 10px; border-radius: 4px; font-size: 0.82rem; }
 .status-user { color: var(--green-accent); margin-bottom: 4px; }
@@ -172,17 +168,13 @@ body.gaun-theme {
 .gaun-footer { background: var(--gaun-lacivert); border-top: 4px solid var(--gaun-bordo); padding: 25px 15px; text-align: center; margin-top: 40px; }
 .footer-logo { font-size: 1.1rem; font-weight: 900; color: #fff; margin-bottom: 5px; }
 
-.social-icons-only {
-    display: flex; justify-content: center; gap: 15px; margin: 20px 0 15px;
-}
-
+.social-icons-only { display: flex; justify-content: center; gap: 15px; margin: 20px 0 15px; }
 .icon-circle {
     width: 44px; height: 44px; border-radius: 50%;
     background: rgba(3, 29, 56, 0.8); border: 2px solid rgba(255, 255, 255, 0.15);
     color: #ffffff; display: flex; justify-content: center; align-items: center;
     font-size: 1.2rem; text-decoration: none; transition: all 0.3s;
 }
-
 .icon-circle:hover { transform: translateY(-4px) scale(1.08); }
 .icon-circle.linkedin:hover { background: #0077b5; border-color: #0077b5; box-shadow: 0 0 15px rgba(0, 119, 181, 0.8); }
 .icon-circle.x-twitter:hover { background: #000000; border-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
