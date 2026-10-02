@@ -51,7 +51,7 @@
         <nav class="gaun-main-nav">
             <ul>
                 <li class="active"><a href="#"><i class="fa-solid fa-house"></i> ANA SAYFA</a></li>
-                <li><a href="#projects">PROJELER & YAYINLAR</a></li>
+                <li><a href="#projects">PROJELER & GÖNDERİLER</a></li>
                 <li><a href="#skills">YETKİNLİKLER</a></li>
                 <li><a href="#notes">AKADEMİK NOTLAR</a></li>
                 <li><a href="#social">AR-GE GÜNLÜĞÜ</a></li>
@@ -72,7 +72,7 @@
                 SİHA uçuş kontrol bilgisayarları ve CAN-Bus aviyonik haberleşme araştırma projeleri.
             </p>
             <div class="banner-actions">
-                <a href="#projects" class="btn-gaun-red"><i class="fa-solid fa-rocket"></i> Son Projelerim</a>
+                <a href="#projects" class="btn-gaun-red"><i class="fa-solid fa-rocket"></i> Gönderilerim</a>
                 <a href="cv.pdf" target="_blank" class="btn-gaun-blue"><i class="fa-solid fa-file-arrow-down"></i> CV İndir (PDF)</a>
                 <a href="https://github.com/murtzeng" target="_blank" class="btn-gaun-dark"><i class="fa-brands fa-github"></i> GitHub Profilim</a>
             </div>
@@ -97,13 +97,13 @@
         <!-- DİNAMİK PORTAL AKIŞI -->
         <div class="portal-grid-3">
             
-            <!-- SOL: GOOGLE FORMDAN GELEN CANLI PROJELER -->
+            <!-- SOL: GOOGLE FORMDAN GELEN LİNKEDİN TARZI CANLI GÖNDERİLER -->
             <section class="portal-box" id="projects">
                 <div class="box-header header-red">
-                    <h3><i class="fa-solid fa-bullhorn"></i> CANLI PROJELERİM & PAYLAŞIMLAR</h3>
+                    <h3><i class="fa-solid fa-bullhorn"></i> CANLI PROJE AKIŞI & GÖNDERİLER</h3>
                 </div>
                 <div class="post-cards-list" id="dynamicPostsList">
-                    <p class="loading-posts-text"><i class="fa-solid fa-spinner fa-spin"></i> Paylaşımlar yükleniyor...</p>
+                    <p class="loading-posts-text"><i class="fa-solid fa-spinner fa-spin"></i> Gönderiler yükleniyor...</p>
                 </div>
             </section>
 
@@ -112,10 +112,9 @@
                 <div class="box-header header-navy">
                     <h3><i class="fa-solid fa-book-bookmark"></i> AKADEMİK DERS NOTLARI</h3>
                 </div>
-                <ul class="notes-list">
-                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Devre Teorisi Özetleri (PDF)</a></li>
-                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Sinyal ve Sistemler Notları</a></li>
-                    <li><a href="#"><i class="fa-solid fa-file-pdf"></i> Mikrodenetleyiciler & Lab Rehberi</a></li>
+                <!-- Google Form'dan otomatik dolacak ders notları listesi -->
+                <ul class="notes-list" id="dynamicNotesList">
+                    <li style="color: var(--text-gray); font-size: 0.82rem; padding: 5px;">Notlar yükleniyor...</li>
                 </ul>
 
                 <div class="box-header header-navy" style="margin-top: 25px;" id="social">
