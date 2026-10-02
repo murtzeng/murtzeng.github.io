@@ -15,19 +15,11 @@
             <h3 class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h3>
             <h2 class="greeting-text">Selamünaleyküm</h2>
             
-            <!-- ŞİŞİP KÜÇÜLEN LOGO -->
             <div class="pulse-logo-box">
-                <svg class="pulse-logo" viewBox="0 0 200 200" width="120" height="120">
-                    <circle cx="100" cy="100" r="80" fill="#031d38" stroke="#b31217" stroke-width="4"/>
-                    <g transform="translate(50, 50) scale(0.5)">
-                        <path d="M50 10 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#ffffff" stroke-width="4"/>
-                        <path d="M50 20 A20 20 0 1 0 50 60 A15 15 0 1 1 50 20 Z" fill="#b31217"/>
-                        <path d="M50 10 L58 35 L42 35 Z" fill="#00ff66"/>
-                    </g>
-                </svg>
+                <img src="logo.jpg" alt="MURTZENG Logo" class="pulse-img-logo">
             </div>
             <div class="load-progress-bar"><div id="loadFill"></div></div>
-            <p class="loader-sub">Murtzeng Aviyonik Portalı Hazırlanıyor...</p>
+            <p class="loader-sub">Murtzeng Aviyonik Portalı Yükleniyor...</p>
         </div>
     </div>
 
@@ -47,14 +39,7 @@
 
         <div class="header-branding">
             <div class="pulse-logo-box-small">
-                <svg class="pulse-logo-sm" viewBox="0 0 200 200" width="70" height="70">
-                    <circle cx="100" cy="100" r="85" fill="#031d38" stroke="#b31217" stroke-width="5"/>
-                    <g transform="translate(50, 50) scale(0.5)">
-                        <path d="M50 10 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#ffffff" stroke-width="5"/>
-                        <path d="M50 20 A20 20 0 1 0 50 60 A15 15 0 1 1 50 20 Z" fill="#b31217"/>
-                        <path d="M50 10 L58 35 L42 35 Z" fill="#00ff66"/>
-                    </g>
-                </svg>
+                <img src="logo.jpg" alt="MURTZENG Logo" class="header-img-logo">
             </div>
             <div class="brand-text">
                 <h1 class="glow-text">MURTZENG AVIONICS SYSTEMS</h1>
@@ -65,8 +50,8 @@
         <nav class="gaun-main-nav">
             <ul>
                 <li class="active"><a href="#"><i class="fa-solid fa-house"></i> ANA SAYFA</a></li>
-                <li><a href="#projects">PROJELERİM & AR-GE</a></li>
-                <li><a href="#social">AKIŞ & AR-GE GÜNLÜĞÜ</a></li>
+                <li><a href="#projects">PROJELERİM & YAYINLAR</a></li>
+                <li><a href="#social">AR-GE GÜNLÜĞÜ</a></li>
                 <li><a href="#contact">İLETİŞİM</a></li>
             </ul>
         </nav>
@@ -76,7 +61,7 @@
     <main class="portal-container">
         
         <!-- HOŞ GELDİN BANNER'I -->
-        <section class="gaun-banner-card">
+        <section class="gaun-banner-card" id="about">
             <div class="banner-badge">MİLLİ TEKNOLOJİ HAMLESİ & HAVA ARAÇLARI ELEKTRONİĞİ</div>
             <h2 class="shimmer-text">Murtaza Can Bilgin — Aviyonik & Gömülü Sistem Portalı</h2>
             <p>
@@ -92,39 +77,18 @@
         <!-- DİNANMİK PORTAL AKIŞI -->
         <div class="portal-grid-3">
             
-            <!-- SOL: SON PROJELER VE PAYLAŞIMLAR -->
+            <!-- SOL: GOOGLE FORMLARDAN GELEN CANLI PROJE/PAYLAŞIM KARTLARI -->
             <section class="portal-box" id="projects">
                 <div class="box-header header-red">
-                    <h3><i class="fa-solid fa-bullhorn"></i> SON PROJELERİM & YAYINLAR</h3>
+                    <h3><i class="fa-solid fa-bullhorn"></i> CANLI PROJELERİM & PAYLAŞIMLAR</h3>
                 </div>
-                <div class="post-cards-list">
-                    <article class="post-card">
-                        <div class="post-img-frame">
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="STM32 Kartı">
-                        </div>
-                        <div class="post-content">
-                            <span class="post-date">02 EKİM 2026</span>
-                            <h4>STM32 ve CAN-Bus Aviyonik Haberleşme Kartı Tasarımı</h4>
-                            <p>SİHA aviyonik sistemleri için tasarladığım yedekli veri otobüsü test kartı laboratuvar ortamında başarıyla çalıştırıldı.</p>
-                            <a href="#" class="read-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-img-frame">
-                            <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933" alt="Roket İtki">
-                        </div>
-                        <div class="post-content">
-                            <span class="post-date">25 EYLÜL 2026</span>
-                            <h4>FreeRTOS Tabanlı Otonom İrtifa Sabitleme Algoritması</h4>
-                            <p>Uçuş kontrol bilgisayarlarında gecikmesiz görev zamanlaması için geliştirilen yazılım modülü dokümante edildi.</p>
-                            <a href="#" class="read-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </article>
+                <div class="post-cards-list" id="dynamicPostsList">
+                    <!-- Google Form verileri buraya otomatik yüklenecek -->
+                    <p class="loading-posts-text"><i class="fa-solid fa-spinner fa-spin"></i> Paylaşımlar yükleniyor...</p>
                 </div>
             </section>
 
-            <!-- SAĞ 1: AR-GE DÜŞÜNCE AKIŞI & MANEVİ İÇERİK -->
+            <!-- SAĞ: AR-GE DÜŞÜNCE AKIŞI & MANEVİ İÇERİK -->
             <section class="portal-box" id="social">
                 <div class="box-header header-navy">
                     <h3><i class="fa-solid fa-book-quran"></i> GÜNÜN HİKMETİ & AYET</h3>
@@ -140,7 +104,7 @@
                 </div>
                 <div class="quick-status-box">
                     <div class="status-user"><strong>murtzeng</strong> <span>(Murtaza Can Bilgin)</span></div>
-                    <p>"Bugün labda STM32 UART kesmelerini FreeRTOS semaforlarına bağlayarak veri kaybını sıfıra indirdik. Elhamdülillah!"</p>
+                    <p class="status-text" id="liveStatusText">"Google Formlar üzerinden gönderdiğin en son not burada otomatik görünecek."</p>
                 </div>
             </section>
 
