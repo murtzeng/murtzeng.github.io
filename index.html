@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murtzeng | Gömülü Sistemler & Savunma Sanayii Ar-Ge Portalı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome for Icons (X Twitter ikonu düzeltildi) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- PapaParse for CSV reading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- Top Navigation / Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-microchip text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Murtzeng</span>
+                    <span class="block text-xs text-slate-400 font-mono">Gömülü Sistemler Ar-Ge</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#prolab" class="hover:text-cyan-400 transition-colors">Projeler</a>
+                <a href="#notlar" class="hover:text-cyan-400 transition-colors">Ders Notları</a>
+                <a href="#sertifikalar" class="hover:text-cyan-400 transition-colors">Sertifikalar</a>
+                <a href="#staj" class="hover:text-cyan-400 transition-colors">Deneyimler</a>
+                <a href="#iletisim" class="hover:text-cyan-400 transition-colors">İletişim</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                <!-- Güncellenen X (Twitter) Simgesi -->
+                <a href="https://twitter.com" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="X (Twitter)"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Sol & Orta Kolon (Ana İçerikler: Projeler, Stajlar, Yarışmalar vb.) -->
+        <div class="lg:col-span-2 space-y-8">
+            
+            <!-- Hero / Vizyon Banner -->
+            <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 border border-slate-800 p-8 shadow-2xl">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10">
+                    <span class="px-3 py-1 text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-400 rounded-full border border-cyan-500/20 inline-block mb-4">Savunma Sanayii Hedefli Ar-Ge</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Gömülü Sistemler & Aviyonik Yazılım Geliştirme</h1>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6" id="vizyon-container">
+                        Gaziantep Üniversitesi öğrencisi, B1+ İngilizce altyapısı ve STM32/FreeRTOS odaklı projeleriyle savunma sanayiine katkı sunmayı hedefleyen mühendis adayı portfolyosu.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-300">
+                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700"><i class="fa-solid fa-graduation-cap text-cyan-400 mr-2"></i>GAÜN Mühendislik</span>
+                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700"><i class="fa-solid fa-location-dot text-cyan-400 mr-2"></i>Göksun / Gaziantep</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Günlük Ayet ve Hadis Paneli (YENİ EKLENEN) -->
+            <section class="rounded-3xl bg-slate-900/50 border border-slate-800 p-6 backdrop-blur-sm">
+                <h2 class="text-lg font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-book-quran text-cyan-400 mr-2"></i> Günün Ayet & Hadis Paneli
+                </h2>
+                <div id="ayet-hadis-list" class="space-y-4">
+                    <p class="text-xs text-slate-500 animate-pulse">Yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Projeler & Gönderiler Paneli -->
+            <section id="prolab" class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white flex items-center">
+                        <i class="fa-solid fa-code-branch text-cyan-400 mr-2"></i> Projeler & Ar-Ge Akışı
+                    </h2>
+                    <span class="text-xs font-mono text-slate-500">Google Form Senkronize</span>
+                </div>
+                <div id="gonderiler-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <p class="text-xs text-slate-500">Gönderiler yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Staj & Deneyimler Paneli -->
+            <section id="staj" class="space-y-6">
+                <h2 class="text-xl font-bold text-white flex items-center">
+                    <i class="fa-solid fa-briefcase text-cyan-400 mr-2"></i> Staj & Deneyimler
+                </h2>
+                <div id="staj-list" class="space-y-4">
+                    <p class="text-xs text-slate-500">Deneyimler yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Yarışmalar & Hackathonlar Paneli -->
+            <section class="space-y-6">
+                <h2 class="text-xl font-bold text-white flex items-center">
+                    <i class="fa-solid fa-trophy text-cyan-400 mr-2"></i> Yarışmalar & Başarılar
+                </h2>
+                <div id="yarismalar-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <p class="text-xs text-slate-500">Yarışmalar yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- İletişim Formu Paneli -->
+            <section id="iletisim" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h2 class="text-xl font-bold text-white mb-2 flex items-center">
+                    <i class="fa-solid fa-paper-plane text-cyan-400 mr-2"></i> İletişim Kutusu
+                </h2>
+                <p class="text-xs text-slate-400 mb-6">Aşağıdaki paneli kullanarak veya doğrudan form üzerinden bana mesaj gönderebilirsin.</p>
+                <div id="iletisim-list" class="space-y-3">
+                    <p class="text-xs text-slate-500">Mesaj kutusu altyapısı aktif.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sağ Kolon (Ar-Ge Günlüğü, Ders Notları, Sertifikalar, Yetkinlikler vb.) -->
+        <div class="space-y-6">
+            
+            <!-- Anlık Ar-Ge Günlüğü Kutusu -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 px-3 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-mono rounded-bl-xl border-l border-b border-cyan-500/20">CANLI LOG</div>
+                <h3 class="text-base font-bold text-white mb-3 flex items-center">
+                    <i class="fa-solid fa-terminal text-cyan-400 mr-2"></i> Laboratuvar Günlüğü
+                </h3>
+                <div id="gunluk-list" class="space-y-3">
+                    <p class="text-xs text-slate-500">Günlük notları yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Akademik Ders Notları Paneli -->
+            <section id="notlar" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> Akademik Ders Notları
+                </h3>
+                <div id="notlar-list" class="space-y-3">
+                    <p class="text-xs text-slate-500">Notlar yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Sertifikalar Paneli -->
+            <section id="sertifikalar" class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-certificate text-amber-400 mr-2"></i> Sertifikalar & Belgeler
+                </h3>
+                <div id="sertifikalar-list" class="space-y-3">
+                    <p class="text-xs text-slate-500">Sertifikalar yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Teknik Yetkinlikler Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-microchip text-cyan-400 mr-2"></i> Teknik Yetkinlikler
+                </h3>
+                <div id="yetkinlikler-list" class="flex flex-wrap gap-2">
+                    <p class="text-xs text-slate-500">Yetenekler yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Donanım & Setup Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-laptop-code text-cyan-400 mr-2"></i> Donanım & Setup
+                </h3>
+                <div id="donanim-list" class="space-y-2">
+                    <p class="text-xs text-slate-500">Donanımlar yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Yabancı Dil Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-language text-cyan-400 mr-2"></i> Yabancı Dil & Eğitim
+                </h3>
+                <div id="dil-list" class="space-y-2">
+                    <p class="text-xs text-slate-500">Dil bilgileri yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Kulüpler Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-users text-cyan-400 mr-2"></i> Kulüpler & Faaliyetler
+                </h3>
+                <div id="kulup-list" class="space-y-2">
+                    <p class="text-xs text-slate-500">Kulüpler yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Kitaplar & Makaleler Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-book text-cyan-400 mr-2"></i> Kitaplar & Kaynaklar
+                </h3>
+                <div id="kitap-list" class="space-y-2">
+                    <p class="text-xs text-slate-500">Kaynaklar yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- Hobiler Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-heart text-cyan-400 mr-2"></i> Hobiler & İlgi Alanları
+                </h3>
+                <div id="hobi-list" class="flex flex-wrap gap-2">
+                    <p class="text-xs text-slate-500">Hobiler yükleniyor...</p>
+                </div>
+            </section>
+
+            <!-- FAQ Paneli -->
+            <section class="rounded-3xl bg-slate-900 border border-slate-800 p-6">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center">
+                    <i class="fa-solid fa-circle-question text-cyan-400 mr-2"></i> Sık Sorulan Sorular
+                </h3>
+                <div id="faq-list" class="space-y-3">
+                    <p class="text-xs text-slate-500">FAQ yükleniyor...</p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-16 py-8 bg-slate-950 text-center text-xs text-slate-500 font-mono">
+        <p>&copy; 2026 Murtzeng. Tüm hakları saklıdır. Savunma Sanayii Ar-Ge Portalı.</p>
+    </footer>
+
+    <!-- JavaScript Engine for 16 CSV Links -->
+    <script>
+        const csvUrls = {
+            gonderiler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqKhLxPKTJVka9hNWkRWyBM0O8bpZu5TmbCe4zwwp0CyTdXJ0qllwLquf9XWtWs9DthyAUHNtxiCK/pub?output=csv",
+            notlar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSymmcvUIJYEPpQ9Oawtar1Yq0iNAMjpIhnAM3XX2khAkVycc0OHT-Eioa8eFNVgzgTkFhPFzPbHP4G/pub?output=csv",
+            sertifikalar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTEQYVDGUqTRd-c43G1-bkwRBOhdND0bjwYXHciqVPZpQ0mBuXogWEsUX1iS9JrPSQQcXbWGQV_Ok53/pub?output=csv",
+            gunluk: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOvW0Z_UX5xOUvzAWCrZ5VSkyVcRcO_s4_N5OCYDLnTjlCaNrh9lIzI2uw7F8_ekp-pPRqzcFPWFLH/pub?output=csv",
+            yetkinlikler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0RBF92jgah8OdrMXaL0T8PEdUe6PFYf5Liuq_o2SKz5iumlgRGVn_ty4_1FpYO-1_g78ScmkeKDJF/pub?output=csv",
+            staj: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxspwklttsG2cieUhRNSjDljf5_ErGZgcSjuHNKNPdjhHHqQystqZfQJZSuINaTP56qCXp5UNPg2hr/pub?output=csv",
+            kitaplar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR_WwTtzH07QytMtR8AtnIP4_lVOMDxfvcAaDV3njvFOi1j4y4FXxDUOmK2UiZ7uV8MHQG_Be-F8vns/pub?output=csv",
+            hobiler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTferOB3e45aN0o22ZTg-65FrZ6r3Z0vkf9FXDm_tPR2eD1QkUd7SVNkcTJphYj4wBtaCP6sIqydU4u/pub?output=csv",
+            vizyon: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgxyZG6EXxItpfErqSReJptvp_oaQPANsG9iYP9ARdWzG1vXTJV3mN53mtWNOPFRGtg2UdjRQZ6Esu/pub?output=csv",
+            iletisim: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTSlZHyaANQrZwu7Vv3JDoYjVm-amj-HZr-4zDOk5OTcMRe8L1braKEJdrDdvWh1EkQwv_enTBb6oaW/pub?output=csv",
+            yarismalar: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbtC4upt5A-g4fEAljOZa1v7JwZcPxyLEQo7l2WWFmBnX4cB-SUF6R_37msWpgtcJbiKsTcmj4nrI5/pub?output=csv",
+            donanim: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMAEu9537k0APq541Ta8nidpAdX-K3W-6hq7YMgWB68LwsAD-NuvIlxn7WGaWd3EiyVETf89gS0PeI/pub?output=csv",
+            dil: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdTK_viLk0eWD0sfcPv3X6Alb8FRIpNnagh2JTDvs9rB7wV6IBC5SCQh9I8VSpWsmP8lvD0ibdQp_d/pub?output=csv",
+            kulupler: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ2vZpsaZaJK-Dc8LMx2ntohNwptZ3V23TV2mLSpkxJ2BFcPuXVHmcp3MS68KgvQH4gZ_i4Y33ZL49/pub?output=csv",
+            faq: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgRJg94a3dWM5KpvRpxSDcJlc8ZSH2SZdcPjwOEYCPMPRyPtfp3u0OAO9WlhIruo02K0FkM7IYeRCs/pub?output=csv",
+            ayetHadis: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvqKhLxPKTJVka9hNWkRWyBM0O8bpZu5TmbCe4zwwp0CyTdXJ0qllwLquf9XWtWs9DthyAUHNtxiCK/pub?output=csv" // Ekstra panel için eşleme
+        };
+
+        function fetchCSV(url, callback) {
+            Papa.parse(url, {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    callback(results.data);
+                }
+            });
+        }
+
+        // 1. Projeler & Gönderiler
+        fetchCSV(csvUrls.gonderiler, (data) => {
+            const container = document.getElementById('gonderiler-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Henüz gönderi yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="rounded-2xl bg-slate-900 border border-slate-800 p-5 flex flex-col justify-between hover:border-cyan-500/50 transition-colors">
+                    <div>
+                        ${item['Fotoğraf Linki'] ? `<img src="${item['Fotoğraf Linki']}" class="rounded-xl h-40 w-full object-cover mb-4" alt="Proje Görseli">` : ''}
+                        <h3 class="font-bold text-white text-base mb-2">${item['Gönderi Başlığı'] || 'Başlıksız Proje'}</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">${item['Açıklama / Detay'] || ''}</p>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        // 2. Ders Notları
+        fetchCSV(csvUrls.notlar, (data) => {
+            const container = document.getElementById('notlar-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Not bulunamadı.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-xs">
+                    <span class="font-medium text-slate-200"><i class="fa-solid fa-file-lines text-cyan-400 mr-2"></i>${item['Dersin Adı'] || 'Ders Notu'}</span>
+                    <a href="${item['PDF / Dosya Linki'] || '#'}" target="_blank" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 font-semibold transition-colors">İncele</a>
+                </div>
+            `).join('');
+        });
+
+        // 3. Sertifikalar
+        fetchCSV(csvUrls.sertifikalar, (data) => {
+            const container = document.getElementById('sertifikalar-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Sertifika yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-xs">
+                    <div class="font-bold text-white mb-1">${item['Sertifika veya Başarı Adı'] || ''}</div>
+                    <div class="text-slate-400 mb-2">${item['Kurum / Açıklama'] || ''}</div>
+                    ${item['Belge / PDF Linki'] ? `<a href="${item['Belge / PDF Linki']}" target="_blank" class="text-cyan-400 hover:underline font-mono">Belgeyi Görüntüle &rarr;</a>` : ''}
+                </div>
+            `).join('');
+        });
+
+        // 4. Günlük Log
+        fetchCSV(csvUrls.gunluk, (data) => {
+            const container = document.getElementById('gunluk-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Günlük kayıt yok.</p>'; return; }
+            container.innerHTML = data.slice(-3).reverse().map(item => `
+                <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-xs font-mono text-slate-300">
+                    <span class="text-cyan-400">&gt;</span> ${item['Bugün Ne Yaptım? / Kısa Durum Notu'] || ''}
+                </div>
+            `).join('');
+        });
+
+        // 5. Yetkinlikler
+        fetchCSV(csvUrls.yetkinlikler, (data) => {
+            const container = document.getElementById('yetkinlikler-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Yetkinlik yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <span class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-mono border border-slate-700">
+                    ${item['Yetenek / Araç Adı'] || ''} <span class="text-cyan-400 text-[10px]">(${item['Seviye / Açıklama'] || ''})</span>
+                </span>
+            `).join('');
+        });
+
+        // 6. Staj & Deneyimler
+        fetchCSV(csvUrls.staj, (data) => {
+            const container = document.getElementById('staj-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Deneyim yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-xs">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-white text-sm">${item['Kurum / Şirket Adı'] || ''}</span>
+                        <span class="text-cyan-400 font-mono">${item['Dönem / Tarih'] || ''}</span>
+                    </div>
+                    <div class="text-slate-400">${item['Pozisyon / Görev'] || ''}</div>
+                </div>
+            `).join('');
+        });
+
+        // 7. Kitaplar
+        fetchCSV(csvUrls.kitaplar, (data) => {
+            const container = document.getElementById('kitap-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Kayıt yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/30 text-xs">
+                    <span class="font-bold text-white">${item['Eser / Makale Adı'] || ''}</span>
+                    <span class="block text-slate-400 text-[11px]">${item['Yazar / Kaynak'] || ''}</span>
+                </div>
+            `).join('');
+        });
+
+        // 8. Hobiler
+        fetchCSV(csvUrls.hobiler, (data) => {
+            const container = document.getElementById('hobi-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Hobi yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">${item['Hobi / İlgi Alanı'] || ''}</span>
+            `).join('');
+        });
+
+        // 9. Vizyon
+        fetchCSV(csvUrls.vizyon, (data) => {
+            if(data.length && data[0]['Hedef / Vizyon Başlığı']) {
+                document.getElementById('vizyon-container').innerText = data[0]['Hedef / Vizyon Başlığı'];
+            }
+        });
+
+        // 10. İletişim
+        fetchCSV(csvUrls.iletisim, (data) => {
+            const container = document.getElementById('iletisim-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Gelen mesaj yok.</p>'; return; }
+            container.innerHTML = data.slice(-3).map(item => `
+                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                    <span class="font-bold text-white">${item['Ad Soyad / Gönderen'] || 'Misafir'}</span>: 
+                    <span class="text-slate-300">${item['Mesajınız'] || ''}</span>
+                </div>
+            `).join('');
+        });
+
+        // 11. Yarışmalar
+        fetchCSV(csvUrls.yarismalar, (data) => {
+            const container = document.getElementById('yarismalar-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Yarışma yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                    <div class="font-bold text-white mb-1"><i class="fa-solid fa-medal text-amber-400 mr-2"></i>${item['Yarışma / Hackathon Adı'] || ''}</div>
+                    <div class="text-cyan-400 font-mono">${item['Derece / Durum'] || ''}</div>
+                </div>
+            `).join('');
+        });
+
+        // 12. Donanım
+        fetchCSV(csvUrls.donanim, (data) => {
+            const container = document.getElementById('donanim-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Donanım yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
+                    <span class="text-slate-200 font-medium">${item['Donanım / Ekipman Adı'] || ''}</span>
+                    <span class="text-cyan-400 text-[10px] font-mono">${item['Kategori / Açıklama'] || ''}</span>
+                </div>
+            `).join('');
+        });
+
+        // 13. Dil
+        fetchCSV(csvUrls.dil, (data) => {
+            const container = document.getElementById('dil-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Dil bilgisi yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
+                    <span class="text-slate-200">${item['Dil / Eğitim Adı'] || ''}</span>
+                    <span class="text-cyan-400 font-mono font-bold">${item['Seviye / Durum'] || ''}</span>
+                </div>
+            `).join('');
+        });
+
+        // 14. Kulüpler
+        fetchCSV(csvUrls.kulupler, (data) => {
+            const container = document.getElementById('kulup-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Kulüp yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="flex justify-between items-center p-2 rounded-lg bg-slate-800/30 text-xs">
+                    <span class="text-slate-200">${item['Kulüp / Faaliyet Adı'] || ''}</span>
+                    <span class="text-slate-400 text-[10px]">${item['Rol / Durum'] || ''}</span>
+                </div>
+            `).join('');
+        });
+
+        // 15. FAQ
+        fetchCSV(csvUrls.faq, (data) => {
+            const container = document.getElementById('faq-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Soru yok.</p>'; return; }
+            container.innerHTML = data.map(item => `
+                <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/30 text-xs">
+                    <div class="font-bold text-white mb-1">S: ${item['Soru'] || ''}</div>
+                    <div class="text-slate-400">C: ${item['Cevap'] || ''}</div>
+                </div>
+            `).join('');
+        });
+
+        // 16. Ayet & Hadis Paneli
+        fetchCSV(csvUrls.ayetHadis, (data) => {
+            const container = document.getElementById('ayet-hadis-list');
+            if(!data.length) { container.innerHTML = '<p class="text-xs text-slate-500">Günlük içerik yüklenemedi.</p>'; return; }
+            // Son eklenen veriyi günün mesajı olarak alalım
+            const lastItem = data[data.length - 1];
+            container.innerHTML = `
+                <div class="p-4 rounded-2xl bg-cyan-950/20 border border-cyan-500/20 text-xs leading-relaxed text-slate-200 font-mono">
+                    <i class="fa-solid fa-quote-left text-cyan-400 text-sm mr-2"></i>
+                    ${lastItem['Açıklama / Detay'] || lastItem['Gönderi Başlığı'] || 'İlim talep etmek her müslümana farzdır.'}
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
