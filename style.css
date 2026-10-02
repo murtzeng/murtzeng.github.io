@@ -1,392 +1,140 @@
 /* ==========================================================================
-   murtzeng - Main Theme & Electric Style
-   Colors: Turquoise (#00f3ff), Orange (#ff6600), Green (#00ff66), Dark (#0a0a0c)
+   Murtzeng Avionics - GAÜN Kurumsal Mimarisi & Dönel Logo Stilleri
    ========================================================================== */
 
 :root {
-    --bg-dark: #0a0a0c;
-    --card-bg: rgba(18, 22, 31, 0.85);
-    --turquois: #00f3ff;
+    --gaun-navy: #031d38;
+    --gaun-blue: #0b4375;
+    --gaun-red: #b31217;
+    --cyan: #00f3ff;
     --orange: #ff6600;
     --green: #00ff66;
-    --text-color: #e0e6ed;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-light: #f4f6f9;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
 
-body.electric-theme {
-    background-color: var(--bg-dark);
-    color: var(--text-color);
-    font-family: var(--font-main);
-    overflow-x: hidden;
-    min-width: 1200px; /* Bilgisayar odakli geniş görünüm */
-}
+body { background-color: var(--bg-light); color: #2c3e50; }
 
-/* Header & Besmele */
-.main-header {
-    background: linear-gradient(180deg, #020408 0%, var(--bg-dark) 100%);
-    padding: 20px 50px;
-    border-bottom: 2px solid var(--turquois);
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-}
-
-.bismillah {
-    text-align: center;
-    font-size: 1.8rem;
-    color: var(--turquois);
-    font-family: 'Traditional Arabic', serif;
-    text-shadow: 0 0 10px var(--turquois);
-    margin-bottom: 15px;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.brand-name {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-shadow: 0 0 8px var(--orange);
-}
-
-.lang-switch button {
-    background: transparent;
-    border: 1px solid var(--turquois);
-    color: #fff;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-.lang-switch button.active-lang, 
-.lang-switch button:hover {
-    background: var(--turquois);
-    color: var(--bg-dark);
-    box-shadow: 0 0 12px var(--turquois);
-}
-
-/* Günlük Kartlar */
-.daily-cards {
-    display: flex;
-    gap: 20px;
-}
-
-.card {
-    flex: 1;
-    background: var(--card-bg);
-    border: 1px solid rgba(0, 243, 255, 0.2);
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-.icon-turquois { color: var(--turquois); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--turquois)); }
-.icon-orange { color: var(--orange); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--orange)); }
-.icon-green { color: var(--green); font-size: 1.8rem; filter: drop-shadow(0 0 5px var(--green)); }
-
-/* Hero & Video Section */
-.hero-section {
-    position: relative;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.video-container {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-}
-
-.bg-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(10, 10, 12, 0.75);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-.electric-text {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 10px var(--turquois), 0 0 20px var(--green);
-}
-
-/* Kayan Yazı / Ticker */
-.ticker-wrapper {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    border-top: 1px solid var(--green);
-    border-bottom: 1px solid var(--green);
-    z-index: 2;
-    padding: 10px 0;
-    overflow: hidden;
-}
-
-.ticker {
-    display: flex;
-    gap: 50px;
-    white-space: nowrap;
-    animation: ticker-anim 20s linear infinite;
-}
-
-.ticker-item {
-    font-weight: bold;
-    color: var(--green);
-    text-shadow: 0 0 5px var(--green);
-}
-
-@keyframes ticker-anim {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-/* Main Workspace */
-.main-container {
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.section-box {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.electric-border {
-    border: 1px solid var(--turquois);
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
-}
-
-/* Simülasyon */
-.circuit-workspace {
-    display: flex;
-    gap: 30px;
-    margin-top: 20px;
-    align-items: center;
-}
-
-#circuitCanvas {
-    background: #000;
-    border: 2px solid var(--orange);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
-}
-
-.controls {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.controls label {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-}
-
-.output-box {
-    background: #000;
-    padding: 15px;
-    border-radius: 6px;
-    border: 1px solid var(--green);
-    text-align: center;
-}
-
-.highlight-txt {
-    color: var(--green);
-    font-size: 1.4rem;
-    text-shadow: 0 0 8px var(--green);
-}
-
-/* Sözlük */
-.styled-input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: #000;
-    border: 1px solid var(--turquois);
-    color: #fff;
-    border-radius: 6px;
-    outline: none;
-}
-
-.dictionary-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.dict-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 102, 0, 0.3);
-    padding: 15px;
-    border-radius: 6px;
-}
-
-.dict-card h3 { color: var(--orange); margin-bottom: 5px; }
-
-/* AI Asistan (murtzai) */
-.ai-widget {
+/* ---------------- PRELOADER & SELAMÜNALEYKÜM EKRANI ---------------- */
+#preloader {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: var(--gaun-navy);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 99999; color: #fff;
+    transition: opacity 0.6s ease;
 }
 
-.ai-trigger {
-    background: var(--orange);
-    color: #fff;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 30px;
+.loader-content { text-align: center; }
+.greeting-text { font-size: 2.2rem; font-weight: bold; color: var(--cyan); margin-bottom: 20px; text-shadow: 0 0 10px var(--cyan); }
+
+/* Dönel Dairesel Logo Animasyonu */
+.loader-logo-rotating, .spinning-ring-logo {
+    animation: rotateRing 15s linear infinite;
+}
+
+.ring-text {
+    font-size: 10.5px;
     font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--orange);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
+    fill: var(--cyan);
+    letter-spacing: 2.2px;
 }
 
-.ai-chat-box {
-    display: none;
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 350px;
-    height: 450px;
-    background: #080a0f;
-    border: 2px solid var(--turquois);
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,243,255,0.4);
-    flex-direction: column;
-    overflow: hidden;
+@keyframes rotateRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.ai-header {
-    background: var(--turquois);
-    color: #000;
-    padding: 12px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
+.progress-bar-container {
+    width: 280px; height: 6px; background: rgba(255,255,255,0.1);
+    border-radius: 3px; margin: 20px auto 10px; overflow: hidden;
 }
 
-.ai-header button { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
-
-.ai-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.progress-bar {
+    width: 0%; height: 100%; background: var(--orange);
+    box-shadow: 0 0 8px var(--orange); transition: width 0.1s linear;
 }
 
-.msg { padding: 10px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; }
-.ai-msg { background: rgba(0, 243, 255, 0.15); border: 1px solid var(--turquois); align-self: flex-start; }
-.user-msg { background: rgba(255, 102, 0, 0.2); border: 1px solid var(--orange); align-self: flex-end; }
+.loading-sub { font-size: 0.85rem; color: #a0aab5; }
 
-.ai-input-area {
-    display: flex;
-    padding: 10px;
-    background: #000;
-    border-top: 1px solid rgba(255,255,255,0.1);
+/* ---------------- GAÜN HEADER & TEMA ---------------- */
+.gaun-header { background: #fff; border-bottom: 3px solid var(--gaun-navy); }
+
+.top-utility-bar {
+    background: var(--gaun-navy); color: #fff;
+    padding: 6px 40px; display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
 }
 
-.ai-input-area input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #fff;
-    outline: none;
-    padding: 5px;
+.bismillah-text { font-family: 'Traditional Arabic', serif; font-size: 1.1rem; color: var(--cyan); }
+.utility-links { display: flex; gap: 18px; align-items: center; }
+.utility-links a { color: #d0dbe5; text-decoration: none; }
+.utility-links a:hover { color: var(--cyan); }
+
+.lang-toggle button {
+    background: none; border: 1px solid var(--cyan); color: #fff;
+    padding: 2px 6px; border-radius: 3px; cursor: pointer; font-size: 0.75rem;
+}
+.lang-toggle button.active { background: var(--cyan); color: #000; font-weight: bold; }
+
+.main-branding {
+    display: flex; align-items: center; gap: 20px; padding: 15px 40px;
 }
 
-.ai-input-area button {
-    background: var(--turquois);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
+.brand-text-group h1 { font-size: 1.8rem; color: var(--gaun-navy); letter-spacing: 1px; font-weight: 800; }
+.brand-text-group p { font-size: 0.8rem; color: #666; font-weight: 600; }
+
+.gaun-nav { background: var(--gaun-blue); }
+.gaun-nav ul { display: flex; list-style: none; padding-left: 40px; }
+.gaun-nav li a {
+    display: block; padding: 12px 20px; color: #fff; text-decoration: none;
+    font-size: 0.85rem; font-weight: bold; transition: 0.2s;
+}
+.gaun-nav li.active a, .gaun-nav li a:hover { background: var(--gaun-navy); color: var(--cyan); }
+
+/* ---------------- BANNER & GRID ---------------- */
+.banner-section { padding: 25px 40px; }
+.banner-card {
+    background: #fff; border-radius: 6px; display: flex;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #e1e8ed;
 }
 
-/* Footer */
-.main-footer {
-    position: relative;
-    padding: 30px;
-    text-align: center;
-    background: #020408;
-    margin-top: 40px;
+.banner-image {
+    width: 300px; background: var(--gaun-navy); display: flex;
+    justify-content: center; align-items: center; color: var(--cyan); font-size: 5rem;
 }
 
-.electric-line {
-    height: 2px;
-    background: linear-gradient(90deg, var(--turquois), var(--orange), var(--green));
-    box-shadow: 0 0 10px var(--green);
-    margin-bottom: 20px;
-}
+.banner-content { padding: 30px; flex: 1; }
+.badge-tag { background: var(--gaun-red); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; }
+.banner-content h2 { color: var(--gaun-navy); margin: 12px 0; font-size: 1.4rem; }
+.banner-content p { color: #555; font-size: 0.95rem; line-height: 1.6; }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 15px;
-}
+/* Portal Izgarası */
+.portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 40px 40px; }
+.grid-box { background: #fff; border-radius: 6px; border: 1px solid #e1e8ed; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 
-.social-icon {
-    color: #fff;
-    font-size: 1.5rem;
-    transition: transform 0.3s, color 0.3s;
-}
+.box-header { padding-bottom: 10px; margin-bottom: 15px; border-bottom: 2px solid var(--gaun-blue); }
+.box-header.red-border { border-color: var(--gaun-red); }
+.box-header.green-border { border-color: var(--green); }
+.box-header h3 { font-size: 1rem; color: var(--gaun-navy); }
 
-.social-icon:hover {
-    transform: translateY(-5px);
-}
+.news-list { list-style: none; }
+.news-list li { margin-bottom: 12px; font-size: 0.88rem; display: flex; gap: 10px; align-items: center; }
+.news-date { background: #eef3f8; color: var(--gaun-blue); padding: 3px 8px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; }
+.news-list a { color: #333; text-decoration: none; font-weight: 600; }
+.news-list a:hover { color: var(--gaun-red); }
 
-.linkedin:hover { color: #0077b5; filter: drop-shadow(0 0 8px #0077b5); }
-.github:hover { color: #fff; filter: drop-shadow(0 0 8px #fff); }
-.x-twitter:hover { color: #1da1f2; filter: drop-shadow(0 0 8px #1da1f2); }
-.mail:hover { color: var(--orange); filter: drop-shadow(0 0 8px var(--orange)); }
+.mini-calendar { display: flex; flex-direction: column; gap: 10px; }
+.cal-item { padding: 10px; background: #f8fafc; border-left: 4px solid var(--gaun-blue); border-radius: 3px; }
+.cal-day { font-size: 0.75rem; font-weight: bold; color: var(--gaun-blue); }
+.cal-desc { font-size: 0.85rem; font-weight: 600; margin-top: 3px; }
+
+.gaun-btn { background: var(--gaun-navy); color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+.gaun-btn:hover { background: var(--gaun-blue); }
+
+/* ---------------- FOOTER ---------------- */
+.gaun-footer { background: var(--gaun-navy); color: #fff; padding: 30px 40px; text-align: center; border-top: 4px solid var(--gaun-red); }
+.footer-socials { display: flex; justify-content: center; gap: 20px; margin: 15px 0; }
+.footer-socials a { color: var(--cyan); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+.copy-text { font-size: 0.8rem; color: #8a9bb0; }
