@@ -3,11 +3,11 @@
    Author: Murtaza Can Bilgin
    ========================================================================== */
 
-// GOOGLE E-TABLO CSV CANLI VERİ BAĞLANTISI
+// GOOGLE E-TABLO CSV CANLI VERİ BAĞLANTIN
 const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvmjfxgBFbh5aqJdACDmb52I07UcOzLX8ArqdigfrYRtlpFXNWtWXYy4lityCwjOQ0hKI0CHffxpgO/pub?output=csv";
 
 window.addEventListener('load', () => {
-    // Preloader Kontrolü
+    // Preloader (Yükleme Ekranı) Kontrolü
     const loadFill = document.getElementById('loadFill');
     let width = 0;
     
@@ -106,7 +106,7 @@ function renderFallbackPosts() {
             <div class="post-content">
                 <span class="post-date">02 EKİM 2026</span>
                 <h4>STM32 ve CAN-Bus Aviyonik Haberleşme Kartı Tasarımı</h4>
-                <p>SİHA aviyonik sistemleri için tasarladığım yedekli veri otobüsü test kartı laboratuvar ortamında başarıyla çalıştırıldı.</p>
+                <p>Aviyonik sistemler için tasarladığım yedekli veri otobüsü test kartı laboratuvar ortamında başarıyla çalıştırıldı.</p>
             </div>
         </article>
     `;
