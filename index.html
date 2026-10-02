@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>murtzeng | Mühendislik & Teknoloji Portalı</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="electric-theme">
+
+    <!-- Besmele & Header -->
+    <header class="main-header">
+        <div class="bismillah" id="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        
+        <div class="header-content">
+            <!-- Logo: Hilal + M + Roket -->
+            <div class="logo-container">
+                <svg class="murtzeng-logo" viewBox="0 0 100 100" width="60" height="60">
+                    <!-- Hilal -->
+                    <path d="M 50,10 A 40,40 0 1,0 90,50 A 32,32 0 1,1 50,10 Z" fill="#00f3ff"/>
+                    <!-- M Harfi -->
+                    <path d="M 35,65 L 35,40 L 50,55 L 65,40 L 65,65" stroke="#ff6600" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <!-- Roket -->
+                    <path d="M 50,25 L 55,38 L 45,38 Z" fill="#00ff66"/>
+                    <circle cx="50" cy="32" r="2" fill="#050505"/>
+                </svg>
+                <span class="brand-name">murtzeng</span>
+            </div>
+
+            <!-- Dil Değiştirici -->
+            <div class="lang-switch">
+                <button onclick="setLanguage('tr')" id="btn-tr" class="active-lang">TR 🇹🇷</button>
+                <button onclick="setLanguage('en')" id="btn-en">EN 🇬🇧</button>
+            </div>
+        </div>
+
+        <!-- Günlük Ayet ve Hadis -->
+        <div class="daily-cards">
+            <div class="card verse-card">
+                <i class="fa-solid fa-quran icon-turquois"></i>
+                <div>
+                    <h4 id="title-verse">Günün Ayeti</h4>
+                    <p id="content-verse">"Şüphesiz biz her şeyi bir ölçüye göre yarattık." (Kamer, 49)</p>
+                </div>
+            </div>
+            <div class="card hadith-card">
+                <i class="fa-solid fa-book-quran icon-orange"></i>
+                <div>
+                    <h4 id="title-hadith">Günün Hadisi</h4>
+                    <p id="content-hadith">"İki nimet vardır ki insanların çoğu onların kıymetini bilmezler: Sağlık ve boş vakit." (Buhârî)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Savunma Sanayii & SİHA Arka Plan Video -->
+    <section class="hero-section">
+        <div class="video-container">
+            <video autoplay loop muted playsinline class="bg-video">
+                <!-- Buraya kendi yukleyecegin SIHA / Kizilelma video URL'sini koyabilirsin -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-details-4431-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 id="hero-title" class="electric-text">MİLLİ TEKNOLOJİ & SAVUNMA SANAYİİ</h1>
+            <p id="hero-desc">Kızılelma, SİHA ve İleri Mühendislik Çözümleri</p>
+        </div>
+
+        <!-- Kayan Görseller (Slider) -->
+        <div class="ticker-wrapper">
+            <div class="ticker">
+                <div class="ticker-item"><i class="fa-solid fa-jet-fighter-up"></i> KIZILELMA MIUS</div>
+                <div class="ticker-item"><i class="fa-solid fa-plane-slant"></i> BAYRAKTAR TB3</div>
+                <div class="ticker-item"><i class="fa-solid fa-microchip"></i> MİLLİ İŞLEMCİ ÇAKIL</div>
+                <div class="ticker-item"><i class="fa-solid fa-satellite"></i> TÜRKSAT 6A</div>
+                <div class="ticker-item"><i class="fa-solid fa-shield-halved"></i> STEEL DOME / ÇELİK KUBBE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mühendislik Sözlüğü & Simülasyon Bölümü -->
+    <main class="main-container">
+        
+        <!-- Devre Simülasyonu -->
+        <section class="section-box electric-border">
+            <h2 id="sim-title"><i class="fa-solid fa-bolt icon-green"></i> İnteraktif Devre Simülatörü</h2>
+            <p id="sim-desc">Öğrenciler için gerçek zamanlı gerilim, direnç ve akım test alanı.</p>
+            
+            <div class="circuit-workspace">
+                <canvas id="circuitCanvas" width="700" height="300"></canvas>
+                <div class="controls">
+                    <label>Gerilim (V): <input type="range" id="voltage" min="1" max="24" value="12" oninput="updateCircuit()"><span id="v-val">12V</span></label>
+                    <label>Direnç (Ω): <input type="range" id="resistance" min="10" max="1000" value="220" oninput="updateCircuit()"><span id="r-val">220Ω</span></label>
+                    <div class="output-box">
+                        Hesaplanan Akım (I): <strong id="current-val" class="highlight-txt">0.054 A</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mühendislik Sözlüğü -->
+        <section class="section-box electric-border">
+            <h2 id="dict-title"><i class="fa-solid fa-book-bookmark icon-turquois"></i> Mühendislik Sözlüğü</h2>
+            <input type="text" id="dictSearch" placeholder="Terim ara (ör. Aerodinamik, Telemetri, PWM)..." onkeyup="searchDictionary()" class="styled-input">
+            
+            <div class="dictionary-grid" id="dictGrid">
+                <!-- JS ile dinamik dolacak -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MurtzAI Asistanı Panel -->
+    <div class="ai-widget">
+        <button class="ai-trigger" onclick="toggleAI()">
+            <i class="fa-solid fa-robot"></i> <span>murtzai</span>
+        </button>
+        <div class="ai-chat-box" id="aiChatBox">
+            <div class="ai-header">
+                <span><i class="fa-solid fa-brain"></i> murtzai Yapay Zeka Asistanı</span>
+                <button onclick="toggleAI()">&times;</button>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="msg ai-msg">Selam gardaşım! Ben murtzai. Mühendislik, projeler veya site hakkında ne sormak istersin?</div>
+            </div>
+            <div class="ai-input-area">
+                <input type="text" id="aiInput" placeholder="Mesajını yaz..." onkeypress="handleAIPress(event)">
+                <button onclick="sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer & Sosyal Medya -->
+    <footer class="main-footer">
+        <div class="electric-line"></div>
+        <div class="footer-content">
+            <p>&copy; 2026 murtzeng. Tüm hakları saklıdır.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com" target="_blank" class="social-icon github"><i class="fa-brands fa-github"></i></a>
+                <a href="https://x.com" target="_blank" class="social-icon x-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:example@gmail.com" class="social-icon mail"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="simulation.js"></script>
+</body>
+</html>
