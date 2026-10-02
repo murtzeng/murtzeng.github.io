@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURTZENG AVIONICS | Murtaza Can Bilgin Portalı</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="gaun-theme">
+
+    <!-- PRELOADER / YÜKLEME EKRANI -->
+    <div id="preloader">
+        <div class="loader-inner">
+            <h3 class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h3>
+            <h2 class="greeting-text">Selamünaleyküm</h2>
+            
+            <!-- ŞİŞİP KÜÇÜLEN LOGO -->
+            <div class="pulse-logo-box">
+                <svg class="pulse-logo" viewBox="0 0 200 200" width="120" height="120">
+                    <circle cx="100" cy="100" r="80" fill="#031d38" stroke="#b31217" stroke-width="4"/>
+                    <g transform="translate(50, 50) scale(0.5)">
+                        <path d="M50 10 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#ffffff" stroke-width="4"/>
+                        <path d="M50 20 A20 20 0 1 0 50 60 A15 15 0 1 1 50 20 Z" fill="#b31217"/>
+                        <path d="M50 10 L58 35 L42 35 Z" fill="#00ff66"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="load-progress-bar"><div id="loadFill"></div></div>
+            <p class="loader-sub">Murtzeng Aviyonik Portalı Hazırlanıyor...</p>
+        </div>
+    </div>
+
+    <!-- ELEKTRİK HATLARI VE DEVRE DESENİ ARKA PLAN OVERLAY -->
+    <div class="circuit-bg-overlay"></div>
+
+    <!-- EN ÜST KURUMSAL HEADER -->
+    <header class="gaun-top-header">
+        <div class="top-bar-mini">
+            <span class="bismillah-mini">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+            <div class="top-links">
+                <a href="#about"><i class="fa-solid fa-user"></i> Hakkımda</a>
+                <a href="#projects"><i class="fa-solid fa-microchip"></i> Projeler</a>
+                <a href="mailto:iletişim@murtzeng.com"><i class="fa-solid fa-envelope"></i> İletişim</a>
+            </div>
+        </div>
+
+        <div class="header-branding">
+            <div class="pulse-logo-box-small">
+                <svg class="pulse-logo-sm" viewBox="0 0 200 200" width="70" height="70">
+                    <circle cx="100" cy="100" r="85" fill="#031d38" stroke="#b31217" stroke-width="5"/>
+                    <g transform="translate(50, 50) scale(0.5)">
+                        <path d="M50 10 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#ffffff" stroke-width="5"/>
+                        <path d="M50 20 A20 20 0 1 0 50 60 A15 15 0 1 1 50 20 Z" fill="#b31217"/>
+                        <path d="M50 10 L58 35 L42 35 Z" fill="#00ff66"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1 class="glow-text">MURTZENG AVIONICS SYSTEMS</h1>
+                <p class="sub-name">Murtaza Can Bilgin • Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği</p>
+            </div>
+        </div>
+
+        <nav class="gaun-main-nav">
+            <ul>
+                <li class="active"><a href="#"><i class="fa-solid fa-house"></i> ANA SAYFA</a></li>
+                <li><a href="#projects">PROJELERİM & AR-GE</a></li>
+                <li><a href="#social">AKIŞ & AR-GE GÜNLÜĞÜ</a></li>
+                <li><a href="#contact">İLETİŞİM</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ANA İÇERİK BÖLÜMÜ -->
+    <main class="portal-container">
+        
+        <!-- HOŞ GELDİN BANNER'I -->
+        <section class="gaun-banner-card">
+            <div class="banner-badge">MİLLİ TEKNOLOJİ HAMLESİ & HAVA ARAÇLARI ELEKTRONİĞİ</div>
+            <h2 class="shimmer-text">Murtaza Can Bilgin — Aviyonik & Gömülü Sistem Portalı</h2>
+            <p>
+                Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği bünyesinde yürütülen gömülü C/C++, STM32, FreeRTOS, 
+                SİHA uçuş kontrol bilgisayarları ve CAN-Bus aviyonik haberleşme çalışmaları.
+            </p>
+            <div class="banner-actions">
+                <a href="#projects" class="btn-gaun-red"><i class="fa-solid fa-rocket"></i> Son Projelerimi İncele</a>
+                <a href="https://linkedin.com/in/murtzeng" target="_blank" class="btn-gaun-blue"><i class="fa-brands fa-linkedin"></i> LinkedIn Profilim</a>
+            </div>
+        </section>
+
+        <!-- DİNANMİK PORTAL AKIŞI -->
+        <div class="portal-grid-3">
+            
+            <!-- SOL: SON PROJELER VE PAYLAŞIMLAR -->
+            <section class="portal-box" id="projects">
+                <div class="box-header header-red">
+                    <h3><i class="fa-solid fa-bullhorn"></i> SON PROJELERİM & YAYINLAR</h3>
+                </div>
+                <div class="post-cards-list">
+                    <article class="post-card">
+                        <div class="post-img-frame">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="STM32 Kartı">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-date">02 EKİM 2026</span>
+                            <h4>STM32 ve CAN-Bus Aviyonik Haberleşme Kartı Tasarımı</h4>
+                            <p>SİHA aviyonik sistemleri için tasarladığım yedekli veri otobüsü test kartı laboratuvar ortamında başarıyla çalıştırıldı.</p>
+                            <a href="#" class="read-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-img-frame">
+                            <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933" alt="Roket İtki">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-date">25 EYLÜL 2026</span>
+                            <h4>FreeRTOS Tabanlı Otonom İrtifa Sabitleme Algoritması</h4>
+                            <p>Uçuş kontrol bilgisayarlarında gecikmesiz görev zamanlaması için geliştirilen yazılım modülü dokümante edildi.</p>
+                            <a href="#" class="read-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SAĞ 1: AR-GE DÜŞÜNCE AKIŞI & MANEVİ İÇERİK -->
+            <section class="portal-box" id="social">
+                <div class="box-header header-navy">
+                    <h3><i class="fa-solid fa-book-quran"></i> GÜNÜN HİKMETİ & AYET</h3>
+                </div>
+                <div class="verse-widget">
+                    <div class="arabic-quote">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+                    <p class="tr-quote">"Şüphesiz her güçlükle birlikte bir kolaylık vardır."</p>
+                    <span class="quote-ref">İnşirah Sûresi, 6. Âyet</span>
+                </div>
+
+                <div class="box-header header-navy" style="margin-top: 20px;">
+                    <h3><i class="fa-solid fa-comment-dots"></i> ANLIK AR-GE NOTU</h3>
+                </div>
+                <div class="quick-status-box">
+                    <div class="status-user"><strong>murtzeng</strong> <span>(Murtaza Can Bilgin)</span></div>
+                    <p>"Bugün labda STM32 UART kesmelerini FreeRTOS semaforlarına bağlayarak veri kaybını sıfıra indirdik. Elhamdülillah!"</p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER & SADECE İKONLU SOSYAL MEDYA BUTONLARI -->
+    <footer class="gaun-footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">MURTZENG AVIONICS SYSTEMS</div>
+            <p>Murtaza Can Bilgin • Gaziantep Üniversitesi Elektrik-Elektronik Mühendisliği</p>
+            
+            <div class="social-icons-only">
+                <a href="https://linkedin.com/in/murtzeng" target="_blank" title="LinkedIn" class="icon-circle linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://x.com/murtzeng" target="_blank" title="X (Twitter)" class="icon-circle x-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://github.com/murtzeng" target="_blank" title="GitHub" class="icon-circle github"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:iletişim@murtzeng.com" title="E-Posta Gönder" class="icon-circle mail"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <p class="copy-right">&copy; 2026 MURTZENG AVIONICS • Murtaza Can Bilgin. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
