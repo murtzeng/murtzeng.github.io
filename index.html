@@ -7,160 +7,205 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="dark-mode">
 
-    <!-- SİTEYE GİRİŞ & YÜKLENİYOR EKRANI (PRELOADER) -->
+    <!-- TUŞ SESİ SES EFEKTİ -->
+    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+
+    <!-- YÜKLENİYOR EKRANI (SELAMÜNALEYKÜM PRELOADER) -->
     <div id="preloader">
         <div class="loader-content">
             <div class="greeting-text">Selamünaleyküm</div>
             <div class="loader-logo-wrap">
-                <svg class="loader-logo-rotating" viewBox="0 0 200 200" width="120" height="120">
+                <!-- SVG ORTADA İŞLENMİŞ AMBLEMİN -->
+                <svg class="spinning-ring-logo" viewBox="0 0 200 200" width="140" height="140">
                     <path id="circlePathLoader" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="none"/>
                     <text class="ring-text">
                         <textPath href="#circlePathLoader">MURTZENG AVIONICS SYSTEMS • EST. 2026 •</textPath>
                     </text>
-                    <circle cx="100" cy="100" r="55" fill="#031d38" stroke="#00f3ff" stroke-width="3"/>
-                    <path d="M 100,55 A 35,35 0 1,0 135,90 A 28,28 0 1,1 100,55 Z" fill="#00f3ff"/>
-                    <path d="M 88,110 L 88,85 L 100,100 L 112,85 L 112,110" stroke="#ff6600" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <path d="M 100,68 L 106,80 L 94,80 Z" fill="#00ff66"/>
+                    <circle cx="100" cy="100" r="50" fill="#031d38" stroke="#00f3ff" stroke-width="2"/>
+                    <!-- Amblem Vektörü -->
+                    <g transform="translate(50, 50) scale(0.5)">
+                        <path d="M50 10 L80 40 L80 70 L50 90 L20 70 L20 40 Z" fill="none" stroke="#00f3ff" stroke-width="4"/>
+                        <path d="M50 20 A20 20 0 1 0 50 60 A15 15 0 1 1 50 20 Z" fill="#00f3ff"/>
+                        <path d="M50 10 L58 35 L42 35 Z" fill="#00ff66"/>
+                    </g>
                 </svg>
             </div>
             <div class="progress-bar-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
-            <div class="loading-sub">Mühendislik & Aviyonik Sistemleri Yükleniyor...</div>
+            <div class="loading-sub">Aviyonik Mühendislik Portalı Yükleniyor...</div>
         </div>
     </div>
 
-    <!-- EN ÜST KURUMSAL HEADER & NAVIGASYON -->
-    <header class="gaun-header">
-        <div class="top-utility-bar">
-            <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-            <div class="utility-links">
-                <a href="#dictionary"><i class="fa-solid fa-book"></i> Sözlük</a>
-                <a href="#lab"><i class="fa-solid fa-microchip"></i> Laboratuvar</a>
-                <a href="mailto:iletişim@murtzeng.com"><i class="fa-solid fa-envelope"></i> İletişim</a>
-                <div class="lang-toggle">
-                    <button onclick="setLang('tr')" class="active">TR 🇹🇷</button>
-                    <button onclick="setLang('en')">EN 🇬🇧</button>
-                </div>
-            </div>
-        </div>
+    <!-- SESSİZ ARKA PLAN VİDEOSU -->
+    <div class="bg-video-wrapper">
+        <video autoplay loop muted playsinline id="bgVideo">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-details-4431-large.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
-        <div class="main-branding">
-            <div class="circular-logo-container">
-                <!-- Dairesel Hareketli Logo -->
-                <svg class="spinning-ring-logo" viewBox="0 0 200 200" width="90" height="90">
-                    <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="none"/>
+    <!-- EN ÜST HEADER & HOŞ GELDİN KARŞILAMA YAZISI -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="spinning-logo-box">
+                <svg class="spinning-ring-logo" viewBox="0 0 200 200" width="70" height="70">
+                    <path id="circlePathNav" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="none"/>
                     <text class="ring-text">
-                        <textPath href="#circlePath">MURTZENG AVIONICS SYSTEMS • EST. 2026 •</textPath>
+                        <textPath href="#circlePathNav">MURTZENG AVIONICS SYSTEMS •</textPath>
                     </text>
-                    <circle cx="100" cy="100" r="52" fill="#031d38" stroke="#00f3ff" stroke-width="2"/>
-                    <path d="M 100,58 A 30,30 0 1,0 130,88 A 24,24 0 1,1 100,58 Z" fill="#00f3ff"/>
-                    <path d="M 90,105 L 90,82 L 100,95 L 110,82 L 110,105" stroke="#ff6600" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                    <path d="M 100,68 L 105,78 L 95,78 Z" fill="#00ff66"/>
+                    <circle cx="100" cy="100" r="50" fill="#031d38" stroke="#00f3ff" stroke-width="2"/>
                 </svg>
             </div>
-            <div class="brand-text-group">
-                <h1>MURTZENG AVIONICS SYSTEMS</h1>
-                <p>MÜHENDİSLİK, SAVUNMA SANAYİİ VE HAVA ARAÇLARI ELEKTRONİĞİ PORTALI</p>
+            <div class="welcome-text-box">
+                <h2>MURTZENG AVIONICS SYSTEMS</h2>
+                <p class="welcome-msg">Mühendislik & Hava Araçları Elektroniği Portalına Hoş Geldiniz</p>
             </div>
         </div>
 
-        <!-- GAÜN Tarzı Lacivert Ana Menü -->
-        <nav class="gaun-nav">
-            <ul>
-                <li class="active"><a href="#"><i class="fa-solid fa-house"></i> ANA SAYFA</a></li>
-                <li><a href="#about">HAKKIMIZDA</a></li>
-                <li><a href="#avionics">AVİYONİK AR-GE</a></li>
-                <li><a href="#simulations">SİMÜLASYONLAR</a></li>
-                <li><a href="#blog">DUYURULAR & MAKALE</a></li>
-                <li><a href="#contact">İLETİŞİM</a></li>
-            </ul>
-        </nav>
+        <div class="nav-right">
+            <!-- Aydınlık / Karanlık Mod -->
+            <button onclick="toggleTheme()" class="icon-btn" title="Tema Değiştir"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+            <!-- Dil Desteği -->
+            <div class="lang-switch">
+                <button onclick="setLang('tr')" id="btn-tr" class="active">TR 🇹🇷</button>
+                <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
+            </div>
+            <!-- Sağ Üst Üç Çizgi Menü -->
+            <button onclick="toggleMenu()" class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
     </header>
 
-    <!-- ANA BANNER / REKTÖRLÜK STİLİ BİLDİRİ BÖLÜMÜ -->
-    <section class="banner-section">
-        <div class="banner-card">
-            <div class="banner-image">
-                <i class="fa-solid fa-jet-fighter-up hero-icon"></i>
+    <!-- SAĞ ÜST AÇILIR MENÜ (HAMBURGER MENU) -->
+    <div class="overlay-menu" id="overlayMenu">
+        <button onclick="toggleMenu()" class="close-menu-btn">&times;</button>
+        <div class="search-box-menu">
+            <input type="text" placeholder="Site içinde ara..." id="menuSearch">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <ul class="menu-links">
+            <li><a href="#home" onclick="toggleMenu()"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
+            <li><a href="#verse-hadith" onclick="toggleMenu()"><i class="fa-solid fa-book-quran"></i> Ayet & Hadis</a></li>
+            <li><a href="#dictionary" onclick="toggleMenu()"><i class="fa-solid fa-book"></i> Mühendislik Sözlüğü</a></li>
+            <li><a href="#simulations" onclick="toggleMenu()"><i class="fa-solid fa-microchip"></i> Devre Simülasyonu</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()"><i class="fa-solid fa-images"></i> Medya & Projeler</a></li>
+            <li><a href="#about" onclick="toggleMenu()"><i class="fa-solid fa-user"></i> Hakkımızda</a></li>
+            <li><a href="#contact" onclick="toggleMenu()"><i class="fa-solid fa-envelope"></i> İletişim</a></li>
+        </ul>
+    </div>
+
+    <!-- GÜNLÜK AYET & HADİS WIDGET'I -->
+    <section class="widget-section" id="verse-hadith">
+        <div class="widget-card">
+            <i class="fa-solid fa-quran widget-icon icon-turquois"></i>
+            <div>
+                <h4>GÜNÜN AYETİ</h4>
+                <p id="verseText">"Şüphesiz biz her şeyi bir ölçüye göre yarattık." (Kamer, 49)</p>
             </div>
-            <div class="banner-content">
-                <span class="badge-tag">MİLLİ TEKNOLOJİ HAMLESİ</span>
-                <h2>KIZILELMA & Otonom Uçuş Kontrol Bilgisayarı Çalışmaları</h2>
-                <p>
-                    Murtzeng Avionics Systems bünyesinde yürütülen yeni nesil insansız hava araçları aviyonik mimarisi, 
-                    CAN-Bus haberleşme hatları ve STM32 tabanlı otonom seyrüsefer yazılımları erişime açılmıştır.
-                </p>
+        </div>
+        <div class="widget-card">
+            <i class="fa-solid fa-book-open widget-icon icon-orange"></i>
+            <div>
+                <h4>GÜNÜN HADİSİ</h4>
+                <p id="hadithText">"İki nimet vardır ki insanların çoğu onların kıymetini bilmezler: Sağlık ve boş vakit." (Buhârî)</p>
             </div>
         </div>
     </section>
 
-    <!-- 3'LÜ BÖLÜM (DUYURU / ETKİNLİK / HABERLER - GAÜN SAYFASI FORMATINDA) -->
-    <main class="portal-grid">
-        <!-- SOL: Güncel Haberler & Projeler -->
-        <section class="grid-box">
-            <div class="box-header red-border">
-                <h3><i class="fa-solid fa-bullhorn"></i> GÜNCEL GELİŞMELER</h3>
+    <!-- SAVUNMA SANAYİİ KAYAR GÖRSELLER (KARTLAR / SLIDER) -->
+    <section class="slider-container" id="gallery">
+        <h3><i class="fa-solid fa-shield-halved icon-green"></i> SAVUNMA SANAYİİ VE HAVACILIK PROJELERİ</h3>
+        <div class="image-carousel">
+            <div class="img-card" onclick="openLightbox('https://images.unsplash.com/photo-1517976487492-5750f3195933')">
+                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933" alt="Roket & Aviyonik">
+                <span class="img-caption">Roket & İtki Sistemleri Testi</span>
             </div>
-            <ul class="news-list">
-                <li>
-                    <span class="news-date">02 EKİM</span>
-                    <a href="#">STM32 ve FreeRTOS ile Gerçek Zamanlı Uçuş Yazılımı Modülü Yayınlandı</a>
-                </li>
-                <li>
-                    <span class="news-date">28 EYLÜL</span>
-                    <a href="#">Otonom SİHA Rota Planlama A* Algoritma Simülatörü Güncellendi</a>
-                </li>
-                <li>
-                    <span class="news-date">15 EYLÜL</span>
-                    <a href="#">Murtzeng Avionics Systems Portalı Canlıya Alındı</a>
-                </li>
-            </ul>
+            <div class="img-card" onclick="openLightbox('https://images.unsplash.com/photo-1508614589041-895b88991e3e')">
+                <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e" alt="İHA Seyrüsefer">
+                <span class="img-caption">Otonom İHA Uçuş Kontrolü</span>
+            </div>
+            <div class="img-card" onclick="openLightbox('https://images.unsplash.com/photo-1518770660439-4636190af475')">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Gömülü Devre">
+                <span class="img-caption">Aviyonik Gömülü Kart Tasarımı</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BÜYÜTÜLEBİLİR RESİM PENCERESİ (LIGHTBOX) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <!-- DEVRE SİMÜLASYONU VE CAMBRIDGE/OXFORD MÜHENDİSLİK SÖZLÜĞÜ -->
+    <main class="main-workspace">
+        
+        <!-- DEVRE SİMÜLASYONU VE ZAMAN/GRAFİK TESTİ -->
+        <section class="panel-box" id="simulations">
+            <h2><i class="fa-solid fa-bolt icon-orange"></i> CANLI DEVRE SİMÜLASYONU (V = I * R)</h2>
+            <div class="sim-grid">
+                <canvas id="simCanvas" width="500" height="200"></canvas>
+                <div class="sim-controls">
+                    <label>Gerilim (V): <input type="range" id="volts" min="1" max="24" value="12" oninput="runSimulation()"><span id="vLabel">12V</span></label>
+                    <label>Direnç (R): <input type="range" id="ohms" min="10" max="1000" value="220" oninput="runSimulation()"><span id="rLabel">220Ω</span></label>
+                    <div class="sim-readout">
+                        Akım (I): <strong id="currentVal" class="highlight-green">0.054 A</strong>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- ORTA: Etkinlik Takvimi / Simülasyon Paneli -->
-        <section class="grid-box">
-            <div class="box-header blue-border">
-                <h3><i class="fa-solid fa-calendar-days"></i> ETKİNLİK & LABORATUVAR TAKVİMİ</h3>
-            </div>
-            <div class="mini-calendar">
-                <div class="cal-item active">
-                    <div class="cal-day">13 EKİM</div>
-                    <div class="cal-desc">Devre & Osiloskop Test Laboratuvarı Canlı Yayını</div>
-                </div>
-                <div class="cal-item">
-                    <div class="cal-day">21 EKİM</div>
-                    <div class="cal-desc">Katmanlı Hava Savunma Sistemleri Semineri</div>
-                </div>
+        <!-- CAMBRIDGE / OXFORD MÜHENDİSLİK SÖZLÜĞÜ -->
+        <section class="panel-box" id="dictionary">
+            <h2><i class="fa-solid fa-book-bookmark icon-turquois"></i> MÜHENDİSLİK TERİMLERİ SÖZLÜĞÜ</h2>
+            <input type="text" id="dictSearch" placeholder="Terim ara (ör. Aerodinamik, Telemetri, PWM)..." onkeyup="searchDict()" class="search-input">
+            <div class="dict-grid" id="dictGrid">
+                <!-- JS dinamik üretecek -->
             </div>
         </section>
 
-        <!-- SAĞ: murtzai AI & Sözlük Hızlı Erişim -->
-        <section class="grid-box">
-            <div class="box-header green-border">
-                <h3><i class="fa-solid fa-robot"></i> murtzai YAZILIM ASİSTANI</h3>
-            </div>
-            <div class="ai-box-preview">
-                <p>Mühendislik veya aviyonik sistemler hakkında sorularınızı murtzai asistanına iletebilirsiniz.</p>
-                <button onclick="document.getElementById('termInput').focus()" class="gaun-btn">Asistanı Çalıştır</button>
-            </div>
-        </section>
     </main>
 
-    <!-- FOOTER (RESMİ KURUMSAL İLETİŞİM) -->
-    <footer class="gaun-footer">
-        <div class="footer-inner">
-            <p><strong>MURTZENG AVIONICS SYSTEMS</strong> | Elektrik-Elektronik Mühendisliği & Hava Araçları Elektroniği</p>
-            <div class="footer-socials">
-                <a href="https://github.com/murtzeng" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/in/murtzeng" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://x.com/murtzeng" target="_blank"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
-                <a href="mailto:iletişim@murtzeng.com"><i class="fa-solid fa-envelope"></i> iletişim@murtzeng.com</a>
-            </div>
-            <p class="copy-text">&copy; 2026 Murtzeng Avionics Systems. Tüm Hakları Saklıdır.</p>
+    <!-- GERÇEK ZAMANLI CANLI TEKNOLOJİ HABERLERİ -->
+    <section class="news-ticker-section">
+        <div class="ticker-title"><i class="fa-solid fa-newspaper"></i> CANLI TEKNOLOJİ HABERLERİ</div>
+        <div class="ticker-content">
+            <span>• Bayraktar KIZILELMA irtifa testlerini başarıyla tamamladı.</span>
+            <span>• Steel Dome / Çelik Kubbe katmanlı hava savunma ağı devreye alındı.</span>
+            <span>• Milli işlemci ÇAKIL aviyonik sistem entegrasyonu tamamlandı.</span>
         </div>
+    </section>
+
+    <!-- SAĞ ALT YAZILIM ASİSTANI (murtzai) -->
+    <div class="ai-widget">
+        <button class="ai-trigger" onclick="toggleAI()">
+            <i class="fa-solid fa-robot"></i> <span>murtzai</span>
+        </button>
+        <div class="ai-chat-box" id="aiChatBox">
+            <div class="ai-header">
+                <span><i class="fa-solid fa-brain"></i> murtzai Yapay Zeka Asistanı</span>
+                <button onclick="toggleAI()">&times;</button>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="msg ai-msg">Selamünaleyküm gardaşım! Ben murtzai. Aviyonik projelerin veya mühendislik soruların için buradayım.</div>
+            </div>
+            <div class="ai-input-area">
+                <input type="text" id="aiInput" placeholder="Mesajını yaz..." onkeypress="handleAIPress(event)">
+                <button onclick="sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESMİ FOOTER VE SOSYAL MEDYA LOGOLARI -->
+    <footer class="main-footer" id="contact">
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/murtzeng" target="_blank" class="social-link linkedin"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/murtzeng" target="_blank" class="social-link github"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="mailto:iletişim@murtzeng.com" class="social-link mail"><i class="fa-solid fa-envelope"></i> E-Posta</a>
+        </div>
+        <p class="copyright">&copy; 2026 MURTZENG AVIONICS SYSTEMS. Tüm Hakları Saklıdır.</p>
     </footer>
 
     <script src="script.js"></script>
